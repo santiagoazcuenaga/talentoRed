@@ -2,17 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package entidades;
-
-import javax.persistence.Entity;
+package myExceptions;
 
 /**
- *
- * @author Usuario
+ * @author Kidver
  */
-@Entity
-public class Proveedor extends Usuario {
-    
-    
-    
-}
+public class MyException extends Exception {
+
+    public MyException(String msg) {
+        super(msg);
+    }
+
+}//The end

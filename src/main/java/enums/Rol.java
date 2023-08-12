@@ -8,8 +8,8 @@ package enums;
  *
  * @author Usuario
  */
-public  enum Rol {
-  User,
-Proveedor,
-Admin;
+public enum Rol {
+    User,
+    Proveedor,
+    Admin;
 }

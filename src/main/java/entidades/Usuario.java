@@ -18,22 +18,22 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
- @Id
+
+    @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
- private String nombre;
- private String email;
- private String password;
- private String direccion;
- private Boolean alta;
-private Rol rol;
-
+    private String nombre;
+    private String email;
+    private String password;
+    private String direccion;
+    private Boolean alta;
+    private Rol rol;
 
     public Usuario() {
     }
 
-    public Usuario(String id, String nombre, String email, String password, String direccion,Rol rol) {
+    public Usuario(String id, String nombre, String email, String password, String direccion, Rol rol) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
@@ -50,7 +50,6 @@ private Rol rol;
         this.alta = alta;
     }
 
-    
     public Rol getRol() {
         return rol;
     }
@@ -59,7 +58,6 @@ private Rol rol;
         this.rol = rol;
     }
 
-    
     public String getId() {
         return id;
     }
@@ -99,5 +97,5 @@ private Rol rol;
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
- 
+
 }
