@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package servicios;
+package com.talentoRed.talentoRed.servicios;
 
 
-import entidades.Usuario;
-import enums.Rol;
+import com.talentoRed.talentoRed.entidades.Usuario;
+import com.talentoRed.talentoRed.enums.Rol;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-import myExceptions.MyException;
+import com.talentoRed.talentoRed.myExceptions.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,9 +24,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import repositorios.repositorioUsuario;
+import com.talentoRed.talentoRed.repositorios.repositorioUsuario;
 
 /**
  *
@@ -47,7 +48,7 @@ usuario.setEmail(email);
 usuario.setDireccion(direccion);
 usuario.setPassword(new BCryptPasswordEncoder().encode(password));
 usuario.setAlta(Boolean.FALSE);
-usuario.setRol(Rol.User);
+usuario.setRol(Rol.USER);
 repositorioUsuario.save(usuario);
 }
  
@@ -69,7 +70,7 @@ Usuario usuario = respuesta.get();
      usuario.setEmail(email);
      usuario.setDireccion(direccion);
      usuario.setPassword(new BCryptPasswordEncoder().encode(password));
- usuario.setRol(Rol.User);
+ usuario.setRol(Rol.USER);
  repositorioUsuario.save(usuario);
  }
  

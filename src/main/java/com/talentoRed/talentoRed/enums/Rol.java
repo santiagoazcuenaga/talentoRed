@@ -2,15 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package myExceptions;
+package com.talentoRed.talentoRed.enums;
 
 /**
- * @author Kidver
+ *
+ * @author Usuario
  */
-public class MyException extends Exception {
-
-    public MyException(String msg) {
-        super(msg);
-    }
-
-}//The end
+public enum Rol {
+    USER,
+    PROVEEDOR,
+    ADMIN;
+}
