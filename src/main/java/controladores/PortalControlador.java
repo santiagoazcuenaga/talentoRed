@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import servicios.servicioUsuario;
+import servicios.ServicioUsuario;
 
 /**
  *
@@ -25,7 +25,7 @@ import servicios.servicioUsuario;
 public class PortalControlador {
     
     @Autowired
-    servicioUsuario serusa = new servicioUsuario();
+    ServicioUsuario serusa = new ServicioUsuario();
     
     public String index(){
         return "index.html";

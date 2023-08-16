@@ -14,7 +14,7 @@ import org.springframework.data.repository.query.Param;
  *
  * @author Kidver
  */
-public interface repositorioOrden extends JpaRepository<OrdenDeServicio, String>{
+public interface RepositorioOrden extends JpaRepository<OrdenDeServicio, String>{
     
     @Query("SELECT * FROM OrdenServicio a WHERE a.proveedor = :proveedor")
      public List<OrdenDeServicio> listarOrdenenesProveedor(@Param("proveedor") String proveedor );

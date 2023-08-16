@@ -33,7 +33,7 @@ import repositorios.repositorioUsuario;
  * @author Usuario
  */
 @Service
-public class servicioUsuario implements UserDetailsService {
+public class ServicioUsuario implements UserDetailsService {
 @Autowired
 private repositorioUsuario repositorioUsuario;
 
