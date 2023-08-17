@@ -4,7 +4,8 @@
  */
 package com.talentoRed.talentoRed;
 
-import com.talentoRed.talentoRed.servicios.ServicioUsuario;
+
+import com.talentoRed.talentoRed.servicios.servicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -26,7 +27,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public ServicioUsuario usuarioService;
+    public servicioUsuario usuarioService;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

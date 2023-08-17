@@ -6,7 +6,8 @@ package com.talentoRed.talentoRed.controladores;
 
 import javax.xml.bind.ValidationException;
 import com.talentoRed.talentoRed.myExceptions.MyException;
-import com.talentoRed.talentoRed.servicios.ServicioUsuario;
+
+import com.talentoRed.talentoRed.servicios.servicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PortalControlador {
 
     @Autowired
-    ServicioUsuario serusa = new ServicioUsuario();
+    servicioUsuario serusa = new servicioUsuario();
 
     @GetMapping("/")
     public String index() {

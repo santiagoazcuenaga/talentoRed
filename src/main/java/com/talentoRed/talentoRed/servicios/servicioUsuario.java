@@ -35,7 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author Usuario
  */
 @Service
-public class ServicioUsuario implements UserDetailsService {
+public class servicioUsuario implements UserDetailsService {
 
     @Autowired
     private repositorioUsuario repositorioUsuario;
