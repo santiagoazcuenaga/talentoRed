@@ -19,38 +19,37 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * @author usuario
  */
-
 @Controller
 @RequestMapping("/")
 
 public class PortalControlador {
-    
+
     @Autowired
     ServicioUsuario serusa = new ServicioUsuario();
-    
-    
+
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "index.html";
     }
-       @GetMapping("/registrar")
-   public String registrar(){
-       return "registro.html";
-   }
-    @PostMapping("/registro") // Cambiado a POST en lugar de GET
-    public String registrar(@RequestParam String nombre,@RequestParam String email,@RequestParam String password,String direccion) {
+
+    @GetMapping("/registrar")
+    public String registrar() {
+        return "registro.html";
+    }
+
+    @PostMapping("/registro")
+    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password) {
         try {
-            serusa.crearUsuario(nombre, email, password, direccion);
+            serusa.crearUsuario(archivo, nombre, email, password);
             // Registro exitoso, redirigir a la página de inicio de sesión
             return "redirect:/";
         } catch (MyException e) {
             // Error durante el registro, mostrar mensaje de error en la página de registro
             // Puedes agregar el mensaje de error a través del Model y mostrarlo en la plantilla
             // o redirigir a una página de error personalizada
+            System.out.println(e.getMessage());
             return "registro.html";
         }
     }
-    
-    
-    
+
 }
