@@ -39,9 +39,9 @@ public class PortalControlador {
     }
 
     @PostMapping("/registro")
-    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password) {
+    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password,String password2) {
         try {
-            serusa.crearUsuario(archivo, nombre, email, password);
+            serusa.crearUsuario(archivo, nombre, email, password,password2);
             // Registro exitoso, redirigir a la página de inicio de sesión
             return "redirect:/";
         } catch (MyException e) {

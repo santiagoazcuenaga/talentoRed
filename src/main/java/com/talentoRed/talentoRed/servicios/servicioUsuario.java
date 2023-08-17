@@ -43,9 +43,9 @@ public class servicioUsuario implements UserDetailsService {
     private ServicioImagen servicioImagen;
 
     @Transactional // falta parametro de direccion en el formulario
-    public void crearUsuario( MultipartFile archivo, String nombre, String email, String password) throws MyException {
+    public void crearUsuario( MultipartFile archivo, String nombre, String email, String password,String password2) throws MyException {
         
-        validar(nombre, email, password);
+        validar(nombre, email, password,password2);
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setEmail(email);
@@ -66,8 +66,8 @@ public class servicioUsuario implements UserDetailsService {
     }
 
     @Transactional
-    public void actualizarUsuario(String idUsuario, String nombre, String email, String password, String direccion) throws MyException {
-        validar(nombre, email, password);
+    public void actualizarUsuario(String idUsuario, String nombre, String email, String password, String direccion,String password2) throws MyException {
+        validar(nombre, email, password,password2);
         Optional<Usuario> respuesta = repositorioUsuario.findById(idUsuario);
         Usuario usuario = respuesta.get();
 
@@ -140,7 +140,7 @@ public class servicioUsuario implements UserDetailsService {
         return repositorioUsuario.buscarUsuarioPorEmail(email);
     }
 
-    private void validar(String nombre, String email, String password) throws MyException {
+    private void validar(String nombre, String email, String password,String password2) throws MyException {
         if (email.isEmpty() || email == null) {
             throw new MyException("el email no puede ser nulo"); //
         }
@@ -150,5 +150,8 @@ public class servicioUsuario implements UserDetailsService {
         if (password.isEmpty() || password == null || password.length() <= 8) {
             throw new MyException("la contraseña debe tener mas de 8 caracteres");
         }
+        if(!password.equals(password2)){
+           throw new MyException("Las contraseñas no coinciden.");
+       }
     }
 }
