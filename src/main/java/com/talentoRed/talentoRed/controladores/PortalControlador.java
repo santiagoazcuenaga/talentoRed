@@ -4,11 +4,15 @@
  */
 package com.talentoRed.talentoRed.controladores;
 
+import com.talentoRed.talentoRed.entidades.Usuario;
 import javax.xml.bind.ValidationException;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 
 import com.talentoRed.talentoRed.servicios.servicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,8 +56,19 @@ public class PortalControlador {
             return "registro.html";
         }
     }
-    
-    
-    
-
+    @GetMapping("/login")
+    public String login() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
+            Usuario usuario = serusa.obtenerUsuarioActual();
+            if (usuario.getNombre() == null || usuario.getNombre().isEmpty()) {
+                // El usuario no ha establecido su información personal
+                return "redirect:/completar-informacion-usuario";
+            } else {
+                // El usuario ya ha establecido su información personal
+                return "redirect:/";
+            }
+        }
+        return "login.html";
+    }
 }
