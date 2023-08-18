@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,9 +32,10 @@ public class Usuario implements UserDetails {
     private String email;
     private String password;
     private String direccion;
+    @OneToOne
+    private Imagen imagen;
     private Boolean alta;
     private Rol rol;
-
     public Usuario() {
     }
 
@@ -50,6 +52,15 @@ public class Usuario implements UserDetails {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
+    }
+
+    
     public Boolean getAlta() {
         return alta;
     }

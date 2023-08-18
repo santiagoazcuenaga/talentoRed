@@ -4,6 +4,7 @@
  */
 package com.talentoRed.talentoRed;
 
+
 import com.talentoRed.talentoRed.servicios.servicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
