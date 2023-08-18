@@ -52,5 +52,5 @@ public class PortalControlador {
             return "registro.html";
         }
     }
-
+   
 }
