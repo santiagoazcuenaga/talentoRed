@@ -147,7 +147,7 @@ public class servicioUsuario implements UserDetailsService {
         if (nombre.isEmpty() || nombre == null) {
             throw new MyException("el nombre no puede estar vacio");
         }
-        if (password.isEmpty() || password == null || password.length() <= 8) {
+        if (password.isEmpty() || password == null || password.length() < 8) {
             throw new MyException("la contraseña debe tener mas de 8 caracteres");
         }
         if(!password.equals(password2)){
