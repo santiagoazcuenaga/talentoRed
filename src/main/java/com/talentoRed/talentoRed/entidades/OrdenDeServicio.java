@@ -27,12 +27,10 @@ public class OrdenDeServicio {
     private Usuario usuario;
     @OneToOne
     private Proveedor proveedor;
-    private Boolean estadoServicio;
+    private Boolean estadoServicio; // EN proceso - Finalizado
     private int calificacion;
     private String comentario;
 
-    public OrdenDeServicio() {
-    }
 
     public String getId() {
         return id;
