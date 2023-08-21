@@ -52,8 +52,12 @@ public class PortalControlador {
             return "registro.html";
         }
     }
+<<<<<<< HEAD
+   
+=======
     
     
     
 
+>>>>>>> 4ec87624bfbf88a391c30617be4d128feaf3cad0
 }
