@@ -26,9 +26,9 @@
                         content: "";
                         background: url(/image/image2.jpg);
                         opacity: 0.4;
-                        top: 25%;
+                        top: 20%;
                         left: 1%;
-                        bottom: -18%;
+                        bottom: -10%;
                         right: 1%;
                         position: absolute;
                         z-index: -1;
@@ -40,7 +40,7 @@
             <!--Formulario de registro de usuario -->
             <title>Formulario de Registro</title>
 
-            <main class="px-10">
+            <main class="px-10" >
 
                 <h2 style="color:rgb(19, 155, 209);">Registrá tus datos y accedé a nuestra red de servicios</h2> <br>
 
@@ -62,7 +62,7 @@
                                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre y Apellido"
                                                required th:value="${nombre}"><br>
                                     </div>
-                                 <!--  <div>
+                                  <div>
                                         <!--<label for="apellido">Apellido:</label> <br>
                                         <input type="text" class="form-control" id="apellido" placeholder="Apellido"
                                                required><br>
@@ -80,8 +80,35 @@
                                     <div>
                                         <!--<label for="confirmar_contrasena">Confirmar Contraseña:</label><br>-->
                                         <input type="password" class="form-control" id="confirmar contraseña" name="password2"
-                                               placeholder="Confirmar contraseña" required th:value="${password2}"><br><br>
+                                               placeholder="Confirmar contraseña" required th:value="${password2}"><br>
                                     </div>
+
+                                    <div>
+                                        <!--Seleccion de barrio-->
+                                        <select class="form-select" aria-label="Default select example" name="barrio" required  th:value="${barrio}" >
+                                            <option selected >Seleccione Barrio</option>
+                                            <option value="Altos_de_Chacras">Altos de Chacras</option>
+                                            <option value="Portal_Lujan">Portal Lujan</option>
+                                            <option value="Complejo_Chacras_de_Coria">Complejo Chacras de Coria</option>
+                                            
+                                          </select >
+
+                                    </div> <br>
+
+                                 <!--Manzana y casa-->
+                                    <div>
+                                        <div class="row">
+                                            <div class="col">
+                                              <input type="text" class="form-control" name="manzana" placeholder="Manzana" aria-label="Manzana" required th:value="${manzana}">
+                                            </div>
+                                            <div class="col">
+                                              <input type="text" class="form-control" name="casa" placeholder="Casa" aria-label="Casa" required th:value="${casa}">
+                                            </div>
+                                          </div>
+
+                                    </div> <br>
+
+
 
                                     <div width:300 px align-justify class="mb-3">
                                         <label for="formFile" class="form-label">Si lo desea, ingrese una foto de
