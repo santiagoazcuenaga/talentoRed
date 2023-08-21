@@ -8,6 +8,8 @@ import com.talentoRed.talentoRed.enums.Rol;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -35,6 +37,7 @@ public class Usuario implements UserDetails {
     @OneToOne
     private Imagen imagen;
     private Boolean alta;
+    @Enumerated(EnumType.STRING)
     private Rol rol;
     public Usuario() {
     }
