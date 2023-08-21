@@ -7,7 +7,6 @@ package com.talentoRed.talentoRed.controladores;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import javax.xml.bind.ValidationException;
 import com.talentoRed.talentoRed.myExceptions.MyException;
-
 import com.talentoRed.talentoRed.servicios.servicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -56,7 +55,7 @@ public class PortalControlador {
             return "registro.html";
         }
     }
-<<<<<<< HEAD
+
     @GetMapping("/login")
     public String login() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -72,14 +71,4 @@ public class PortalControlador {
         }
         return "login.html";
     }
-=======
-<<<<<<< HEAD
-   
-=======
-    
-    
-    
-
->>>>>>> 4ec87624bfbf88a391c30617be4d128feaf3cad0
->>>>>>> 506e5d8645f719f512143be7d45366899f8ffd10
 }

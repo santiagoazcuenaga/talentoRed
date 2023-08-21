@@ -1,15 +1,52 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>LOGIN</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="../static/css/login.css" type="text/css"/>
+    <html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+</head>
+<body>
+    <form action="/" method="post">
+        
+        <h1 class="text-form">Inicio De Sesiòn</h1>
+        <div class="form">
+    
+     
+      <label for="email">Ingrese su email</label> <br>
+      <input class="control" type="email" id="email" placeholder="usario" required>  
+      <br>
+      <label for="contra">Contraseña</label> <br>
+      <input class="control" type="password" id="contra" placeholder="Contraseña" required> 
+      <br>
+   
+    
+      <input type="submit" value="Iniciar Sesiòn" class="boton">
+     </div>
+
+     <div  class="card">
+        
+        <div class="card-body">
+            <a href="/registrar" class="card-link">Registrarme</a>
+            <a href="/" class="card-link">Regresar al inicio</a>
+        </div>
+         </div>
+    
+      </form>
+    
+    
+</body>
+
+
+ <!--inicio footer-->
+ <div class="footer">
+      <footer th:replace= "/fragments/footer :: footer"> </footer>
+ </div>
+   
+    <!--fin footer-->
+
+
 </html>
