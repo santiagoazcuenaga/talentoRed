@@ -26,7 +26,7 @@
                         content: "";
                         background: url(/image/image2.jpg);
                         opacity: 0.4;
-                        top: 25%;
+                        top: 20%;
                         left: 1%;
                         bottom: -18%;
                         right: 1%;
@@ -80,8 +80,34 @@
                                     <div>
                                         <!--<label for="confirmar_contrasena">Confirmar Contraseña:</label><br>-->
                                         <input type="password" class="form-control" id="confirmar contraseña" name="password2"
-                                               placeholder="Confirmar contraseña" required th:value="${password2}"><br><br>
+                                               placeholder="Confirmar contraseña" required th:value="${password2}"><br>
                                     </div>
+
+                                    <div>
+
+                                        <select class="form-select" aria-label="Default select example" name="departamento" required  th:value="${departamento}" >
+                                            <option selected >Seleccione Departamento</option>
+                                            <option value="1">Lujan</option>
+                                            <option value="2">Maipu</option>
+                                            <option value="3">Guaymallen</option>
+                                            
+                                          </select >
+
+                                    </div> <br>
+
+                                    <div>
+                                        <div class="row">
+                                            <div class="col">
+                                              <input type="text" class="form-control" name="calle" placeholder="Calle" aria-label="Calle" required th:value="${callle}">
+                                            </div>
+                                            <div class="col">
+                                              <input type="text" class="form-control" name="numeracion" placeholder="Numeracion" aria-label="Numeracion" required th:value="${numeracion}">
+                                            </div>
+                                          </div>
+
+                                    </div> <br>
+
+
 
                                     <div width:300 px align-justify class="mb-3">
                                         <label for="formFile" class="form-label">Si lo desea, ingrese una foto de
