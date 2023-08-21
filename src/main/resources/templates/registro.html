@@ -28,7 +28,7 @@
                         opacity: 0.4;
                         top: 20%;
                         left: 1%;
-                        bottom: -18%;
+                        bottom: -10%;
                         right: 1%;
                         position: absolute;
                         z-index: -1;
@@ -40,7 +40,7 @@
             <!--Formulario de registro de usuario -->
             <title>Formulario de Registro</title>
 
-            <main class="px-10">
+            <main class="px-10" >
 
                 <h2 style="color:rgb(19, 155, 209);">Registrá tus datos y accedé a nuestra red de servicios</h2> <br>
 
@@ -62,7 +62,7 @@
                                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre y Apellido"
                                                required th:value="${nombre}"><br>
                                     </div>
-                                 <!--  <div>
+                                  <div>
                                         <!--<label for="apellido">Apellido:</label> <br>
                                         <input type="text" class="form-control" id="apellido" placeholder="Apellido"
                                                required><br>
@@ -84,8 +84,8 @@
                                     </div>
 
                                     <div>
-
-                                        <select class="form-select" aria-label="Default select example" name="departamento" required  th:value="${departamento}" >
+                                        <!--Seleccion de barrio-->
+                                        <select class="form-select" aria-label="Default select example" name="barrio" required  th:value="${barrio}" >
                                             <option selected >Seleccione Barrio</option>
                                             <option value="1">Altos de Chacras</option>
                                             <option value="2">Portal Lujan</option>
@@ -95,6 +95,7 @@
 
                                     </div> <br>
 
+                                 <!--Manzana y casa-->
                                     <div>
                                         <div class="row">
                                             <div class="col">
