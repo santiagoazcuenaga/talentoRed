@@ -65,7 +65,7 @@ public class PortalControlador {
             Usuario usuario = serusa.obtenerUsuarioActual();
             if (usuario.getNombre() == null || usuario.getNombre().isEmpty()) {
                 // El usuario no ha establecido su información personal
-                return "redirect:/completar-informacion-usuario";
+                return "redirect:/login";
             } else {
                 // El usuario ya ha establecido su información personal
                 return "redirect:/";
@@ -74,6 +74,7 @@ public class PortalControlador {
         return "login.html";
     }
     
+
     @GetMapping("/registrarProveedor")
     public String registrarProveedor() {
         return "registro2.html";

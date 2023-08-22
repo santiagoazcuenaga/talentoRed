@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="../static/css/login.css" type="text/css"/>
-    <html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 
 </head>
 <body>
-    <form action="/" method="post">
+    <form action="/login" method="POST">
         
         <h1 class="text-form">Inicio De Sesiòn</h1>
         <div class="form">
     
      
       <label for="email">Ingrese su email</label> <br>
-      <input class="control" type="email" id="email" placeholder="usario" required>  
+      <input class="control" type="email" id="email" placeholder="Usuario" required name="email">  
       <br>
       <label for="contra">Contraseña</label> <br>
-      <input class="control" type="password" id="contra" placeholder="Contraseña" required> 
+      <input class="control" type="password" id="contra" placeholder="Contraseña" required name="password"> 
       <br>
    
     
-      <input type="submit" value="Iniciar Sesiòn" class="boton">
+      <input type="submit" value="Iniciar Sesión" class="boton">
      </div>
 
      <div  class="card">
