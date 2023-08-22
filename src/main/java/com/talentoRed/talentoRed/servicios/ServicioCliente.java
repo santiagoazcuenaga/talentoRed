@@ -18,8 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- *
- * @author siduncuNotebook
+ * @author usuario
  */
 @Service
 public class ServicioCliente extends servicioUsuario{
@@ -37,7 +36,7 @@ public class ServicioCliente extends servicioUsuario{
         usuario.setEmail(email);
        // usuario.setDireccion(direccion);
         usuario.setPassword(new BCryptPasswordEncoder().encode(password));
-        usuario.setAlta(Boolean.FALSE);
+        usuario.cambiarEstado(false);
         usuario.setRol(Rol.CLIENTE);
         Imagen imagen = servicioImagen.guardar(archivo);
         usuario.setImagen(imagen);
