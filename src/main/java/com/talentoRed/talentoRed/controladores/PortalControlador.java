@@ -75,7 +75,7 @@ public class PortalControlador {
 
     @GetMapping("/registrarProveedor")
     public String registrarProveedor() {
-        return "registro2.html";
+        return "registroPro.html";
     }
 
     @PostMapping("/registroProveedor")
@@ -91,6 +91,11 @@ public class PortalControlador {
             System.out.println(e.getMessage());
             return "registro.html";
         }
+    }
+    /*Agregado por Guille y Juan para que funcione la simulacion de logueo y deslogueo*/
+     @GetMapping("/incio")
+    public String pantallaInicio() {
+        return "inicio.html";
     }
 
 }

@@ -23,7 +23,7 @@
             <main class="px-10" >
             
              <div>
-                    <img src="/image/usersimple.jpg" alt="logousuario" width="100" height="100" align="center" /> <br><br>
+                    <img src="/image/usersimple.jpg" alt="logousuario" width="80" height="80" align="center" /> <br><br>
 
              </div>
 
@@ -38,20 +38,21 @@
 
 
                                 <label for="email">Ingrese su e-mail</label> <br>
-                                <input class="form-control" type="email" id="email" name="usuario" placeholder="usuario" required th:value="${usuario}">  
+                                <input class="form-control" type="email" id="email" name="usuario" placeholder="Usuario" required th:value="${usuario}">  
                                 <br>
                                 <label for="contra">Contraseña</label> <br>
                                 <input class="form-control" type="password" id="contra" name="contraseña" placeholder="Contraseña"vth:value="${contraseña}" required> 
                                 <br>
 
 
-                                <input type="submit" value="Iniciar Sesiòn" class="boton">
+                               <!-- <input type="submit" value="Iniciar Sesiòn" class="boton" > -->
+                               <a class="btn btn-primary" href="/incio" role="button">Iniciar Sesión</a>
                             </div> <br>
 
                             <div  class="card">
 
                                 <div class="card-body">
-                                    <a href="#" class="card-link">Registrarme</a>
+                                  <!-- <a href="#" class="card-link">Registrarme</a>-->
                                     <a href="/" class="card-link">Ir a inicio</a>
                                 </div>
                             </div>
