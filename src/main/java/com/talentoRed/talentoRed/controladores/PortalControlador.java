@@ -74,6 +74,7 @@ public class PortalControlador {
         return "login.html";
     }
 
+
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE')")
     @GetMapping("/inicio")
     public String inicio() { // HttpSession session
@@ -83,7 +84,7 @@ public class PortalControlador {
 //            if (logueado.getRol().toString().equals("ADMIN")) {
 //                return "redirect:/admin/dashboard";
 //            }
-            return "index.html";
+            return "inicio.html";
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "index.html";
@@ -115,5 +116,12 @@ public class PortalControlador {
 //            return "registroPro.html";
 //        }
 //    }
+
+    /*Agregado por Guille y Juan para que funcione la simulacion de logueo y deslogueo*/
+     @GetMapping("/incio")
+    public String pantallaInicio() {
+        return "inicio.html";
+    }
+
 
 }

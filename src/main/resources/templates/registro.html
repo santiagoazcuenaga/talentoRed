@@ -17,24 +17,47 @@
                 <navbar th:replace="/fragments/navbar :: navbar"> </navbar>
                 <!--fin navbar-->
 
+
+                </div>
+
+            </header>
+            <div>
+                <style>
+                    body::after {
+                        content: "";
+                        background: url(/image/image2.jpg);
+                        opacity: 0.4;
+                        top: 22%;
+                        left: 1%;
+                        bottom: 1%;
+                        right: 1%;
+                        position: absolute;
+                        z-index: -1;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
+                </style>
             </div>
 
-        </header>
-        <div>
-            <style>
-                body::after {
-                    content: "";
-                    background: url(/image/image2.jpg);
-                    opacity: 0.4;
-                    top: 20%;
-                    left: 1%;
-                    bottom: -10%;
-                    right: 1%;
-                    position: absolute;
-                    z-index: -1;
-                }
-            </style>
-        </div>
+
+            <!--Formulario de registro de usuario -->
+            <title>Formulario de Registro</title>
+
+            <main class="px-10" >
+
+                <h2 style="color:rgb(19, 155, 209);">Registrá tus datos y accedé a nuestra red de servicios</h2> <br>
+
+                <div>
+                    <img src="/image/usersimple.jpg" alt="logousuario" width="80" height="80" align="center" /> <br><br>
+
+                </div>
+                <!---->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+
+                            <form th:action="@{/registroCliente}" method="POST">
+
 
 
         <!--Formulario de registro de usuario -->
