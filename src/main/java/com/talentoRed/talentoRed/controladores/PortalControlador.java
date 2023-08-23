@@ -59,17 +59,10 @@ public class PortalControlador {
     }
 
     @GetMapping("/login")
-    public String login() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
-            Usuario usuario = serusa.obtenerUsuarioActual();
-            if (usuario.getNombre() == null || usuario.getNombre().isEmpty()) {
-                // El usuario no ha establecido su información personal
-                return "redirect:/login";
-            } else {
-                // El usuario ya ha establecido su información personal
-                return "redirect:/";
-            }
+    public String login(@RequestParam(required = false) String error) {
+        
+        if (error != null) {
+            System.out.println("Usuario o contraseña invalida");
         }
         return "login.html";
     }

@@ -4,7 +4,6 @@
  */
 package com.talentoRed.talentoRed;
 
-
 import com.talentoRed.talentoRed.servicios.ServicioCliente;
 import com.talentoRed.talentoRed.servicios.servicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-
 
 /**
  *
@@ -47,9 +44,9 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")
-                //.loginProcessingUrl("/logincheck")
-                //.usernameParameter("email")
-                //.passwordParameter("password")
+                .loginProcessingUrl("/logincheck")
+                .usernameParameter("email")
+                .passwordParameter("password")
                 .defaultSuccessUrl("/")
                 .permitAll()
                 .and().logout()
