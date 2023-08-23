@@ -19,7 +19,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- *
  * @author Usuario
  */
 @Entity
@@ -36,6 +35,7 @@ public class Usuario implements UserDetails {
     private String direccion;
     @OneToOne
     private Imagen imagen;
+    
     private Boolean alta;
     @Enumerated(EnumType.STRING)
     private Rol rol;
@@ -119,6 +119,10 @@ public class Usuario implements UserDetails {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+     public boolean cambiarEstado(boolean estadoActual) {
+        return !estadoActual;
+     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

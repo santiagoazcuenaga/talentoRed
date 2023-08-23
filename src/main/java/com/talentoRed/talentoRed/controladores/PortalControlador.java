@@ -10,11 +10,14 @@ import javax.xml.bind.ValidationException;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.servicios.ServicioCliente;
 import com.talentoRed.talentoRed.servicios.servicioUsuario;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- *
  * @author usuario
  */
 @Controller
@@ -32,11 +34,13 @@ public class PortalControlador {
 
     @Autowired
     ServicioCliente serusa = new ServicioCliente();
-    
+
     @GetMapping("/")
     public String index() {
         return "index.html";
     }
+    
+    
 
     @GetMapping("/registrarCliente")
     public String registrar() {
@@ -44,9 +48,9 @@ public class PortalControlador {
     }
 
     @PostMapping("/registroCliente")
-    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2, Barrio barrio, String manzana, int casa){
+    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2, Barrio barrio, String manzana, int casa) {
         try {
-            serusa.crearCliente(archivo, nombre, email, password,password2, barrio, manzana, casa);
+            serusa.crearCliente(archivo, nombre, email, password, password2, barrio, manzana, casa);
             // Registro exitoso, redirigir a la página de inicio de sesión
             return "redirect:/";
         } catch (MyException e) {
@@ -59,6 +63,7 @@ public class PortalControlador {
     }
 
     @GetMapping("/login")
+
     public String login(@RequestParam(required = false) String error) {
         
         if (error != null) {
@@ -66,17 +71,36 @@ public class PortalControlador {
         }
         return "login.html";
     }
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE')")
+    @GetMapping("/inicio")
+    public String inicio(HttpSession session) {
+        try {
+             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        if (logueado.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard";
+        }
+        return "index.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+               return "index.html";
+
+                }
+
+        
     
+    }
 
     @GetMapping("/registrarProveedor")
     public String registrarProveedor() {
-        return "registro2.html";
+        return "registroPro.html";
     }
 
     @PostMapping("/registroProveedor")
     public String registrarProveedor(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2) {
         try {
-            serusa.crearUsuario(archivo, nombre, email, password,password2);
+            serusa.crearUsuario(archivo, nombre, email, password, password2);
             // Registro exitoso, redirigir a la página de inicio de sesión
             return "redirect:/";
         } catch (MyException e) {
@@ -84,7 +108,8 @@ public class PortalControlador {
             // Puedes agregar el mensaje de error a través del Model y mostrarlo en la plantilla
             // o redirigir a una página de error personalizada
             System.out.println(e.getMessage());
-            return "registro.html";
+            return "registroPro.html";
         }
     }
+
 }

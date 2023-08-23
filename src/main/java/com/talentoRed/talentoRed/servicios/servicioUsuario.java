@@ -53,7 +53,7 @@ public class servicioUsuario implements UserDetailsService {
         Imagen imagen = servicioImagen.guardar(archivo);
         usuario.setImagen(imagen);
         repositorioUsuario.save(usuario);
-
+        
     }
 
     public List<Usuario> listarUsuarios() {

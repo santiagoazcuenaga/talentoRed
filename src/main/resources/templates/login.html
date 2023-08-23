@@ -1,18 +1,41 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="../static/css/login.css" type="text/css"/>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
+    <head th:replace= "/fragments/head :: head"> </head>
 
-</head>
+    <body class="d-flex h-100 text-center text-bg-ligth">
+
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
+            <header class="mb-auto border-bottom">
+                <!-- header section start -->
+
+                <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                    <!--inicio logo-->
+                    <a th:replace= "/fragments/logo :: a"> </a>
+                    <!--fin logo-->                  
+                    <!--inicio navbar-->
+                    <navbar th:replace= "/fragments/navbar :: navbar"> </navbar>
+                    <!--fin navbar-->
+
+                </div>
+
+            </header>
+            
+            <main class="px-10" >
+            
+             <div>
+                    <img src="/image/usersimple.jpg" alt="logousuario" width="100" height="100" align="center" /> <br><br>
+
+             </div>
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+
+                        
 <body>
-    <form action="/login" method="POST">
+    <form action="/logincheck" method="POST">
         
-        <h1 class="text-form">Inicio De Sesiòn</h1>
+        <h1 class="text-form">Inicio De Sesión</h1>
         <div class="form">
     
      
@@ -27,26 +50,32 @@
       <input type="submit" value="Iniciar Sesión" class="boton">
      </div>
 
-     <div  class="card">
-        
-        <div class="card-body">
-            <a href="/registrar" class="card-link">Registrarme</a>
-            <a href="/" class="card-link">Regresar al inicio</a>
+                            <div  class="card">
+
+                                <div class="card-body">
+                                    <a href="#" class="card-link">Registrarme</a>
+                                    <a href="/" class="card-link">Ir a inicio</a>
+                                </div>
+                            </div>
+
+                        </form>
+                        
+                        </main>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                                integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+                        crossorigin="anonymous"></script>
+                        </body>
+                        <!--inicio footer-->
+                        <footer th:replace= "/fragments/footer :: footer"> </footer>
+                        <!--fin footer-->
+                    </div>
+
+                </div>
+            </div>
+
+
         </div>
-         </div>
-    
-      </form>
-    
-    
-</body>
 
-
- <!--inicio footer-->
- <div class="footer">
-      <footer th:replace= "/fragments/footer :: footer"> </footer>
- </div>
-   
-    <!--fin footer-->
 
 
 </html>
