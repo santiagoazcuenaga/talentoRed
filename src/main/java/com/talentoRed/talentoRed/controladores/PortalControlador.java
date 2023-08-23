@@ -32,15 +32,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class PortalControlador {
 
+//    @Autowired
+//    private servicioUsuario serusa;
     @Autowired
-    ServicioCliente serusa = new ServicioCliente();
+    private ServicioCliente serCli;
 
     @GetMapping("/")
     public String index() {
         return "index.html";
     }
-    
-    
 
     @GetMapping("/registrarCliente")
     public String registrar() {
@@ -48,9 +48,10 @@ public class PortalControlador {
     }
 
     @PostMapping("/registroCliente")
-    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2, Barrio barrio, String manzana, int casa) {
+    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email,
+            String password, String password2, Barrio barrio, String manzana, int casa) {
         try {
-            serusa.crearCliente(archivo, nombre, email, password, password2, barrio, manzana, casa);
+            serCli.crearCliente(archivo, nombre, email, password, password2, barrio, manzana, casa);
             // Registro exitoso, redirigir a la página de inicio de sesión
             return "redirect:/";
         } catch (MyException e) {
@@ -64,52 +65,55 @@ public class PortalControlador {
 
     @GetMapping("/login")
 
-    public String login(@RequestParam(required = false) String error) {
-        
+    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+
         if (error != null) {
             System.out.println("Usuario o contraseña invalida");
+            modelo.put(error, "Informacino invalida");
         }
         return "login.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE')")
     @GetMapping("/inicio")
-    public String inicio(HttpSession session) {
+    public String inicio() { // HttpSession session
         try {
-             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        if (logueado.getRol().toString().equals("ADMIN")) {
-            return "redirect:/admin/dashboard";
-        }
-        return "index.html";
+//            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+//
+//            if (logueado.getRol().toString().equals("ADMIN")) {
+//                return "redirect:/admin/dashboard";
+//            }
+            return "index.html";
         } catch (Exception e) {
             System.out.println(e.getMessage());
-               return "index.html";
+            return "index.html";
 
-                }
-
-        
-    
-    }
-
-    @GetMapping("/registrarProveedor")
-    public String registrarProveedor() {
-        return "registroPro.html";
-    }
-
-    @PostMapping("/registroProveedor")
-    public String registrarProveedor(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2) {
-        try {
-            serusa.crearUsuario(archivo, nombre, email, password, password2);
-            // Registro exitoso, redirigir a la página de inicio de sesión
-            return "redirect:/";
-        } catch (MyException e) {
-            // Error durante el registro, mostrar mensaje de error en la página de registro
-            // Puedes agregar el mensaje de error a través del Model y mostrarlo en la plantilla
-            // o redirigir a una página de error personalizada
-            System.out.println(e.getMessage());
-            return "registroPro.html";
         }
+
     }
+
+//    @GetMapping("/registrarProveedor")
+//    public String registrarProveedor() {
+//        return "registroPro.html";
+//    }
+
+    
+//    comentado temporalmente*******************************************
+    
+//    @PostMapping("/registroProveedor")
+//    public String registrarProveedor(MultipartFile archivo, @RequestParam String nombre,
+//            @RequestParam String email, String password, String password2) {
+//        try {
+//            serusa.crearUsuario(archivo, nombre, email, password, password2);
+//            // Registro exitoso, redirigir a la página de inicio de sesión
+//            return "redirect:/";
+//        } catch (MyException e) {
+//            // Error durante el registro, mostrar mensaje de error en la página de registro
+//            // Puedes agregar el mensaje de error a través del Model y mostrarlo en la plantilla
+//            // o redirigir a una página de error personalizada
+//            System.out.println(e.getMessage());
+//            return "registroPro.html";
+//        }
+//    }
 
 }
