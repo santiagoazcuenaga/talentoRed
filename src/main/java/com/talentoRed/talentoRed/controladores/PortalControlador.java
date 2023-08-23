@@ -37,6 +37,12 @@ public class PortalControlador {
    public String registrar(){
        return "registro.html";
    }
+   
+      @GetMapping("/iniciosesion")
+   public String iniciosesion(){
+       return "login.html";
+   }
+   
     @PostMapping("/registro") // Cambiado a POST en lugar de GET
     public String registrar(@RequestParam String nombre,@RequestParam String email,@RequestParam String password,String direccion) {
         try {

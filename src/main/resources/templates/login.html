@@ -1,0 +1,58 @@
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace= "/fragments/head :: head"> </head>
+
+  <body class="d-flex h-100 text-center text-bg-ligth">
+
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
+  <header class="mb-auto border-bottom">
+        <!-- header section start -->
+
+              <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                <!--inicio logo-->
+                <a th:replace= "/fragments/logo :: a"> </a>
+                <!--fin logo-->                  
+                    <!--inicio navbar-->
+                    <navbar th:replace= "/fragments/navbar :: navbar"> </navbar>
+                    <!--fin navbar-->
+                    
+              </div>
+      
+            </header>
+  <form class="form-login" action="" method="post">
+        
+        <h1 class="text-form">Inicio De Sesiòn</h1>
+        <div class="form">
+    
+     
+      <label for="email">Ingrese su email</label> <br>
+      <input class="control" type="email" id="email" placeholder="usario" required>  
+      <br>
+      <label for="contra">Contraseña</label> <br>
+      <input class="control" type="password" id="contra" placeholder="Contraseña" required> 
+      <br>
+   
+    
+      <input type="submit" value="Iniciar Sesiòn" class="boton">
+     </div>
+
+     <div  class="card">
+        
+        <div class="card-body">
+            <a href="#" class="card-link">Registrarme</a>
+            <a href="#" class="card-link">Ir a inicio</a>
+        </div>
+         </div>
+    
+      </form>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+</body>
+
+<!--inicio footer-->
+    <footer th:replace= "/fragments/footer :: footer"> </footer>
+    <!--fin footer-->
+</div>
+
+</html>
