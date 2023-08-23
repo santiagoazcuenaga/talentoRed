@@ -7,9 +7,9 @@
   <body class="d-flex h-100 text-center text-bg-ligth">
 
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
+  <!-- header section start -->  
   <header class="mb-auto border-bottom">
-        <!-- header section start -->
-
+        <nav>
               <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
                 <!--inicio logo-->
                 <a th:replace= "/fragments/logo :: a"> </a>
@@ -17,11 +17,10 @@
                     <!--inicio navbar-->
                     <navbar th:replace= "/fragments/navbar :: navbar"> </navbar>
                     <!--fin navbar-->
-                    
               </div>
-      
-            </header>
-          <!-- header section ends -->
+        </nav>
+    </header>
+    <!-- header section ends -->
 
      <!--Slider de imagenes-->
 
@@ -30,28 +29,20 @@
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-   
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3000">
-          <h1>Título Imagen 1</h1>
-          <p>Descripción Imagen 1: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo labore praesentium veniam. Earum odio veniam sed neque error quisquam repellat, harum itaque sequi alias voluptate. Aspernatur cumque assumenda ea asperiores?</p>
-          <img src="image/image1.jpg" class="d-block w-100" alt="slide1">
-        </div>
-
-        <div class="carousel-item" data-bs-interval="3000">
-          <h1>Título Imagen 2</h1>
-          <p>Descripción Imagen 2: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo labore praesentium veniam. Earum odio veniam sed neque error quisquam repellat, harum itaque sequi alias voluptate. Aspernatur cumque assumenda ea asperiores?</p>
+          <h1>¿BUSCAS PROFESIONALES PARA TU VIVIENDA?</h1>
+          <p>Podrás buscar, comparar y contratar servicios de una manera fácil, segura y sin intermediarios. Es rápido, sencillo y totalmente gratuito. Selecciona los profesionales con las mejores valoraciones segun la experiencia de los clientes.</p>
           <img src="image/image2.jpg" class="d-block w-100" alt="slide2">
         </div>
 
         <div class="carousel-item" data-bs-interval="3000">
-          <h1>Título Imagen 3</h1>
-          <p>Descripción Imagen 3: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo labore praesentium veniam. Earum odio veniam sed neque error quisquam repellat, harum itaque sequi alias voluptate. Aspernatur cumque assumenda ea asperiores?</p>
-          <img src="image/image3.jpg" class="d-block w-100" alt="slide3">
-      </div>
-      
+          <h1>¿ERES PROFESIONAL?</h1>
+          <p>Te sorprenderá lo rápido que es conseguir clientes que buscan un profesional como vos. Te ponemos en contacto con clientes que solicitan servicios relacionados con tu especialidad. Gracias a nuestro sistema de valoraciones tu trabajo será reconocido, destando tu pefil.</p>
+          <img src="image/image3.jpg" class="d-block w-100" alt="slide2">
+        </div>
+     
       <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -62,6 +53,7 @@
       </button>
     </div>
 <!--fin Slider de imagenes-->
+<hr>
 
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
