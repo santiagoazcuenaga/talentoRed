@@ -10,11 +10,14 @@ import javax.xml.bind.ValidationException;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.servicios.ServicioCliente;
 import com.talentoRed.talentoRed.servicios.servicioUsuario;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +40,8 @@ public class PortalControlador {
     public String index() {
         return "index.html";
     }
+    
+    
 
     @GetMapping("/registrarCliente")
     public String registrar() {
@@ -59,7 +64,12 @@ public class PortalControlador {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+        
+        
+        if (error != null) {
+         modelo.put("error", "usuario o contraseña invalidos!");
+        }/*
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
             Usuario usuario = serusa.obtenerUsuarioActual();
@@ -69,15 +79,33 @@ public class PortalControlador {
             } else {
                 // El usuario ya ha establecido su información personal
                 return "redirect:/";
-            }
-        }
+            }*/
+        
         return "login.html";
     }
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE')")
+    @GetMapping("/inicio")
+    public String inicio(HttpSession session) {
+        try {
+             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        if (logueado.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard";
+        }
+        return "index.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+               return "index.html";
+
+                }
+
+        
     
+    }
 
     @GetMapping("/registrarProveedor")
     public String registrarProveedor() {
-        return "registro2.html";
+        return "registroPro.html";
     }
 
     @PostMapping("/registroProveedor")
@@ -91,7 +119,7 @@ public class PortalControlador {
             // Puedes agregar el mensaje de error a través del Model y mostrarlo en la plantilla
             // o redirigir a una página de error personalizada
             System.out.println(e.getMessage());
-            return "registro.html";
+            return "registroPro.html";
         }
     }
 }
