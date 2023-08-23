@@ -28,13 +28,16 @@ public class Proveedor extends Usuario {
     private String Descripcion;
     private MetodoPago metodoPago;
     private int cantServ;
+       
     // private String nroIdentificador;  investigar metodo generador, 
+    public Proveedor() {
+    }
 
-    
-    
-
-
-
+    //Contructor
+    public Proveedor(String id, String nombre, String email, String password, String direccion, Rol rol) {
+        super(id, nombre, email, password, direccion, rol);
+        this.setRol(Rol.PROVEEDOR); 
+    }
 
     public TipoServicio getServicio() {
         return servicio;

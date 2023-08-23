@@ -5,6 +5,7 @@
 package com.talentoRed.talentoRed;
 
 
+import com.talentoRed.talentoRed.servicios.ServicioCliente;
 import com.talentoRed.talentoRed.servicios.servicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +28,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public servicioUsuario usuarioService;
+    public ServicioCliente usuarioService;
+    //@Autowired servicioUsuario usuarioService;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -42,12 +44,13 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/*").hasRole("ADMIN")
                 .antMatchers("/CSS/*", "/js/*", "/image/*", "/**")
                 .permitAll()
+                .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/logincheck")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/inicio")
+                //.loginProcessingUrl("/logincheck")
+                //.usernameParameter("email")
+                //.passwordParameter("password")
+                .defaultSuccessUrl("/")
                 .permitAll()
                 .and().logout()
                 .logoutUrl("/logout")
