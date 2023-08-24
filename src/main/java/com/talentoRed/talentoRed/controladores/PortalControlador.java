@@ -6,16 +6,11 @@ package com.talentoRed.talentoRed.controladores;
 
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Barrio;
-import javax.xml.bind.ValidationException;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.servicios.ServicioCliente;
-import com.talentoRed.talentoRed.servicios.servicioUsuario;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  * @author usuario
  */
+
 @Controller
 @RequestMapping("/")
 public class PortalControlador {
@@ -65,7 +61,6 @@ public class PortalControlador {
 
         if (error != null) {
             System.out.println("Usuario o contraseña invalida");
-            System.out.println(error);
             modelo.put("error", "Informacion invalida");
         }
         return "login.html";
@@ -75,10 +70,10 @@ public class PortalControlador {
     @GetMapping("/inicio")
     public String inicio(HttpSession session) {
         try {
-//            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-//            if (logueado.getRol().toString().equals("ADMIN")) {
-//                return "redirect:/admin/dashboard";
-//            }
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            if (logueado.getRol().toString().equals("ADMIN")) {
+                return "redirect:/admin/dashboard";
+            }
             return "inicio.html";
         } catch (Exception e) {
             System.out.println(e.getMessage());

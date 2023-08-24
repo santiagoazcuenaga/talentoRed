@@ -32,7 +32,7 @@ import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
  * @author Usuario
  */
 @Service
-public class servicioUsuario implements UserDetailsService {
+public class ServicioUsuario implements UserDetailsService {
 
     @Autowired
     private RepositorioUsuario repositorioUsuario;
@@ -121,9 +121,9 @@ public class servicioUsuario implements UserDetailsService {
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
             permisos.add(p);
 
-//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();//
-//            HttpSession session = attr.getRequest().getSession(true);
-//            session.setAttribute("usuariosession", usuario);
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuariosession", usuario);
             return new User(usuario.getEmail(), usuario.getPassword(), permisos);
             
         } else {

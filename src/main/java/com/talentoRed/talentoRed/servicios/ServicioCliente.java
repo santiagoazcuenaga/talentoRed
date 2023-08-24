@@ -91,9 +91,9 @@ public class ServicioCliente implements UserDetailsService {
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + cliente.getRol().toString());
             permisos.add(p);
 
-            //ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            // HttpSession session = attr.getRequest().getSession(true);
-            // session.setAttribute("usuariosession", cliente);
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuariosession", cliente);
             return new User(email, email, permisos);
         } else {
             throw new UsernameNotFoundException("Usuario no encontrado");

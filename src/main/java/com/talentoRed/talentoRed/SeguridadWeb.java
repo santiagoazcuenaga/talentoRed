@@ -5,7 +5,7 @@
 package com.talentoRed.talentoRed;
 
 import com.talentoRed.talentoRed.servicios.ServicioCliente;
-import com.talentoRed.talentoRed.servicios.servicioUsuario;
+import com.talentoRed.talentoRed.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -24,13 +24,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
+    //@Autowired
+    //public ServicioCliente usuarioService;
     @Autowired
-    public ServicioCliente usuarioService;
-    //@Autowired servicioUsuario usuarioService;
+    public ServicioUsuario servicioUsuario;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(usuarioService)
+        auth.userDetailsService(servicioUsuario)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
 
@@ -51,9 +52,9 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
             .and().logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
-                .permitAll();
-//            .and().csrf()
-//                .disable();
+                .permitAll()
+            .and().csrf()
+                .disable();
 
     }
 
