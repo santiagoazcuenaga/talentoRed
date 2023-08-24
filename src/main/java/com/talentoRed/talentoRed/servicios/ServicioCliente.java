@@ -11,7 +11,6 @@ import com.talentoRed.talentoRed.enums.Barrio;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.repositorios.RepositorioCliente;
-import com.talentoRed.talentoRed.repositorios.repositorioUsuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -28,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
 
 /**
  * @author usuario
@@ -37,8 +37,6 @@ public class ServicioCliente implements UserDetailsService {
 
     @Autowired
     private RepositorioCliente repositorioCliente;
-    @Autowired
-    private repositorioUsuario repositorioUsuario;
     @Autowired
     private ServicioImagen servicioImagen;
 

@@ -21,12 +21,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import com.talentoRed.talentoRed.repositorios.repositorioUsuario;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.multipart.MultipartFile;
+import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
 
 /**
  *
@@ -36,12 +35,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class servicioUsuario implements UserDetailsService {
 
     @Autowired
-    private repositorioUsuario repositorioUsuario;
+    private RepositorioUsuario repositorioUsuario;
     @Autowired
     private ServicioImagen servicioImagen;
 
     @Transactional // falta parametro de direccion en el formulario
-    public void crearUsuario( MultipartFile archivo, String nombre, String email, String password,String password2) throws MyException {
+    public void crearUsuario(MultipartFile archivo, String nombre, String email, String password,String password2) throws MyException {
         
         validar(nombre, email, password,password2);
         Usuario usuario = new Usuario();
@@ -125,7 +124,7 @@ public class servicioUsuario implements UserDetailsService {
 //            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();//
 //            HttpSession session = attr.getRequest().getSession(true);
 //            session.setAttribute("usuariosession", usuario);
-            return new User(email, email, permisos);
+            return new User(usuario.getEmail(), usuario.getPassword(), permisos);
             
         } else {
             throw new UsernameNotFoundException("Usuario no encontrado");
@@ -139,6 +138,7 @@ public class servicioUsuario implements UserDetailsService {
 //    }
 
     private void validar(String nombre, String email, String password,String password2) throws MyException {
+        
         if (email.isEmpty() || email == null) {
             throw new MyException("el email no puede ser nulo"); 
         }

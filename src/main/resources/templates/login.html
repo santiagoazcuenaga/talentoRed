@@ -15,27 +15,20 @@
                 <!--inicio navbar-->
                 <navbar th:replace="/fragments/navbar :: navbar"> </navbar>
                 <!--fin navbar-->
-
             </div>
 
         </header>
 
         <main class="px-10">
 
-            <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
-                <div class="card-body">
-                    <h5 class="card-title">Error ð</h5>
-                    <p class="card-text" th:text="${error}"></p>
-                </div>
-            </div>
 
 
-            
-            <main class="px-10" >
-            
-             <div>
-                    <img src="/image/usersimple.jpg" alt="logousuario" width="80" height="80" align="center" /> <br><br>
 
+
+
+
+            <div>
+                <img src="/image/usersimple.jpg" alt="logousuario" width="80" height="80" align="center" /> <br><br>
 
             </div>
 
@@ -47,28 +40,29 @@
                             <h1 class="text-form">Inicio De Sesión</h1>
                             <div class="form">
 
-                                <label for="email">Ingrese su e-mail</label> <br>
-                                <input class="form-control" type="email" id="email" name="usuario" placeholder="Usuario" required th:value="${usuario}">  
+                                <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Error ð</h5>
+                                        <p class="card-text" th:text="${error}"></p>
+                                    </div>
+                                </div>
 
+                                <label for="email">Ingrese su e-mail</label> <br>
+                                <input class="form-control" type="email" id="email" placeholder="e-mail" required
+                                    name="email">
                                 <br>
                                 <label for="contra">Contraseña</label> <br>
-                                <input class="control" type="password" id="contra" placeholder="Contraseña" required
-                                    name="password">
+                                <input class="form-control" type="password" id="contra" placeholder="Contraseña"
+                                    required name="password">
                                 <br>
 
-                                <input type="submit" value="Iniciar Sesión" class="boton">
+                                <input class="btn btn-primary" style="margin: 10px" type="submit"
+                                    value="Iniciar Sesión">
                             </div>
 
-
-                               <!-- <input type="submit" value="Iniciar Sesiòn" class="boton" > -->
-                               <a class="btn btn-primary" href="/incio" role="button">Iniciar Sesión</a>
-                            </div> <br>
-
-                            <div  class="card">
-
-
+                            <div class="card">
                                 <div class="card-body">
-                                  <!-- <a href="#" class="card-link">Registrarme</a>-->
+                                    <!-- <a href="#" class="card-link">Registrarme</a>-->
                                     <a href="/" class="card-link">Ir a inicio</a>
                                 </div>
                             </div>
