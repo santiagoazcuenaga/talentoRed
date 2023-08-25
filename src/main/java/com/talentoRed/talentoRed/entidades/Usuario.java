@@ -8,6 +8,8 @@ import com.talentoRed.talentoRed.enums.Rol;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -17,7 +19,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- *
  * @author Usuario
  */
 @Entity
@@ -35,7 +36,9 @@ public class Usuario implements UserDetails {
     @OneToOne
     private Imagen imagen;
     private Boolean alta;
+    @Enumerated(EnumType.STRING)
     private Rol rol;
+
     public Usuario() {
     }
 
@@ -48,10 +51,6 @@ public class Usuario implements UserDetails {
         this.rol = rol;
     }
 
-    public Usuario(String email, String password, List<GrantedAuthority> permisos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     public Imagen getImagen() {
         return imagen;
     }
@@ -60,7 +59,6 @@ public class Usuario implements UserDetails {
         this.imagen = imagen;
     }
 
-    
     public Boolean getAlta() {
         return alta;
     }

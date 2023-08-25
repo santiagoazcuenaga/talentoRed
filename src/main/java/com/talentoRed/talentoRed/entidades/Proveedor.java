@@ -4,7 +4,6 @@
  */
 package com.talentoRed.talentoRed.entidades;
 
-import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.Rol;
@@ -28,13 +27,16 @@ public class Proveedor extends Usuario {
     private String Descripcion;
     private MetodoPago metodoPago;
     private int cantServ;
+       
     // private String nroIdentificador;  investigar metodo generador, 
+    public Proveedor() {
+    }
 
-    
-    
-
-
-
+    //Contructor
+    public Proveedor(String id, String nombre, String email, String password, String direccion, Rol rol) {
+        super(id, nombre, email, password, direccion, rol);
+        this.setRol(Rol.PROVEEDOR); 
+    }
 
     public TipoServicio getServicio() {
         return servicio;
