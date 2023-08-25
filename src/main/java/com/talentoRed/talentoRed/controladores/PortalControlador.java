@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,14 +57,8 @@ public class PortalControlador {
         }
     }
 
-    @GetMapping("/login")
-<<<<<<< HEAD
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
-
-=======
-    public String login(@RequestParam(required = false) String error) {
         
->>>>>>> c440107eefe11458b17dea8d493726b9010404ae
         if (error != null) {
             System.out.println("Usuario o contraseña invalida");
             modelo.put("error", "Informacion invalida");
