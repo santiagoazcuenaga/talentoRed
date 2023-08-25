@@ -21,26 +21,26 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import com.talentoRed.talentoRed.repositorios.repositorioUsuario;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.multipart.MultipartFile;
+import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
 
 /**
  *
  * @author Usuario
  */
 @Service
-public class servicioUsuario implements UserDetailsService {
+public class ServicioUsuario implements UserDetailsService {
 
     @Autowired
-    private repositorioUsuario repositorioUsuario;
+    private RepositorioUsuario repositorioUsuario;
     @Autowired
     private ServicioImagen servicioImagen;
 
     @Transactional // falta parametro de direccion en el formulario
-    public void crearUsuario( MultipartFile archivo, String nombre, String email, String password,String password2) throws MyException {
+    public void crearUsuario(MultipartFile archivo, String nombre, String email, String password,String password2) throws MyException {
         
         validar(nombre, email, password,password2);
         Usuario usuario = new Usuario();
@@ -113,6 +113,7 @@ public class servicioUsuario implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        
         Usuario usuario = repositorioUsuario.buscarUsuarioPorEmail(email);
 
         if (usuario != null) {
@@ -121,25 +122,25 @@ public class servicioUsuario implements UserDetailsService {
             permisos.add(p);
 
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-
             HttpSession session = attr.getRequest().getSession(true);
-
             session.setAttribute("usuariosession", usuario);
-            return new Usuario(usuario.getEmail(), usuario.getPassword(), permisos);
+            return new User(usuario.getEmail(), usuario.getPassword(), permisos);
+            
         } else {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
     }
 
-    public Usuario obtenerUsuarioActual() {
-        Authentication auth = (Authentication) SecurityContextHolder.getContext().getAuthentication();
-        String email = auth.getUsername();
-        return repositorioUsuario.buscarUsuarioPorEmail(email);
-    }
+//    public Usuario obtenerUsuarioActual() {
+//        Authentication auth = (Authentication) SecurityContextHolder.getContext().getAuthentication();
+//        String email = auth.getUsername();
+//        return repositorioUsuario.buscarUsuarioPorEmail(email);
+//    }
 
     private void validar(String nombre, String email, String password,String password2) throws MyException {
+        
         if (email.isEmpty() || email == null) {
-            throw new MyException("el email no puede ser nulo"); //
+            throw new MyException("el email no puede ser nulo"); 
         }
         if (nombre.isEmpty() || nombre == null) {
             throw new MyException("el nombre no puede estar vacio");
