@@ -1,21 +1,15 @@
 package com.talentoRed.talentoRed.servicios;
 
-import com.talentoRed.talentoRed.entidades.Imagen;
 import com.talentoRed.talentoRed.entidades.Proveedor;
-import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
-import com.talentoRed.talentoRed.enums.Rol;
-import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.repositorios.RepositorioProveedor;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-import javax.xml.bind.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -24,12 +18,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
 
 /**
  * @author usuario
  */
+
 @Service
 public class ServicioProveedor implements UserDetailsService {
     
@@ -44,8 +40,8 @@ public class ServicioProveedor implements UserDetailsService {
         Proveedor proveedor = new Proveedor();
         proveedor.setNombre(nombre);
         proveedor.setEmail(email);
-        proveedor.setPassword(password);
-        proveedor.setServicio(TipoServicio.TECNICO); //configurar el tipo de servicio
+        proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
+        //proveedor.setServicio(TipoServicio.valueOf(servicio)); //configurar el tipo de servicio
         proveedor.setNroContacto(nroContacto);
         proveedor.setTieneMatricula(tieneMatricula);
         proveedor.setMatricula(matricula);
@@ -53,6 +49,7 @@ public class ServicioProveedor implements UserDetailsService {
         proveedor.setDescripcion(descripcion);
         proveedor.setMetodoPago(MetodoPago.MERCADOPAGO);//configurar debe ser un List
         proveedor.setCantServ(0);
+        repoPro.save(proveedor);
     }
     
     
@@ -101,7 +98,10 @@ public class ServicioProveedor implements UserDetailsService {
         if(proveedor != null){
             List<GrantedAuthority> permisos = new ArrayList();
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + proveedor.getRol().toString());
-            permisos.add(p);            
+            permisos.add(p);  
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuariosession", proveedor);
              return new User(proveedor.getEmail(), proveedor.getPassword(), permisos);
         }else{
             return null; 

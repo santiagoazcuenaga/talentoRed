@@ -37,6 +37,7 @@ public class ProveedorControlador {
         try {            
             serPro.crearProveedor(archivo, nombre, email, password, password2, nroContacto, tieneMatricula, matricula, descripcion);  
             return "redirect:/";
+            //agregar el modelo con mensaje exito
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "registroPro.html";

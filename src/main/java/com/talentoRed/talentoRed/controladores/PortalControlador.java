@@ -45,9 +45,9 @@ public class PortalControlador {
     public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email,
             String password, String password2, Barrio barrio, String manzana, int casa) {
         try {
-            serCli.crearCliente(archivo, nombre, email, password, password2, barrio, manzana, casa);
-            // Registro exitoso, redirigir a la página de inicio de sesión
+            serCli.crearCliente(archivo, nombre, email, password, password2, barrio, manzana, casa);            
             return "redirect:/";
+            
         } catch (MyException e) {
             // Error durante el registro, mostrar mensaje de error en la página de registro
             // Puedes agregar el mensaje de error a través del Model y mostrarlo en la plantilla
@@ -66,7 +66,7 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE', 'ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session) {
         try {
