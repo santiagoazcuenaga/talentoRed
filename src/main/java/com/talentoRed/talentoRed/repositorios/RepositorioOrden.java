@@ -16,12 +16,11 @@ import org.springframework.data.repository.query.Param;
  *
  * @author Kidver
  */
-public interface repositorioOrden extends JpaRepository<OrdenDeServicio, String>{
+public interface RepositorioOrden extends JpaRepository<OrdenDeServicio, String>{
     
 //    @Query("SELECT a FROM OrdenServicio a WHERE a.proveedor = :proveedor")
 //     public List<OrdenDeServicio> listarOrdenenesProveedor(@Param("proveedor") String proveedor );
      
-     @Query("SELECT a FROM Usuario a WHERE a.nombre = :nombre ")
-    public Proveedor buscarProveedorPorNombre(@Param("nombre") String nombre );
+
     
 }
