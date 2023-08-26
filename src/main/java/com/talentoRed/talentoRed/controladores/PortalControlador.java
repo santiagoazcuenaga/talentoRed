@@ -35,7 +35,7 @@ public class PortalControlador {
 
     @Autowired
     ServicioCliente serusa = new ServicioCliente();
-    
+
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -49,9 +49,9 @@ public class PortalControlador {
     }
 
     @PostMapping("/registroCliente")
-    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2, Barrio barrio, String manzana, int casa){
+    public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2, Barrio barrio, String manzana, int casa) {
         try {
-            serusa.crearCliente(archivo, nombre, email, password,password2, barrio, manzana, casa);
+            serusa.crearCliente(archivo, nombre, email, password, password2, barrio, manzana, casa);
             // Registro exitoso, redirigir a la página de inicio de sesión
             return "redirect:/";
         } catch (MyException e) {
@@ -83,6 +83,7 @@ public class PortalControlador {
         
         return "login.html";
     }
+
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session) {
@@ -103,6 +104,7 @@ public class PortalControlador {
     
     }
 
+
     @GetMapping("/registrarProveedor")
     public String registrarProveedor() {
         return "registroPro.html";
@@ -111,7 +113,7 @@ public class PortalControlador {
     @PostMapping("/registroProveedor")
     public String registrarProveedor(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2) {
         try {
-            serusa.crearUsuario(archivo, nombre, email, password,password2);
+            serusa.crearUsuario(archivo, nombre, email, password, password2);
             // Registro exitoso, redirigir a la página de inicio de sesión
             return "redirect:/";
         } catch (MyException e) {
@@ -122,4 +124,10 @@ public class PortalControlador {
             return "registroPro.html";
         }
     }
+    /*Agregado por Guille y Juan para que funcione la simulacion de logueo y deslogueo*/
+     @GetMapping("/incio")
+    public String pantallaInicio() {
+        return "inicio.html";
+    }
+
 }

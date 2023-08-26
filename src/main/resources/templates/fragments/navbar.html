@@ -3,21 +3,25 @@
 Llamar fragmento desde plantilla => <navbar th:replace= "/fragments/navbar :: navbar"> </navbar>
 -->
 <navbar class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-    <a class="me-3 py-2 link-body-emphasis text-decoration-none text-white" href="#">Como funciona?</a>
-    <a class="me-3 py-2 link-body-emphasis text-decoration-none text-white" href="#">Nosotros</a>
+    <a  class="me-3 py-2  text-white" href="/" >Inicio</a>
+    <a class="me-3 py-2   text-white" href="#">Servicios</a>
+    
     <li class="nav dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Registrarse</a>
+        <a class="me-3 dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">Registrarse</a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/registrarCliente">Quiero ser Cliente</a></li>
             <li><a class="dropdown-item" href="/registrarProveedor">Quiero ser prestador</a></li>
         </ul>
     </li>
 
-    <a class="me-3 py-2 link-body-emphasis text-decoration-none text-white" href="/login">Iniciar Sesion</a>
+
+    <a class="me-3 py-2  text-white" href="/login">Iniciar Sesion</a>
     <!--
     <div class="text-end">
         <button type="button" class="btn btn-primary">Resgistarse</button>
         <button type="button" class="btn btn-primary">Iniciar Sesión</button>
     </div>
     -->
+
 </navbar>
+
