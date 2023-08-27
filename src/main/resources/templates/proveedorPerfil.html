@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/head :: head"> </head>
+
+<body>
+    <header class="mb-auto border-bottom">
+        <nav>
+            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                <!--inicio logo-->
+                <a th:replace="/fragments/logo :: a"> </a>
+                <!--fin logo-->
+                <!--inicio navbar-->
+                <navbar th:replace="/fragments/navbar :: navbar"> </navbar>
+                <!--fin navbar-->
+            </div>
+        </nav>
+    </header>
+
+    <div style="text-align: center">
+        <input hidden th:value="${proveedor.id}" name="id">
+        <h2>Hola!!!</h2>
+        <h2 th:text="${proveedor.nombre}"></h2>
+        <p>Correo Electronico</p>
+        <p th:text="${proveedor.email}"></p>
+        <p>Tu rol</p>
+        <p th:text="${proveedor.rol}"></p>
+    </div>
+
+    <footer th:replace="/fragments/footer :: footer"> </footer>
+</body>
+
+</html>

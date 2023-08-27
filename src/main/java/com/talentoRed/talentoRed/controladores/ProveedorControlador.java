@@ -4,13 +4,17 @@
  */
 package com.talentoRed.talentoRed.controladores;
 
+import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.servicios.ServicioProveedor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,7 +49,25 @@ public class ProveedorControlador {
             System.out.println(e.getMessage());
             return "registroPro.html";
         }
+    }
 
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
+    @GetMapping("/mi_perfil/{id}")
+    public String perfil(@PathVariable String id, ModelMap modelo) {
+
+        Proveedor proveedor = serPro.getOne(id);
+        modelo.put("proveedor", proveedor);
+
+        return "clientePerfil.html";
+    }
+
+    @GetMapping("/editar_perfil/{id}")
+    public String editar_perfil(@PathVariable String id, ModelMap modelo) {
+
+        Proveedor proveedor = serPro.getOne(id);
+        modelo.put("proveedor", proveedor);
+
+        return "actualizarCliente.html";
     }
 
 }//The end
