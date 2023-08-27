@@ -7,19 +7,6 @@
     <thead>
         <th scope="col" sec:authorize="hasRole('USER')">Acciones</th>
     </thead>
-    <style>
-        body::after {
-            content: "";
-            background: url(../static/image/image2.jpg);
-            opacity: 0.4;
-            top: 30%;
-            left: 1%;
-            bottom: -23%;
-            right: 1%;
-            position: absolute;
-            z-index: -1;
-        }
-    </style>
 </div>
 <div>
     <style>
@@ -209,8 +196,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
+            <footer th:replace= "/fragments/footer :: footer"> </footer>
 </body>
-<footer th:replace= "/fragments/footer :: footer"> </footer>
+
 
 
 </html>
