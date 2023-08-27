@@ -56,7 +56,7 @@ public class PortalControlador {
             return "registro.html";
         }
     }
-
+    @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         
         if (error != null) {
