@@ -69,7 +69,9 @@ public class PortalControlador {
         return "login.html";
     }
 
+
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE', 'ROLE_PROVEEDOR')")
+
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
         try {
@@ -83,7 +85,9 @@ public class PortalControlador {
             return "inicio.html";
         } catch (Exception e) {
             System.out.println(e.getMessage());
+
             return "index.html";
+
         }
     }
 
