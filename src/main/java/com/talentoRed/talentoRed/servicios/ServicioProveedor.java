@@ -3,6 +3,7 @@ package com.talentoRed.talentoRed.servicios;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
+import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.repositorios.RepositorioProveedor;
 import java.util.ArrayList;
@@ -33,22 +34,25 @@ public class ServicioProveedor implements UserDetailsService {
     private RepositorioProveedor repoPro;
     
     @Transactional
-    public void crearProveedor(MultipartFile archivo, String nombre, String email, String password,String password2, 
-            int nroContacto, boolean tieneMatricula, int matricula, String descripcion){
+    public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2, 
+            int nroContacto, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
+            MetodoPago metodoPago, MultipartFile portada){
         
         //validar 
         Proveedor proveedor = new Proveedor();
+        proveedor.setServicio(tipoServicio);
         proveedor.setNombre(nombre);
         proveedor.setEmail(email);
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
-        //proveedor.setServicio(TipoServicio.valueOf(servicio)); //configurar el tipo de servicio
         proveedor.setNroContacto(nroContacto);
         proveedor.setTieneMatricula(tieneMatricula);
         proveedor.setMatricula(matricula);
-        proveedor.setDisponibilidad(Disponibilidad.MAÑANA);//configurar enum
+        proveedor.setDisponibilidad(disponibilidad);
         proveedor.setDescripcion(descripcion);
-        proveedor.setMetodoPago(MetodoPago.MERCADOPAGO);//configurar debe ser un List
+        proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
         proveedor.setCantServ(0);
+        //proveedor.setImagen(imagen);
+        //proveedor.setPortada(portada);
         repoPro.save(proveedor);
     }
     

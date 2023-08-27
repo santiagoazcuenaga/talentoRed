@@ -69,7 +69,6 @@ public class PortalControlador {
         return "login.html";
     }
 
-
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE', 'ROLE_PROVEEDOR')")
 
     @GetMapping("/inicio")
@@ -123,7 +122,5 @@ public class PortalControlador {
             modelo.put("error", ex.getMessage());
             return this.editar_perfil(id, modelo);
         }
-
     }
-
 }
