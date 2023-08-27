@@ -1,40 +1,210 @@
-        /*======================MENU======================*/
+/*======================MENU======================*/
+/*@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
 
-        #menu a {
-          font-size: 18px;
-          font-weight: bold;
-          color: #f3f3f3;
-        }
+		font-family: 'Montserrat Alternates', sans-serif;
+}*/
+#menu a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f3f3f3;
+}
 
-        /*======================SLIDER DE IMAGENES======================*/
-        .carousel-inner {
-          max-height: 29rem;
-        }
+/*======================SLIDER DE IMAGENES======================*/
+.carousel-inner {
+    max-height: 38rem;
+}
 
-        @media (min-width: 768px) {
-          .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          }
-        }
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
 
-        header {
-          background-color: darkslategray;
+header {
+    background-color: rgb(41, 41, 41);
+    text-align: right
+}
 
-        }
+footer {
 
-        footer {
+    color: black;
 
-          color: black;
+}
 
-        }
+.formregistro {
+    display: grid;
+    place-items: center;
 
-        .formregistro {
-          display: grid;
-          place-items: center;
+    height: 100px;
+    width: 200px
+
+}
+
+/*=====================Logo=============================*/
+.logo{
+     border-radius: 55%;
+     margin-top: 15px;
+     margin-left: 10px;
+    
+}
+
+.text-logo{
+		color: white;
+		font-weight: 300;
+		font-size: 22px;
+		margin-left: 20px;
+                text-decoration: none;
+                margin-top: 20px;
+                
+	}
+
+/*=====================Navbar=============================*/
+
+.me-3{
+              
+		
+		padding: 6px;
+		line-height: normal;
+		text-decoration: none;
+		color: black;
+		transition: all 0.3s ease;
+		border-bottom: 5px solid transparent;
+		font-size: 18px;
+		margin-right: 5px;
+                margin-top: 20px;
+}
+
+.me-3:hover{
+                border-bottom: 7px solid #d37203;
+                color:  white;
+		padding-bottom: 5px;
+}
+
+/*Las lista dentro de los enlaces*/
+.dropdown-item{
+                display: block;
+		text-decoration: none;
+		padding: 20px;
+		color: #d37203;
+		border-left: 8px solid transparent;
+		transition: all 400ms ease;
+}
+.dropdown-menu li a:hover{
+    	border-left: 8px solid #d37203;
+        background: #d37203;
+}
+
+/*=====================Categorias=============================*/
+
+.cabecera .titulo{
+    font-size: 100px;
+    margin-bottom: 50px;
+}
+.listado-categorias {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.categoria{
+    width: 25%; 
+    padding: 10px;
+    box-sizing: border-box;
+     text-decoration: none;
+     margin-bottom: 10px;
+     border-radius: 25%;
+     margin-right: 50px;
         
-          height: 100px;
-          width: 200px
+}
 
-        }
+.contenedor-img{
+       
+          border-radius: 10%;
+          box-shadow: 0 0 10px rgb(0, 0, 0,0.8);
+         
+}
+.categoria a{
+    text-decoration: none;
+    color: black;
+}
+.categoria a span{
+    margin-top: 25px;
+    font-size: 25px;
+}
 
-        
+
+
+/*=====================background vista registro=============================*/
+
+
+
+
+/*
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+
+
+.b-example-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+.bd-mode-toggle {
+  z-index: 1500;
+}
+*/

@@ -4,12 +4,14 @@
  */
 package com.talentoRed.talentoRed.entidades;
 
-import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.enums.TipoServicio;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -18,23 +20,21 @@ import javax.persistence.Entity;
 @Entity
 public class Proveedor extends Usuario {
 
-
     private TipoServicio servicio;
     private int nroContacto;
     private Boolean tieneMatricula;
-    private int matricula;
+    private String matricula;
     private int calificacion;
+    @Enumerated(EnumType.STRING)
     private Disponibilidad disponibilidad;
     private String Descripcion;
     private MetodoPago metodoPago;
     private int cantServ;
-    // private String nroIdentificador;  investigar metodo generador, 
+    @OneToOne
+    private Imagen portada;
 
-    
-    
-
-
-
+    public Proveedor() {
+    }
 
     public TipoServicio getServicio() {
         return servicio;
@@ -60,11 +60,11 @@ public class Proveedor extends Usuario {
         this.tieneMatricula = tieneMatricula;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -107,8 +107,13 @@ public class Proveedor extends Usuario {
     public void setCantServ(int cantServ) {
         this.cantServ = cantServ;
     }
-    
-    
-    
+
+    public Imagen getPortada() {
+        return portada;
+    }
+
+    public void setPortada(Imagen portada) {
+        this.portada = portada;
+    }
 
 }

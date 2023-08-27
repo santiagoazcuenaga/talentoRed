@@ -1,0 +1,119 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/head :: head"> </head>
+
+<body class="d-flex h-100 text-center text-bg-ligth">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto border-bottom">
+            <!-- header section start -->
+
+            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                <!--inicio logo-->
+                <a th:replace="/fragments/logo :: a"> </a>
+                <!--fin logo-->
+                <!--inicio navbar-->
+                <navbar th:replace="/fragments/navbar :: navbar"> </navbar>
+                <!--fin navbar-->
+
+            </div>
+
+        </header>
+        <div>
+            <style>
+                body::after {
+                    content: "";
+                    background: url(/image/image2.jpg);
+                    opacity: 0.4;
+                    top: 22%;
+                    left: 1%;
+                    bottom: 1%;
+                    right: 1%;
+                    position: absolute;
+                    z-index: -1;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            </style>
+        </div>
+
+
+        <!--Formulario de registro de usuario -->
+        <title>Actualiza tus datos</title>
+
+        <main class="px-10">
+
+            <h2 style="color:rgb(19, 155, 209);">Actualiza tus datos</h2> <br>
+            <img src="/image/usersimple.jpg" alt="logousuario" width="80" height="80" align="center"
+                style="margin-bottom: 10px;" />
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+
+                        <form class="form-control" th:action="@{/editar_perfil/__${cliente.id}__}" method="POST">
+
+                            <input hidden th:value="${cliente.id}" name="id">
+
+                            <label for="nombre">Nombre:</label> <br>
+                            <input type="text" class="form-control" id="nombre" name="nombre"
+                                placeholder="Nombre y Apellido" required th:value="${cliente.nombre}"><br>
+
+
+                            <label for="email">Email:</label><br>
+                            <input type="email" class="form-control" id="e-mail" name="email" placeholder="e-mail"
+                                required th:value="${cliente.email}"><br>
+
+                            <div>
+                                Seleccion de barrio
+                                <select class="form-select" aria-label="Default select example" name="barrio" required
+                                    th:value="${cliente.barrio}">
+                                    <option selected>Seleccione Barrio</option>
+                                    <option value="ALTOS_DE_CHACRAS">Altos de Chacras</option>
+                                    <option value="PORTAL_LUJAN">Portal Lujan</option>
+                                    <option value="COMPLEJO_CHACRAS_DE_CORIA">Complejo Chacras de Coria</option>
+
+                                </select>
+                            </div>
+
+                            <!--Manzana y casa-->
+                            <div class="row">
+                                <div class="col">
+                                    <label for="manzana">Manzana:</label><br>
+                                    <input type="text" class="form-control" name="manzana" placeholder="Manzana"
+                                        aria-label="Manzana" required th:value="${cliente.manzana}">
+                                </div>
+                                <div class="col">
+                                    <label for="casa">Casa:</label><br>
+                                    <input type="text" class="form-control" name="casa" placeholder="Casa"
+                                        aria-label="Casa" required th:value="${cliente.casa}">
+                                </div>
+                            </div>
+
+
+
+                            <!-- falta gestionar cargar la foto actual y enviar una nueva********************************************************
+                                    <div width:300 px align-justify class="mb-3">
+                                        <label for="formFile" class="form-label">Si lo desea, ingrese una foto de
+                                            perfil</label>
+                                        <input class="form-control" type="file" id="formFile" name="archivo"> 
+                                    </div>-->
+                            <input type="submit" class="btn btn-primary" value="Actualizar" style="margin-top: 10px;">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+
+
+        <!--inicio footer-->
+        <footer th:replace="/fragments/footer :: footer"> </footer>
+        <!--fin footer-->
+    </div>
+</body>
+
+</html>
