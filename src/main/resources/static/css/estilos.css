@@ -1,10 +1,6 @@
 /*======================MENU======================*/
-/*@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
-*{
 
-		font-family: 'Montserrat Alternates', sans-serif;
-}*/
-#menu a {
+		#menu a {
     font-size: 18px;
     font-weight: bold;
     color: #f3f3f3;
@@ -22,7 +18,7 @@
 }
 
 header {
-    background-color: rgb(41, 41, 41);
+    background-color: rgb(8, 8, 8);
     text-align: right
 }
 
