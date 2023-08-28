@@ -6,6 +6,7 @@ package com.talentoRed.talentoRed.servicios;
 
 import com.talentoRed.talentoRed.entidades.Cliente;
 import com.talentoRed.talentoRed.entidades.Imagen;
+import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Barrio;
 import com.talentoRed.talentoRed.enums.Rol;
@@ -80,6 +81,9 @@ public class ServicioCliente implements UserDetailsService {
         cliente = repositorioCliente.findAll();
         return cliente;
     }
+    
+   
+    
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

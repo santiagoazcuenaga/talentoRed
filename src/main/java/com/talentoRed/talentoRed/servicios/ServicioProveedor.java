@@ -3,6 +3,7 @@ package com.talentoRed.talentoRed.servicios;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
+import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.repositorios.RepositorioProveedor;
 import java.util.ArrayList;
@@ -52,7 +53,11 @@ public class ServicioProveedor implements UserDetailsService {
         repoPro.save(proveedor);
     }
     
-    
+     public List<Proveedor> listarProveedor(TipoServicio servicio){
+     List<Proveedor> proveedor = new ArrayList();   
+     repoPro.listarProveedorPorRubro(servicio);
+     return proveedor;
+    }
     
     //REVISAR IMPLEMENTACION DE LOS METODOS DEL PROVEEDOR
 
