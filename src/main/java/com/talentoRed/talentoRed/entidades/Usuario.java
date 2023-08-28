@@ -35,10 +35,10 @@ public class Usuario implements UserDetails {
     private String direccion;
     @OneToOne
     private Imagen imagen;
-    
     private Boolean alta;
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
     public Usuario() {
     }
 
@@ -51,10 +51,6 @@ public class Usuario implements UserDetails {
         this.rol = rol;
     }
 
-    public Usuario(String email, String password, List<GrantedAuthority> permisos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     public Imagen getImagen() {
         return imagen;
     }
@@ -63,7 +59,6 @@ public class Usuario implements UserDetails {
         this.imagen = imagen;
     }
 
-    
     public Boolean getAlta() {
         return alta;
     }
@@ -119,10 +114,6 @@ public class Usuario implements UserDetails {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-     public boolean cambiarEstado(boolean estadoActual) {
-        return !estadoActual;
-     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
