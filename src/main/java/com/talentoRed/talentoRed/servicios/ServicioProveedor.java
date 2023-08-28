@@ -3,6 +3,8 @@ package com.talentoRed.talentoRed.servicios;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
+import com.talentoRed.talentoRed.enums.Rol;
+import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.repositorios.RepositorioProveedor;
 import java.util.ArrayList;
@@ -33,22 +35,26 @@ public class ServicioProveedor implements UserDetailsService {
     private RepositorioProveedor repoPro;
     
     @Transactional
-    public void crearProveedor(MultipartFile archivo, String nombre, String email, String password,String password2, 
-            int nroContacto, boolean tieneMatricula, int matricula, String descripcion){
+    public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2, 
+            int nroContacto, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
+            MetodoPago metodoPago, MultipartFile portada){
         
         //validar 
         Proveedor proveedor = new Proveedor();
+        proveedor.setServicio(tipoServicio);
         proveedor.setNombre(nombre);
         proveedor.setEmail(email);
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
-        //proveedor.setServicio(TipoServicio.valueOf(servicio)); //configurar el tipo de servicio
+        proveedor.setRol(Rol.PROVEEDOR);
         proveedor.setNroContacto(nroContacto);
         proveedor.setTieneMatricula(tieneMatricula);
         proveedor.setMatricula(matricula);
-        proveedor.setDisponibilidad(Disponibilidad.MAÑANA);//configurar enum
+        proveedor.setDisponibilidad(disponibilidad);
         proveedor.setDescripcion(descripcion);
-        proveedor.setMetodoPago(MetodoPago.MERCADOPAGO);//configurar debe ser un List
+        proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
         proveedor.setCantServ(0);
+        //proveedor.setImagen(imagen);
+        //proveedor.setPortada(portada);
         repoPro.save(proveedor);
     }
     
@@ -56,39 +62,17 @@ public class ServicioProveedor implements UserDetailsService {
     
     //REVISAR IMPLEMENTACION DE LOS METODOS DEL PROVEEDOR
 
-    /*@Autowired
-    private repositorioUsuario usuarioRepositorio;
-    @Autowired
-    private ServicioImagen imagenServicio;
-
-    @Transactional
-    public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MyException, ValidationException {
-        validar(nombre, email, password, password2);
+    /*      validar(nombre, email, password, password2);
 
         Usuario usuarioExistente = usuarioRepositorio.buscarUsuarioPorEmail(email);
         if (usuarioExistente != null) {
             throw new ValidationException("Ya existe un usuario registrado con ese email");
         }
-
-        Usuario usuario = new Usuario();
-        usuario.setNombre(nombre);
-        usuario.setEmail(email);
-        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
-        usuario.setRol(Rol.PROVEEDOR);
-        
-
         Imagen imagen = imagenServicio.guardar(archivo);
         usuario.setImagen(imagen);
         
-        //Agregar todos los datos específicos del Proveedor
 
-        
-        usuarioRepositorio.save(usuario);
-    }
-     *///OTRA OPCION ES UTILIZAR LOS METODOS DE LA CLASE USUARIO
-    /*/Importando un servicio de usuario
-    @Autowired
-    servicioUsuario servicioUsuario = new servicioUsuario();
+
     
      */
     
@@ -124,5 +108,10 @@ public class ServicioProveedor implements UserDetailsService {
         if (!password.equals(password2)) {
             throw new MyException("Las contraseñas no coinciden.");
         }
+    }
+    
+    public Proveedor getOne(String id){
+        Proveedor proveedor = repoPro.getOne(id);
+        return proveedor;
     }
 }

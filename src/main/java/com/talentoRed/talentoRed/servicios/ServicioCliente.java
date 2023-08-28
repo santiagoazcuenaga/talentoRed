@@ -6,7 +6,6 @@ package com.talentoRed.talentoRed.servicios;
 
 import com.talentoRed.talentoRed.entidades.Cliente;
 import com.talentoRed.talentoRed.entidades.Imagen;
-import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Barrio;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.myExceptions.MyException;
@@ -27,7 +26,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
+import java.util.Optional;
 
 /**
  * @author usuario
@@ -97,6 +96,32 @@ public class ServicioCliente implements UserDetailsService {
             return new User(email, email, permisos);
         } else {
             throw new UsernameNotFoundException("Usuario no encontrado");
+        }
+    }
+
+    public Cliente getOne(String id) {
+        Cliente cliente = repositorioCliente.getById(id);
+        return cliente;
+    }
+
+    public void modificarCliente(String id, MultipartFile archivo, String nombre, String email, Barrio barrio, String manzana, int casa) throws MyException {
+
+        //this.validar(nombre, email, password, password2);
+        Optional<Cliente> respuesta = repositorioCliente.findById(id);
+
+        if (respuesta.isPresent()) {
+            Cliente cliente = respuesta.get();
+            cliente.setNombre(nombre);
+            cliente.setEmail(email);
+            // usuario.setDireccion(direccion);
+            //validar de forma aparte la contraseña
+            //cliente.setPassword(new BCryptPasswordEncoder().encode(password));
+            Imagen imagen = servicioImagen.guardar(archivo);
+            cliente.setImagen(imagen);
+            cliente.setManzana(manzana);
+            cliente.setBarrio(barrio);
+            cliente.setCasa(casa);
+            repositorioCliente.save(cliente);
         }
     }
 }
