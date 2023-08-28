@@ -152,4 +152,32 @@ public class ServicioUsuario implements UserDetailsService {
            throw new MyException("Las contraseñas no coinciden.");
        }
     }
+    
+    
+    //bloque de funciones para el Administrador
+    @Transactional // creacion del usuario
+    public void crearAdmin(MultipartFile archivo, String nombre, String email, String password,String password2) throws MyException {
+        
+        validar(nombre, email, password,password2);
+        Usuario usuario = new Usuario();
+        usuario.setNombre(nombre);
+        usuario.setEmail(email);
+       // usuario.setDireccion(direccion);
+        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+        usuario.setAlta(Boolean.TRUE);
+        usuario.setRol(Rol.ADMIN);
+        Imagen imagen = servicioImagen.guardar(archivo);
+        usuario.setImagen(imagen);
+        repositorioUsuario.save(usuario);
+        
+    }
+    @Transactional // modificar el rol
+    public void cambiarRol(String id, Rol rol) {
+        Optional<Usuario> respuesta = repositorioUsuario.findById(id);
+
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setRol(rol);
+        }
+    }
 }

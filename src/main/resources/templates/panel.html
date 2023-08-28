@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+PANEL ADMINISTRADOR
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h1>
+                Panel del Administrador
+            </h1>
+            <p>
+                Lista de usuarios<br>
+                Panel de funciones<br>
+                <a href="/">
+                    VOLVER AL INICIO
+                </a>
+                    S
+                
+            </p>
+            <table>
+                <thead>
+                    
+                </thead>
+            <tbody th:each="usuario : ${usuarios}"> 
+            <tr>
+                <th scope="row" th:text="${usuario.id}"></th>
+                <td th:text="${usuario.nombreUsuario}"></td>
+
+                <td th:text="${usuario.rol}"></td>
+            </table>
+            
+        </div>
+    </body>
+</html>
