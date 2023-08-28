@@ -51,23 +51,23 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6">
 
-                        <form class="form-control" th:action="@{/editar_perfil/__${cliente.id}__}" method="POST">
+                        <form class="form-control" th:action="@{/editar_perfil/__${user.id}__}" method="POST">
 
-                            <input hidden th:value="${cliente.id}" name="id">
+                            <input hidden th:value="${user.id}" name="id">
 
                             <label for="nombre">Nombre:</label> <br>
                             <input type="text" class="form-control" id="nombre" name="nombre"
-                                placeholder="Nombre y Apellido" required th:value="${cliente.nombre}"><br>
+                                placeholder="Nombre y Apellido" required th:value="${user.nombre}"><br>
 
 
                             <label for="email">Email:</label><br>
                             <input type="email" class="form-control" id="e-mail" name="email" placeholder="e-mail"
-                                required th:value="${cliente.email}"><br>
+                                required th:value="${user.email}"><br>
 
                             <div>
                                 Seleccion de barrio
                                 <select class="form-select" aria-label="Default select example" name="barrio" required
-                                    th:value="${cliente.barrio}">
+                                    th:value="${user.barrio}">
                                     <option selected>Seleccione Barrio</option>
                                     <option value="ALTOS_DE_CHACRAS">Altos de Chacras</option>
                                     <option value="PORTAL_LUJAN">Portal Lujan</option>
@@ -81,12 +81,12 @@
                                 <div class="col">
                                     <label for="manzana">Manzana:</label><br>
                                     <input type="text" class="form-control" name="manzana" placeholder="Manzana"
-                                        aria-label="Manzana" required th:value="${cliente.manzana}">
+                                        aria-label="Manzana" required th:value="${user.manzana}">
                                 </div>
                                 <div class="col">
                                     <label for="casa">Casa:</label><br>
                                     <input type="text" class="form-control" name="casa" placeholder="Casa"
-                                        aria-label="Casa" required th:value="${cliente.casa}">
+                                        aria-label="Casa" required th:value="${user.casa}">
                                 </div>
                             </div>
 

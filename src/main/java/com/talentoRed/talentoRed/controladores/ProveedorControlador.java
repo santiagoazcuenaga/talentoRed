@@ -56,7 +56,7 @@ public class ProveedorControlador {
     public String perfil(@PathVariable String id, ModelMap modelo) {
 
         Proveedor proveedor = serPro.getOne(id);
-        modelo.put("proveedor", proveedor);
+        modelo.put("cliente", proveedor);
 
         return "clientePerfil.html";
     }
