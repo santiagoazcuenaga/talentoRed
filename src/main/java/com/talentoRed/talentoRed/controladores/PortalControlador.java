@@ -123,4 +123,9 @@ public class PortalControlador {
             return this.editar_perfil(id, modelo);
         }
     }
+    
+     @GetMapping("/proveedores")
+    public String Proveedores() {
+        return "proveedores.html";
+    }
 }

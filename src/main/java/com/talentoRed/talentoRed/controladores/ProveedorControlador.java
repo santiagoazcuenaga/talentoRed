@@ -69,5 +69,13 @@ public class ProveedorControlador {
 
         return "actualizarCliente.html";
     }
+    
+    
+  //controlador para vista de proveedores x Guille
+    
+    @GetMapping("/proveedores")
+    public String Proveedores() {
+        return "proveedores.html";
+    }
 
 }//The end
