@@ -19,15 +19,19 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Proveedor extends Usuario {
-
+   
+    
+    
+    @Enumerated(EnumType.STRING)
     private TipoServicio servicio;
-    private int nroContacto;
+  
     private Boolean tieneMatricula;
     private String matricula;
     private int calificacion;
     @Enumerated(EnumType.STRING)
     private Disponibilidad disponibilidad;
     private String Descripcion;
+        @Enumerated(EnumType.STRING)
     private MetodoPago metodoPago;
     private int cantServ;
     @OneToOne
@@ -44,13 +48,7 @@ public class Proveedor extends Usuario {
         this.servicio = servicio;
     }
 
-    public int getNroContacto() {
-        return nroContacto;
-    }
-
-    public void setNroContacto(int nroContacto) {
-        this.nroContacto = nroContacto;
-    }
+  
 
     public Boolean getTieneMatricula() {
         return tieneMatricula;

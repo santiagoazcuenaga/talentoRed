@@ -14,18 +14,8 @@
 
     <body class="d-flex h-100 text-center text-bg-ligth">
 
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
-            <!-- header section start -->  
-            <header class="mb-auto border-bottom">  
-                <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-                    <!--inicio logo-->
-                    <a th:replace="/fragments/logo :: a"> </a>
-                    <!--fin logo-->
-                    <!--inicio navbar-->
-                    <navbar th:replace="/fragments/navbar :: navbar"> </navbar>                 
-                </div>
-    
-            </header>
+        <div class="cover-container d-flex w-100 h-100 mx-auto flex-column"> 
+            <header th:replace= "/fragments/header :: header"> </header>
             <!-- header section ends -->
 
             <!--Slider de imagenes-->

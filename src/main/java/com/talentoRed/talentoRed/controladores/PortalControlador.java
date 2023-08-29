@@ -5,10 +5,14 @@
 package com.talentoRed.talentoRed.controladores;
 
 import com.talentoRed.talentoRed.entidades.Cliente;
+import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Barrio;
+import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.servicios.ServicioCliente;
+import com.talentoRed.talentoRed.servicios.ServicioProveedor;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
@@ -32,7 +36,10 @@ public class PortalControlador {
 
     @Autowired
     private ServicioCliente serCli;
-
+@Autowired
+private ServicioProveedor serPro;
+    
+    
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -123,4 +130,13 @@ public class PortalControlador {
             return this.editar_perfil(id, modelo);
         }
     }
+    
+    @GetMapping("/proveedores")
+    public String Proveedores(ModelMap modelo) {
+//        List<Proveedor> proveedores = serPro.listarProveedor(TipoServicio.TECNICO);
+//        modelo.addAttribute("usuarios", proveedores);
+        return "listaProveedores.html";
+    }
+    
+    
 }

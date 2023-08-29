@@ -5,18 +5,7 @@
 <head th:replace="/fragments/head :: head"> </head>
 
 <body>
-    <header class="mb-auto border-bottom">
-        <nav>
-            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-                <!--inicio logo-->
-                <a th:replace="/fragments/logo :: a"> </a>
-                <!--fin logo-->
-                <!--inicio navbar-->
-                <navbar th:replace="/fragments/navbar :: navbar"> </navbar>
-                <!--fin navbar-->
-            </div>
-        </nav>
-    </header>
+    <header th:replace= "/fragments/header :: header"> </header>
 
     <div style="text-align: center">
         <input hidden th:value="${user.id}" name="id">

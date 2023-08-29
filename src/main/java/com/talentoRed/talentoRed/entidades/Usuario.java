@@ -31,6 +31,7 @@ public class Usuario implements UserDetails {
     private String id;
     private String nombre;
     private String email;
+    private String telefono;
     private String password;
     private String direccion;
     @OneToOne
@@ -42,13 +43,14 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-    public Usuario(String id, String nombre, String email, String password, String direccion, Rol rol) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.password = password;
-        this.direccion = direccion;
-        this.rol = rol;
+  
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public Imagen getImagen() {
