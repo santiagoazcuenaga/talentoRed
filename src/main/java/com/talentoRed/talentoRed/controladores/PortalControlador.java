@@ -95,7 +95,7 @@ public class PortalControlador {
     public String perfil(@PathVariable String id, ModelMap modelo) {
 
         Cliente cliente = serCli.getOne(id);
-        modelo.put("cliente", cliente);
+        modelo.put("user", cliente);
 
         return "clientePerfil.html";
     }
@@ -104,7 +104,7 @@ public class PortalControlador {
     public String editar_perfil(@PathVariable String id, ModelMap modelo) {
 
         Cliente cliente = serCli.getOne(id);
-        modelo.put("cliente", cliente);
+        modelo.put("user", cliente);
 
         return "actualizarCliente.html";
     }
