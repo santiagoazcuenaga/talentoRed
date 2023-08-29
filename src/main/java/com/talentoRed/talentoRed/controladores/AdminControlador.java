@@ -7,6 +7,7 @@ import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.servicios.ServicioUsuario;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,18 +21,20 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author lukaku
  */
 @Controller
-@RequestMapping("/admin")//localhost8080:/admin
+@RequestMapping("/admin")
 public class AdminControlador {
 
-
     @Autowired
-    ServicioUsuario usuarioservicio = new ServicioUsuario();
-    
-    @GetMapping("/dashboard") //localhost8080:/admin/dasboard
-    public String panelAdministrativo(ModelMap modelo) {
+    ServicioUsuario usuarioservicio;
+
+    @GetMapping("/dashboard")
+    public String panelAdministrativo(ModelMap modelo, HttpSession session) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        modelo.addAttribute("usuario", logueado); // Cambio a addAttribute
+
         List<Usuario> usuarios = usuarioservicio.listarUsuarios();
         modelo.addAttribute("usuarios", usuarios);
-        return "panel.html";
+        return "panelAdmin"; // No es necesario agregar ".html"
     }
         
     @PostMapping("/modificarRol/{id}")

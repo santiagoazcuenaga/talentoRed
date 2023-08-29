@@ -38,7 +38,7 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/*").hasRole("ADMIN")
                 .antMatchers("/CSS/*", "/js/*", "/image/*", "/**")
                 .permitAll()
             .and().formLogin()
@@ -47,13 +47,12 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/inicio")
-                .defaultSuccessUrl("/")
                 .permitAll()
             .and().logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .permitAll()
-                .and().csrf()
+            .and().csrf()
                 .disable();
 
     }

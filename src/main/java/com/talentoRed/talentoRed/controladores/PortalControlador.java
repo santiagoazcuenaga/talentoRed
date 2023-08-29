@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,9 +58,10 @@ public class PortalControlador {
             return "registro.html";
         }
     }
+
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
-        
+
         if (error != null) {
             System.out.println("Usuario o contraseña invalida");
             modelo.put("error", "Informacion invalida");
@@ -70,13 +70,12 @@ public class PortalControlador {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE', 'ROLE_PROVEEDOR')")
-
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
         try {
             // envia los datos del usuario a la pagina una vez este logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-            modelo.put("cliente", logueado);
+            modelo.put("usuario", logueado);
             // para admin hacer una vista diferente
             if (logueado.getRol().toString().equals("ADMIN")) {
                 return "redirect:/admin/dashboard";

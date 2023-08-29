@@ -10,30 +10,29 @@ PANEL ADMINISTRADOR
     </head>
     <body>
         <div>
-            <h1>
-                Panel del Administrador
-            </h1>
+            <h1>Panel del Administrador</h1>
+            <p>Bienvenido, ${cliente.email}!</p>
             <p>
                 Lista de usuarios<br>
                 Panel de funciones<br>
-                <a href="/">
-                    VOLVER AL INICIO
-                </a>
-                    
-                
+                <a href="/">VOLVER AL INICIO</a>
             </p>
             <table>
                 <thead>
-                    
+                    <!-- Encabezados de la tabla aquí -->
                 </thead>
-            <tbody th:each="usuario : ${usuarios}"> 
-            <tr>
-                <th scope="row" th:text="${usuario.id}"></th>
-                <td th:text="${usuario.nombreUsuario}"></td>
-
-                <td th:text="${usuario.rol}"></td>
+                <tbody th:each="usuario : ${usuarios}">
+                    <tr>
+                        <th scope="row" th:text="${usuario.id}"></th>
+                        <td th:text="${usuario.email}"></td> <!-- Cambio a usuario.email -->
+                        <td th:text="${usuario.rol}"></td>
+                    </tr>
+                </tbody>
             </table>
-            
         </div>
     </body>
 </html>
+
+
+
+

@@ -1,6 +1,16 @@
 /*======================MENU======================*/
+/*@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
 
-		#menu a {
+		font-family: 'Montserrat Alternates', sans-serif;
+}*/
+/* Eliminamos los margenes y paddings */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#menu a {
     font-size: 18px;
     font-weight: bold;
     color: #f3f3f3;
@@ -18,14 +28,13 @@
 }
 
 header {
-    background-color: rgb(8, 8, 8);
-    text-align: right
-}
-
-footer {
-
-    color: black;
-
+    background-color: rgb(41, 41, 41);
+    text-align: right;
+    /*Para dejar fijo el nav
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    */
 }
 
 .formregistro {
@@ -86,6 +95,7 @@ footer {
 		border-left: 8px solid transparent;
 		transition: all 400ms ease;
 }
+    
 .dropdown-menu li a:hover{
     	border-left: 8px solid #d37203;
         background: #d37203;
@@ -128,7 +138,28 @@ footer {
     font-size: 25px;
 }
 
+/* css footer */
+   
+#afooter {
+    text-decoration: none;
+    font-size: 15px;
+}
 
+#pfooter {
+    font-size: 15px;
+}
+
+#afooter:hover {
+    color:#fd9d0d !important;
+}
+
+#ifooter {
+    font-size: 15px;
+}
+
+ #lifooter {
+    font-size: 15px;
+ }
 
 /*=====================background vista registro=============================*/
 
