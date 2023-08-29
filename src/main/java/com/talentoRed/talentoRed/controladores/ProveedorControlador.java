@@ -50,6 +50,7 @@ public class ProveedorControlador {
             return "registroPro.html";
         }
     }
+    
 
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
     @GetMapping("/mi_perfil/{id}")
@@ -58,7 +59,7 @@ public class ProveedorControlador {
         Proveedor proveedor = serPro.getOne(id);
         modelo.put("user", proveedor);
 
-        return "clientePerfil.html";
+        return "proveedorPerfil.html";
     }
 
     @GetMapping("/editar_perfil/{id}")
