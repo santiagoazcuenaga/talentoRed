@@ -64,8 +64,8 @@
                     <form class="form-control" th:action="@{/proveedor/registro}" method="POST">
 
                         <!--Seleccion de tipo de servicio-->
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected required th:value="${TipoServicio}">Seleccione su Servicio</option>
+                        <select class="form-select" aria-label="Default select example" name = "tipoServicio" required th:value="${TipoServicio}">
+                            <option selected>Seleccione su Servicio</option>
                             <option value="PLOMERO">Plomero</option>
                             <option value="ELECTRICISTA">Electricista</option>
                             <option value="GASISTA">Gasista</option>
@@ -138,14 +138,13 @@
                             th:value="${matricula}" name="matricula">
                         <div class="mb-3">
                             <label style="background-color: #d37203; color:aliceblue; padding: 1%;"
-                                for="exampleFormControlTextarea1" class="form-label" required
+                                for="exampleFormControlTextarea1" class="form-label" required name="descripcion"
                                 th:value="${Descripcion}">Descripcion</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected th:value="${Disponibilidad}" name="disponibilidad">
-                                Elige tu disponibilidad</option>
+                        <select class="form-select" aria-label="Default select example"  name="disponibilidad" required th:value="${Disponibilidad}">
+                            <option selected>Elige tu disponibilidad</option>
                             <option value="MAÑANA">Mañana</option>
                             <option value="TARDE">Tarde</option>
                             <option value="NOCHE">Noche</option>
@@ -153,11 +152,11 @@
                         </select><br>
 
                         <!--Seleccion de barrio-->
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected th:value="${MetodoPago}">Seleccione su Metodo de pago</option>
-                            <option value="Efectivo">Efectivo</option>
-                            <option value="Debito">Debito</option>
-                            <option value="MercadoPago">MercadoPago</option>
+                        <select class="form-select" aria-label="Default select example" name="metodoPago" required th:value="${MetodoPago}">
+                            <option selected>Seleccione su Metodo de pago</option>
+                            <option value="EFECTIVO">Efectivo</option>
+                            <option value="DEBITO">Debito</option>
+                            <option value="MERCADOPAGO">MercadoPago</option>
                         </select><br>
 
                         <div style="width:300px align-justify" class="mb-3">
