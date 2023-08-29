@@ -83,7 +83,7 @@ private ServicioProveedor serPro;
         try {
             // envia los datos del usuario a la pagina una vez este logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-            modelo.put("cliente", logueado);
+            modelo.put("user", logueado);
             // para admin hacer una vista diferente
             if (logueado.getRol().toString().equals("ADMIN")) {
                 return "redirect:/admin/dashboard";
