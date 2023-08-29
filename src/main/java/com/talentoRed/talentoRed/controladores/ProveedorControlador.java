@@ -41,7 +41,7 @@ public class ProveedorControlador {
             int nroContacto, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
             MetodoPago metodoPago, MultipartFile portada) {
         try {
-            serPro.crearProveedor(archivo, tipoServicio, nombre, email, password, password2, nroContacto, tieneMatricula, matricula, descripcion,
+            serPro.crearProveedor(archivo, tipoServicio, nombre, email, password, password2, tieneMatricula, matricula, descripcion,
                     disponibilidad, metodoPago, portada);
             return "redirect:/";
             //agregar el modelo con mensaje exito
@@ -56,7 +56,7 @@ public class ProveedorControlador {
     public String perfil(@PathVariable String id, ModelMap modelo) {
 
         Proveedor proveedor = serPro.getOne(id);
-        modelo.put("proveedor", proveedor);
+        modelo.put("user", proveedor);
 
         return "clientePerfil.html";
     }
@@ -65,7 +65,7 @@ public class ProveedorControlador {
     public String editar_perfil(@PathVariable String id, ModelMap modelo) {
 
         Proveedor proveedor = serPro.getOne(id);
-        modelo.put("proveedor", proveedor);
+        modelo.put("user", proveedor);
 
         return "actualizarCliente.html";
     }

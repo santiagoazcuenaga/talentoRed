@@ -6,30 +6,18 @@
 
 <body class="d-flex h-100 text-center text-bg-ligth">
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto border-bottom">
-            <!-- header section start -->
-
-            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-                <!--inicio logo-->
-                <a th:replace="/fragments/logo :: a"> </a>
-                <!--fin logo-->
-                <!--inicio navbar-->
-                <navbar th:replace="/fragments/navbar :: navbar"> </navbar>
-                <!--fin navbar-->
-
-            </div>
-        </header>
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+        <header th:replace= "/fragments/header :: header"> </header>
         <div>
             <style>
                 body::after {
                     content: "";
-                    background: url(/image/image2.jpg);
+                    background: url(/image/345397.jpg);
                     opacity: 0.4;
                     top: 22%;
-                    left: 1%;
+                    left: 0%;
                     bottom: 1%;
-                    right: 1%;
+                    right: 0%;
                     position: absolute;
                     z-index: -1;
                     background-repeat: no-repeat;
@@ -142,6 +130,9 @@
             </div>
 
         </main>
+        
+        <br>
+     
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>

@@ -34,10 +34,10 @@ Llamar fragmento desde plantilla => <navbar th:replace= "/fragments/navbar :: na
                 <li>
                     <p></p>
                 </li>
-                <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')" th:href="@{/mi_perfil/__${cliente.id}__}">Ver Perfil</a></li>
-                <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')" th:href="@{/editar_perfil/__${cliente.id}__}">Editar Perfil</a></li>
-                <!-- <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')" th:href="@{/proveedor/mi_perfil/__${proveedor.id}__}">Ver Perfil</a></li>
-                <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')" th:href="@{/proveedor/editar_perfil/__${proveedor.id}__}">Editar Perfil</a></li> -->
+                <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')" th:href="@{/mi_perfil/__${user.id}__}">Ver Perfil</a></li>
+                <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')" th:href="@{/editar_perfil/__${user.id}__}">Editar Perfil</a></li>
+                <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')" th:href="@{/proveedor/mi_perfil/__${user.id}__}">Ver Perfil</a></li>
+                <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')" th:href="@{/proveedor/editar_perfil/__${user.id}__}">Editar Perfil</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>

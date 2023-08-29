@@ -14,12 +14,12 @@
     <style>
         body::after {
             content: "";
-            background: url(/image/image2.jpg);
+            background: url(/image/345397.jpg);
             opacity: 0.4;
             top: 22%;
-            left: 1%;
+            left: 0%;
             bottom: -76%;
-            right: 1%;
+            right: 0%;
             position: absolute;
             z-index: -1;
             background-size: cover;
@@ -30,22 +30,8 @@
 </div>
 
 <body class="d-flex h-100 text-center text-bg-ligth">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto border-bottom">
-            <!-- header section start -->
-
-            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-                <!--inicio logo-->
-                <a th:replace="/fragments/logo :: a"> </a>
-                <!--fin logo-->
-                <!--inicio navbar-->
-                <navbar th:replace="/fragments/navbar :: navbar"> </navbar>
-                <!--fin navbar-->
-
-            </div>
-
-            <title>Formulario de Registro como Proveedor</title>
-        </header>
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+        <header th:replace= "/fragments/header :: header"> </header>
         <!--Formulario de registro de proveedor -->
 
 
@@ -64,7 +50,7 @@
                     <form class="form-control" th:action="@{/proveedor/registro}" method="POST">
 
                         <!--Seleccion de tipo de servicio-->
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="tipoServicio">
                             <option selected required th:value="${TipoServicio}">Seleccione su Servicio</option>
                             <option value="PLOMERO">Plomero</option>
                             <option value="ELECTRICISTA">Electricista</option>
@@ -139,12 +125,12 @@
                         <div class="mb-3">
                             <label style="background-color: #d37203; color:aliceblue; padding: 1%;"
                                 for="exampleFormControlTextarea1" class="form-label" required
-                                th:value="${Descripcion}">Descripcion</label>
+                                th:value="${Descripcion}" name="descripcion">Descripcion</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected th:value="${Disponibilidad}" name="disponibilidad">
+                        <select class="form-select" aria-label="Default select example" name="disponibilidad">
+                            <option selected th:value="${Disponibilidad}">
                                 Elige tu disponibilidad</option>
                             <option value="MAÑANA">Mañana</option>
                             <option value="TARDE">Tarde</option>
@@ -153,11 +139,11 @@
                         </select><br>
 
                         <!--Seleccion de barrio-->
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected th:value="${MetodoPago}">Seleccione su Metodo de pago</option>
-                            <option value="Efectivo">Efectivo</option>
-                            <option value="Debito">Debito</option>
-                            <option value="MercadoPago">MercadoPago</option>
+                        <select class="form-select" aria-label="Default select example" name="metodoPago" required th:value="${MetodoPago}">
+                            <option selected>Seleccione su Metodo de pago</option>
+                            <option value="EFECTIVO">Efectivo</option>
+                            <option value="DEBITO">Debito</option>
+                            <option value="MERCADOPAGO">MercadoPago</option>
                         </select><br>
 
                         <div style="width:300px align-justify" class="mb-3">
@@ -181,7 +167,7 @@
                 </div>
             </div>
         </div>
-
+        <br>
 
         <script>
             const siRadio = document.getElementById('siRadio');
