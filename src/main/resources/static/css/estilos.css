@@ -1,9 +1,11 @@
 /*======================MENU======================*/
-/*@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
-*{
+/*@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');*/
+body{
 
-		font-family: 'Montserrat Alternates', sans-serif;
-}*/
+
+            
+		
+}
 #menu a {
     font-size: 18px;
     font-weight: bold;
