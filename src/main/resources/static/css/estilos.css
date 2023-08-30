@@ -1,11 +1,11 @@
 /*======================MENU======================*/
 /*@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');*/
-body{
-
-
-            
-		
+/* Eliminamos los margenes y paddings */
+*{
+    padding: 0;
+    margin: 0;
 }
+
 #menu a {
     font-size: 18px;
     font-weight: bold;
@@ -25,19 +25,17 @@ body{
 
 header {
     background-color: rgb(41, 41, 41);
-    text-align: right
-}
-
-footer {
-
-    color: black;
-
+    text-align: right;
+    /*Para dejar fijo el nav
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    */
 }
 
 .formregistro {
     display: grid;
     place-items: center;
-
     height: 100px;
     width: 200px
 
@@ -74,7 +72,7 @@ footer {
 		border-bottom: 5px solid transparent;
 		font-size: 18px;
 		margin-right: 5px;
-                margin-top: 20px;
+    margin-top: 20px;
 }
 
 .me-3:hover{
@@ -92,6 +90,7 @@ footer {
 		border-left: 8px solid transparent;
 		transition: all 400ms ease;
 }
+    
 .dropdown-menu li a:hover{
     	border-left: 8px solid #d37203;
         background: #d37203;
@@ -134,79 +133,182 @@ footer {
     font-size: 25px;
 }
 
+/* css footer */
+   
+#afooter {
+    text-decoration: none;
+    font-size: 15px;
+}
 
+#pfooter {
+    font-size: 15px;
+}
+
+#afooter:hover {
+    color:#fd9d0d !important;
+}
+
+#ifooter {
+    font-size: 15px;
+}
+
+ #lifooter {
+    font-size: 15px;
+ }
+
+ /*estilos agregados por guille para vista proveedores*/
+
+.card-img-top {
+  width: 150px;
+  height: 150px;
+
+  padding: 2px;
+
+  border: 5px solid #666;
+  border-radius: 50%, 50% ;
+  text-align: justify;
+
+  margin: auto;
+  display: block;
+}
+
+
+.card-body {
+  text-align: center;
+
+}
+
+.titulo-Rubro {
+
+  text-align: center;
+}
+
+.enlaces-rubros{
+  a{
+      text-align: center;
+  }
+
+}
+.contenedor-gral{
+
+  padding: 10px 20px 10px 300px; 
+
+}
+
+.enlaces-rubros{
+
+  padding: 15px;
+}
+
+/*Estilos de la barra lateral*/
+
+/* Resetear estilos por defecto del navegador */
+body, h1, h2, ul, li, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+
+/* Estilos de from generales */
+/*.form-control:focus{
+  background-color: #d37203;
+  border-color: #d37203;
+  border: 1px solid;
+}
+.form-control:hover{
+border-color: #d37203;
+}*/
+
+/* FIn Estilos de btn */
+
+
+
+
+/* Estilos de la barra lateral */
+
+
+.sidebar {
+  width: 250px;
+  background-color: rgb(235, 113, 31);
+  color:  rgb(85, 81, 81);
+  padding: 20px;
+  position: fixed;
+  top: 130px; /* Ajusta esto según tus preferencias */
+  left: 20 px;
+  bottom: 0;
+}
+
+.sidebar h2 {
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: rgb(85, 81, 81);
+  text-decoration: none;
+}
+
+/* Estilos del contenido principal */
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+/* estilos de la calificacion de estrellas */
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+
+
+/*===============================hasta aca lo de Guille==========================*/
 
 /*=====================background vista registro=============================*/
 
 
 
 
-/*
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-
-
-.b-example-divider {
-  width: 100%;
-  height: 3rem;
-  background-color: rgba(0, 0, 0, .1);
-  border: solid rgba(0, 0, 0, .15);
-  border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
-
-.b-example-vr {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-}
-
-.bi {
-  vertical-align: -.125em;
-  fill: currentColor;
-}
-
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-  display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-
-.btn-bd-primary {
-  --bd-violet-bg: #712cf9;
-  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-  --bs-btn-font-weight: 600;
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet-bg);
-  --bs-btn-border-color: var(--bd-violet-bg);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #6528e0;
-  --bs-btn-hover-border-color: #6528e0;
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-  --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #5a23c8;
-  --bs-btn-active-border-color: #5a23c8;
-}
-.bd-mode-toggle {
-  z-index: 1500;
-}
-*/

@@ -7,5 +7,5 @@ package com.talentoRed.talentoRed.enums;
 public enum Barrio {
     ALTOS_DE_CHACRAS,
     PORTAL_LUJAN,
-    COMPLEJO_CHACRAS_DE_CORIA,
+    COMPLEJO_CHACRAS_DE_CORIA;
 }

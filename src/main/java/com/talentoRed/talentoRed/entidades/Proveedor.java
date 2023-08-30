@@ -9,6 +9,9 @@ import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.enums.TipoServicio;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -17,25 +20,22 @@ import javax.persistence.Entity;
 @Entity
 public class Proveedor extends Usuario {
 
-
+    @Enumerated(EnumType.STRING)
     private TipoServicio servicio;
-    private int nroContacto;
+
     private Boolean tieneMatricula;
-    private int matricula;
+    private String matricula;
     private int calificacion;
+    @Enumerated(EnumType.STRING)
     private Disponibilidad disponibilidad;
     private String Descripcion;
+    @Enumerated(EnumType.STRING)
     private MetodoPago metodoPago;
     private int cantServ;
-       
-    // private String nroIdentificador;  investigar metodo generador, 
-    public Proveedor() {
-    }
+    @OneToOne
+    private Imagen portada;
 
-    //Contructor
-    public Proveedor(String id, String nombre, String email, String password, String direccion, Rol rol) {
-        super(id, nombre, email, password, direccion, rol);
-        this.setRol(Rol.PROVEEDOR); 
+    public Proveedor() {
     }
 
     public TipoServicio getServicio() {
@@ -46,14 +46,6 @@ public class Proveedor extends Usuario {
         this.servicio = servicio;
     }
 
-    public int getNroContacto() {
-        return nroContacto;
-    }
-
-    public void setNroContacto(int nroContacto) {
-        this.nroContacto = nroContacto;
-    }
-
     public Boolean getTieneMatricula() {
         return tieneMatricula;
     }
@@ -62,11 +54,11 @@ public class Proveedor extends Usuario {
         this.tieneMatricula = tieneMatricula;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -109,8 +101,13 @@ public class Proveedor extends Usuario {
     public void setCantServ(int cantServ) {
         this.cantServ = cantServ;
     }
-    
-    
-    
+
+    public Imagen getPortada() {
+        return portada;
+    }
+
+    public void setPortada(Imagen portada) {
+        this.portada = portada;
+    }
 
 }
