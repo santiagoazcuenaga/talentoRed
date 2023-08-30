@@ -161,4 +161,18 @@ public class ServicioUsuario implements UserDetailsService {
             usuario.setRol(rol);
         }
     }
+    
+    @Transactional
+    public void cambiarEstado(String id) {
+        Optional<Usuario> respuesta = repositorioUsuario.findById(id);
+
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            if(usuario.getAlta()!=true){
+                usuario.setAlta(true);
+            } else{
+                usuario.setAlta(false);
+            }
+        }
+    }
 }

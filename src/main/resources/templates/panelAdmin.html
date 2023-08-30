@@ -2,16 +2,14 @@
 <!--
 PANEL ADMINISTRADOR
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace= "/fragments/head :: head"> </head>
     <body>
+    
         <div>
+            <header th:replace= "/fragments/header :: header"> </header>
             <h1>Panel del Administrador</h1>
-            <p>Bienvenido, ${cliente.email}!</p>
+            <p>Bienvenido!</p>
             <p>
                 Lista de usuarios<br>
                 Panel de funciones<br>
@@ -19,17 +17,35 @@ PANEL ADMINISTRADOR
             </p>
             <table>
                 <thead>
-                    <!-- Encabezados de la tabla aquí -->
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
                 </thead>
                 <tbody th:each="usuario : ${usuarios}">
                     <tr>
                         <th scope="row" th:text="${usuario.id}"></th>
                         <td th:text="${usuario.email}"></td> <!-- Cambio a usuario.email -->
                         <td th:text="${usuario.rol}"></td>
+                        <td>
+                            <form th:action="@{/admin/cambiarEstado/__${usuario.id}__}" method="POST">
+                                
+                                <button type="submit">Cambiar Estado</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form th:action="@{/admin/eliminarUsuario/__${usuario.id}__}" method="POST">
+                                <button type="submit">Eliminar Usuario</button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+      
     </body>
 </html>
 

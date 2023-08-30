@@ -43,5 +43,14 @@ public class AdminControlador {
         return "redirect:/admin/dashboard";
     }
     
-     
+    @PostMapping("/cambiarEstado/{id}")
+    public String cambiarEstado(@PathVariable String id){
+        usuarioservicio.cambiarEstado(id);
+        return "redirect:/admin/dashboard";
+    }
+    @PostMapping("/eliminarUsuario/{id}")
+    public String eliminarUsuario(@PathVariable String id){
+        usuarioservicio.eliminarUsuario(id);
+        return "redirect:/admin/dashboard";
+    }
 }
