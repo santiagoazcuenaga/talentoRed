@@ -230,6 +230,7 @@ body {
   top: 130px; /* Ajusta esto según tus preferencias */
   left: 20 px;
   bottom: 0;
+  text-align: justify;
 }
 
 .sidebar h2 {
@@ -287,11 +288,11 @@ label {
 
 label:hover,
 label:hover ~ label {
-  color: orange;
+  color: gold;
 }
 
 input[type="radio"]:checked ~ label {
-  color: orange;
+  color: gold;
 }
 
 
