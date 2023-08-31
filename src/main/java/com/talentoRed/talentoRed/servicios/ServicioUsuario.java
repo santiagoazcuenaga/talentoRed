@@ -40,12 +40,13 @@ public class ServicioUsuario implements UserDetailsService {
     private ServicioImagen servicioImagen;
 
     @Transactional // falta parametro de direccion en el formulario
-    public void crearUsuario(MultipartFile archivo, String nombre, String email, String password,String password2) throws MyException {
+    public void crearUsuario(MultipartFile archivo, String nombre, String email,String telefono, String password,String password2) throws MyException {
         
         validar(nombre, email, password,password2);
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setEmail(email);
+        usuario.setTelefono(telefono);
        // usuario.setDireccion(direccion);
         usuario.setPassword(new BCryptPasswordEncoder().encode(password));
         usuario.setAlta(Boolean.FALSE);
@@ -63,7 +64,7 @@ public class ServicioUsuario implements UserDetailsService {
     }
 
     @Transactional
-    public void actualizarUsuario(String idUsuario, String nombre, String email, String password, String direccion,String password2) throws MyException {
+    public void actualizarUsuario(String idUsuario, String nombre, String email, String password,String telefono, String direccion,String password2) throws MyException {
         validar(nombre, email, password,password2);
         Optional<Usuario> respuesta = repositorioUsuario.findById(idUsuario);
         Usuario usuario = respuesta.get();
@@ -72,6 +73,7 @@ public class ServicioUsuario implements UserDetailsService {
             usuario.setNombre(nombre);
             usuario.setEmail(email);
             usuario.setDireccion(direccion);
+            usuario.setTelefono(telefono);
             usuario.setPassword(new BCryptPasswordEncoder().encode(password));
             usuario.setRol(Rol.USER);
             repositorioUsuario.save(usuario);

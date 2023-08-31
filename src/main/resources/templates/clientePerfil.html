@@ -8,13 +8,13 @@
     <header th:replace= "/fragments/header :: header"> </header>
 
     <div style="text-align: center">
-        <input hidden th:value="${usuario.id}" name="id">
+        <input hidden th:value="${user.id}" name="id">
         <h2>Hola!!!</h2>
-        <h2 th:text="${usuario.nombre}"></h2>
+        <h2 th:text="${user.nombre}"></h2>
         <p>Correo Electronico</p>
-        <p th:text="${usuario.email}"></p>
+        <p th:text="${user.email}"></p>
         <p>Tu rol</p>
-        <p th:text="${usuario.rol}"></p>
+        <p th:text="${user.rol}"></p>
          
                         
     </div>

@@ -52,9 +52,9 @@ private ServicioProveedor serPro;
 
     @PostMapping("/registroCliente")
     public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email,
-            String password, String password2, Barrio barrio, String manzana, int casa) {
+            String password, String password2,String telefono, Barrio barrio, String manzana, int casa) {
         try {
-            serCli.crearCliente(archivo, nombre, email, password, password2, barrio, manzana, casa);
+            serCli.crearCliente(archivo, nombre, email, password, password2,telefono, barrio, manzana, casa);
             return "redirect:/";
 
         } catch (MyException e) {
@@ -83,7 +83,7 @@ private ServicioProveedor serPro;
         try {
             // envia los datos del usuario a la pagina una vez este logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-            modelo.put("cliente", logueado);
+            modelo.put("user", logueado);
             // para admin hacer una vista diferente
             if (logueado.getRol().toString().equals("ADMIN")) {
                 return "redirect:/admin/dashboard";
@@ -119,10 +119,10 @@ private ServicioProveedor serPro;
     // falta MultipartFile archivo, password, 
     @PostMapping("/editar_perfil/{id}")
     public String editar_perfil(@PathVariable String id, MultipartFile archivo, @RequestParam String nombre, @RequestParam String email,
-            Barrio barrio, String manzana, int casa, ModelMap modelo) {
+            Barrio barrio,String telefono, String manzana, int casa, ModelMap modelo) {
 
         try {
-            serCli.modificarCliente(id, archivo, nombre, email, barrio, manzana, casa);
+            serCli.modificarCliente(id, archivo, nombre, email,telefono,barrio, manzana, casa);
             modelo.put("exito", "Tu perfil ha sido actualizado!!");
             return this.perfil(id, modelo);
         } catch (MyException ex) {
@@ -133,9 +133,9 @@ private ServicioProveedor serPro;
     
 
     @GetMapping("/proveedores")
-    public String Proveedores(ModelMap modelo) {
-//        List<Proveedor> proveedores = serPro.listarProveedor(TipoServicio.TECNICO);
-//        modelo.addAttribute("usuarios", proveedores);
+    public String Proveedores(ModelMap modelo,TipoServicio servicio) {
+        List<Proveedor> proveedores = serPro.listarProveedor(servicio);
+        modelo.addAttribute("usuarios", proveedores);
         return "listaProveedores.html";
     }
     
