@@ -36,7 +36,7 @@ public class ServicioProveedor implements UserDetailsService {
     private RepositorioProveedor repoPro;
     
     @Transactional
-    public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2, 
+    public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2,String telefono, 
           boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
             MetodoPago metodoPago, MultipartFile portada){
         
@@ -47,7 +47,7 @@ public class ServicioProveedor implements UserDetailsService {
         proveedor.setEmail(email);
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
         proveedor.setRol(Rol.PROVEEDOR);
- 
+ proveedor.setTelefono(telefono);
         proveedor.setTieneMatricula(tieneMatricula);
         proveedor.setMatricula(matricula);
         proveedor.setDisponibilidad(disponibilidad);

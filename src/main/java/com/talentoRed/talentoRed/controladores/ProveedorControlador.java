@@ -38,10 +38,10 @@ public class ProveedorControlador {
     @PostMapping("/registro")
     public String registrarProveedor(MultipartFile archivo, TipoServicio tipoServicio, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2,
-            int nroContacto, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
+            String telefono, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
             MetodoPago metodoPago, MultipartFile portada) {
         try {
-            serPro.crearProveedor(archivo, tipoServicio, nombre, email, password, password2, tieneMatricula, matricula, descripcion,
+            serPro.crearProveedor(archivo, tipoServicio, nombre, email, password, password2,telefono, tieneMatricula, matricula, descripcion,
                     disponibilidad, metodoPago, portada);
             return "redirect:/";
             //agregar el modelo con mensaje exito

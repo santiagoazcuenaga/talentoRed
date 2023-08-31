@@ -43,13 +43,13 @@ public class ServicioCliente implements UserDetailsService {
 
     @Transactional
     public void crearCliente(MultipartFile archivo, String nombre, String email, String password,
-            String password2, Barrio barrio, String manzana, int casa) throws MyException {
+            String password2,String telefono, Barrio barrio, String manzana, int casa) throws MyException {
 
         validar(nombre, email, password, password2);
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
         cliente.setEmail(email);
-     
+     cliente.setTelefono(telefono);
         cliente.setPassword(new BCryptPasswordEncoder().encode(password));
         cliente.setRol(Rol.CLIENTE);
         Imagen imagen = servicioImagen.guardar(archivo);
@@ -109,7 +109,7 @@ public class ServicioCliente implements UserDetailsService {
         return cliente;
     }
 
-    public void modificarCliente(String id, MultipartFile archivo, String nombre, String email, Barrio barrio, String manzana, int casa) throws MyException {
+    public void modificarCliente(String id, MultipartFile archivo, String nombre, String email,String telefono, Barrio barrio, String manzana, int casa) throws MyException {
 
         //this.validar(nombre, email, password, password2);
         Optional<Cliente> respuesta = repositorioCliente.findById(id);
@@ -118,6 +118,7 @@ public class ServicioCliente implements UserDetailsService {
             Cliente cliente = respuesta.get();
             cliente.setNombre(nombre);
             cliente.setEmail(email);
+            cliente.setTelefono(telefono);
             // usuario.setDireccion(direccion);
             //validar de forma aparte la contraseña
             //cliente.setPassword(new BCryptPasswordEncoder().encode(password));
