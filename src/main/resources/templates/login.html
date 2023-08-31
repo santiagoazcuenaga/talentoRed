@@ -4,12 +4,26 @@
 
     <body class="d-flex h-100 text-center text-bg-ligth">
 
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-            <!-- Inicio header  -->
-            <header  th:replace= "/fragments/header :: header"> </header> <!-- class="mb-auto border-bottom"-->
-            <!-- Fin header  -->
+        <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+            <header th:replace= "/fragments/header :: header"> </header>
 
             <main class="px-10">
+                
+                <style>
+                body::after {
+                    content: "";
+                    background: url(/image/345397.jpg);
+                    opacity: 0.4;
+                    top: 5%;
+                    left: 0%;
+                    bottom: 1%;
+                    right: 0%;
+                    position: absolute;
+                    z-index: -1;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            </style>
 
 
                 <div>
@@ -71,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-
+                   
 
             </main>
             

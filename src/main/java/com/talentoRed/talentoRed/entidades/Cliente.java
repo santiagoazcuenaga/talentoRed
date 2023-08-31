@@ -20,12 +20,9 @@ public class Cliente extends Usuario{
     private Barrio barrio;
     private String manzana;
     private int casa;
-    private String telefono;
+    
 
-    public Cliente(String id, String nombre, String email, String password, String direccion, Rol rol) {
-        super(id, nombre, email, password, direccion, rol);
-    }
-
+    
     public Cliente() {
     }
 
@@ -53,13 +50,7 @@ public class Cliente extends Usuario{
         this.casa = casa;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+   
     
     
 }

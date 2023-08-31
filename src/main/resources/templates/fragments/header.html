@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 Llamar fragmento desde plantilla => <header th:replace= "/fragments/header :: header"> </header>
 -->
@@ -7,18 +6,21 @@ Llamar fragmento desde plantilla => <header th:replace= "/fragments/header :: he
         <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
             <!--inicio logo-->
             <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                <img  class="logo"  src="/image/LogoPic.jpg"   width="120"  height="80"  alt="logo_talentoRed">
+                <img class="logo" src="/image/LogoPic.jpg" width="120" height="80" alt="logo_talentoRed">
             </a>
-            <a class="text-logo" href="/"> <h1>TalentoRed</h1></a>  
+            <a class="text-logo" href="/">
+                <h1>TalentoRed</h1>
+            </a>
             <!--fin logo-->
 
             <!--inicio navbar-->
             <navbar class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                <a  class="me-3 py-2  text-white" href="/" >Inicio</a>
+                <a class="me-3 py-2  text-white" href="/">Inicio</a>
                 <a class="me-3 py-2   text-white" href="#">Servicios</a>
 
                 <li class="nav dropdown">
-                    <a class="me-3 dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false" th:if="${session.usuariosession == null}">Registrarse</a>
+                    <a class="me-3 dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false"
+                        th:if="${session.usuariosession == null}">Registrarse</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/registrarCliente">Quiero ser Cliente</a></li>
                         <li><a class="dropdown-item" href="/proveedor/registrar">Quiero ser prestador</a></li>
@@ -26,16 +28,8 @@ Llamar fragmento desde plantilla => <header th:replace= "/fragments/header :: he
                 </li>
 
 
-                <a class="me-3 py-2  text-white" th:if="${session.usuariosession == null}" href="/login" >Iniciar Sesion</a>
-                <!--
-                <div class="text-end">
-                    <button type="button" class="btn btn-primary">Resgistarse</button>
-                    <button type="button" class="btn btn-primary">Iniciar Sesión</button>
-                </div>
-                -->
-
-                <!--*********************intervencion kidver***********************************-->
-
+                <a class="me-3 py-2  text-white" th:if="${session.usuariosession == null}" href="/login">Iniciar
+                    Sesion</a>
                 <div class="dropdown-center" th:if="${session.usuariosession != null}">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <a class="me-3 dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,31 +39,26 @@ Llamar fragmento desde plantilla => <header th:replace= "/fragments/header :: he
                             <li>
                                 <p></p>
                             </li>
-                            <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')" th:href="@{/mi_perfil/__${cliente.id}__}">Ver Perfil</a></li>
-                            <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')" th:href="@{/editar_perfil/__${cliente.id}__}">Editar Perfil</a></li>
-                            <!-- <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')" th:href="@{/proveedor/mi_perfil/__${proveedor.id}__}">Ver Perfil</a></li>
-                            <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')" th:href="@{/proveedor/editar_perfil/__${proveedor.id}__}">Editar Perfil</a></li> -->
+                            <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')"
+                                    th:href="@{/mi_perfil/__${user.id}__}">Ver Perfil</a></li>
+                            <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')"
+                                    th:href="@{/editar_perfil/__${user.id}__}">Editar Perfil</a></li>
+                            <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')"
+                                    th:href="@{/proveedor/mi_perfil/__${user.id}__}">Ver Perfil</a></li>
+                            <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')"
+                                    th:href="@{/proveedor/editar_perfil/__${user.id}__}">Editar Perfil</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="btn btn-outline-danger d-flex justify-content-center mx-3 px-2 "
-                                   href="http://localhost:8080/logout">Cerrar sesion</a></li>
+                                    href="http://localhost:8080/logout">Cerrar sesion</a></li>
                         </ul>
                     </ul>
                 </div>
                 <div class="btn-group">
 
-                    <!--    <a class="btn btn-outline-primary" th:if="${session.usuariosession == null}"
-                            href="http://localhost:8080/login" role="button">iniciar sesion</a>
-                        <a class="btn btn-outline-success" th:if="${session.usuariosession == null}"
-                            href="http://localhost:8080/registrar" role="button">Registrarse</a> -->
-
-                    <!--*********************FIN intervencion kidver***********************************-->
-
-
                 </div>
             </navbar>
-            <!--fin navbar-->
         </div>
     </nav>
 </header>

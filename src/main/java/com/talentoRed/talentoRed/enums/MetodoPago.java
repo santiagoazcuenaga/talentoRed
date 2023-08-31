@@ -9,5 +9,5 @@ package com.talentoRed.talentoRed.enums;
  * @author Kidver
  */
 public enum MetodoPago {
-    EFECTIVO, DEBITO, MERCADOPAGO
+    EFECTIVO, DEBITO, MERCADOPAGO;
 }

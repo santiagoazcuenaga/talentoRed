@@ -6,6 +6,8 @@ package com.talentoRed.talentoRed.servicios;
 
 import com.talentoRed.talentoRed.entidades.Cliente;
 import com.talentoRed.talentoRed.entidades.Imagen;
+import org.springframework.stereotype.Service;
+
 import com.talentoRed.talentoRed.enums.Barrio;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.myExceptions.MyException;
@@ -47,7 +49,7 @@ public class ServicioCliente implements UserDetailsService {
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
         cliente.setEmail(email);
-        // usuario.setDireccion(direccion);
+     
         cliente.setPassword(new BCryptPasswordEncoder().encode(password));
         cliente.setRol(Rol.CLIENTE);
         Imagen imagen = servicioImagen.guardar(archivo);
@@ -79,6 +81,9 @@ public class ServicioCliente implements UserDetailsService {
         cliente = repositorioCliente.findAll();
         return cliente;
     }
+    
+   
+    
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

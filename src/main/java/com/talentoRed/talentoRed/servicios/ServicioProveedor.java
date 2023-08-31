@@ -24,6 +24,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+
 /**
  * @author usuario
  */
@@ -36,7 +37,7 @@ public class ServicioProveedor implements UserDetailsService {
     
     @Transactional
     public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2, 
-            int nroContacto, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
+          boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
             MetodoPago metodoPago, MultipartFile portada){
         
         //validar 
@@ -46,7 +47,7 @@ public class ServicioProveedor implements UserDetailsService {
         proveedor.setEmail(email);
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
         proveedor.setRol(Rol.PROVEEDOR);
-        proveedor.setNroContacto(nroContacto);
+ 
         proveedor.setTieneMatricula(tieneMatricula);
         proveedor.setMatricula(matricula);
         proveedor.setDisponibilidad(disponibilidad);
@@ -58,7 +59,11 @@ public class ServicioProveedor implements UserDetailsService {
         repoPro.save(proveedor);
     }
     
-    
+     public List<Proveedor> listarProveedor(TipoServicio servicio){
+     List<Proveedor> proveedor = new ArrayList();   
+     repoPro.listarProveedorPorRubro(servicio);
+     return proveedor;
+    }
     
     //REVISAR IMPLEMENTACION DE LOS METODOS DEL PROVEEDOR
 
