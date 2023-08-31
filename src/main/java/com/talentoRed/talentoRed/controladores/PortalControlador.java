@@ -131,6 +131,7 @@ private ServicioProveedor serPro;
         }
     }
     
+
     @GetMapping("/proveedores")
     public String Proveedores(ModelMap modelo) {
 //        List<Proveedor> proveedores = serPro.listarProveedor(TipoServicio.TECNICO);
@@ -138,5 +139,12 @@ private ServicioProveedor serPro;
         return "listaProveedores.html";
     }
     
+    @GetMapping("/comofun")
+    public String comofun(ModelMap modelo) {
+
+        return "comofunciona.html";
+    }
     
+    
+
 }

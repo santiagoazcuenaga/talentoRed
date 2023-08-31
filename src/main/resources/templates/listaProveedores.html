@@ -35,7 +35,7 @@
               <!--fin logo-->
   
               <!--inicio navbar-->
-              <navbar class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+              <navbar class="d-inline-flex mt-2 mt-md-0 ms-md-auto" >
                   <a class="me-3 py-2  text-white" href="/">Inicio</a>
                   <a class="me-3 py-2   text-white" href="#">Servicios</a>
   
@@ -114,10 +114,10 @@
 
 
 
-    <main style="margin-top: 150px;">
+    <main style="margin-top: 100px;">
         <!--La vista de las tarjetas de profesionales sera una sola dividida por rubro en <div>  -->
 
-        <div class="contenedor-gral" >
+        <div class="contenedor-gral" style="margin-top: auto" >
 
           <h2 class="titulo-Rubro" id="electricidad"> Electricidad </h2>
           <br>
@@ -442,7 +442,97 @@
 
 </body>
 <!--inicio footer-->
-<footer th:replace="/fragments/footer :: footer"> </footer>
+<!--<footer <!--th:replace="/fragments/footer :: footer"> -->
+<footer  class="bg-dark text-light pt-1 pb-1"  style="margin-left: 200px">
+    <div class="container text-center text-md-start">
+        <div class="row text-center text-md-start">
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <div class="text-center mb-2">
+                    <!--<a href="/" class="d-flex text-center text-align-center mb-3 link-dark text-decoration-none">-->
+                    <a href="/">
+                        <img  class="logo"  src="/image/LogoPic.jpg"   width="80"  height="70"  alt="logo_talentoRed">
+                    </a>
+                    <!--
+                    <a href="/">
+                        <strong class="text-warning">Talento Red</strong>
+                    </a>
+                    -->
+                    <p id="pfooter">
+                        Encuentra proveedores de servicios para tu vivienda confiables y de forma inmediata.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Nosotros</h5>
+                <hr class="mb-4">
+                <p id="pfooter">
+                    <a id="afooter" href="#" class="text-light">Quienes Somos</a>
+                </p>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Dejanos ayudarte</h5>
+                <hr class="mb-4">
+                <p>
+                    <a id="afooter" href="#" class="text-light">Tu cuenta</a>
+                </p>
+                <p>
+                    <a id="afooter" href="#" class="text-light">Tus ordenes</a>
+                </p>
+                <p>
+                    <a id="afooter" href="#" class="text-light">Manejo de cuenta</a>
+                </p>
+
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contacto</h5>
+                <hr class="mb-4">
+                <p>
+                <li id="lifooter" class="fas fa-envelope"></li> info@talentored.com.mar
+                </p>
+                <p>
+                <li id="lifooter" class="fas fa-phone"></li> 0800-220-0005
+                </p>
+            </div>
+
+            <hr class="mb-4">
+
+            <div class="text-center mb-2">
+                <p>
+                    <a id="afooter" href="/" class="text-light">Talento Red</a>
+                    <i id="ifooter" class="fa fa-copyright" aria-hidden="true"></i> Todos Los Derechos Reservados 2023.
+                </p>
+            </div>
+
+            <div class="text-center">
+                <ul class="list-unstyled lis-inline">
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-facebook text-warning"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-twitter text-warning"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-google-plus text-warning"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-linkedin-in text-warning"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-youtube text-warning"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  
+  
+  
+  
+  </footer>
 <!--fin footer-->
 </div>
 
