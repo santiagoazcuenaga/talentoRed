@@ -139,9 +139,19 @@ private ServicioProveedor serPro;
     }
     
     @GetMapping("/comofun")
-    public String comofun(ModelMap modelo) {
+    public String comofun(ModelMap modelo, HttpSession session) {
+        try {
+            // envia los datos del usuario a la pagina una vez este logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            modelo.put("user", logueado);
+            // para dirigirlo a la pagina de Como Funciona  
+            return "comofunciona.html";
+           
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
 
-        return "comofunciona.html";
+        }
     }
     
     
