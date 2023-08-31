@@ -45,7 +45,7 @@ public class AdminControlador {
     
     @PostMapping("/cambiarEstado/{id}")
     public String cambiarEstado(@PathVariable String id){
-        usuarioservicio.cambiarEstado(id);
+        usuarioservicio.darAlta(id);
         return "redirect:/admin/dashboard";
     }
     @PostMapping("/eliminarUsuario/{id}")
