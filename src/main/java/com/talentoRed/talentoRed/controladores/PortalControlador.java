@@ -58,12 +58,68 @@ public class PortalControlador {
             return "registro.html";
         }
     }
-<<<<<<< HEAD
-   
-=======
-    
-    
-    
 
->>>>>>> 4ec87624bfbf88a391c30617be4d128feaf3cad0
+    @GetMapping("/login")
+    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+
+        if (error != null) {
+            System.out.println("Usuario o contraseña invalida");
+            modelo.put("error", "Informacion invalida");
+        }
+        return "login.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE', 'ROLE_PROVEEDOR')")
+    @GetMapping("/inicio")
+    public String inicio(HttpSession session, ModelMap modelo) {
+        try {
+            // envia los datos del usuario a la pagina una vez este logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            modelo.put("usuario", logueado);
+            // para admin hacer una vista diferente
+            if (logueado.getRol().toString().equals("ADMIN")) {
+                return "redirect:/admin/dashboard";
+            }
+            return "inicio.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+            return "index.html";
+
+        }
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE')")
+    @GetMapping("/mi_perfil/{id}")
+    public String perfil(@PathVariable String id, ModelMap modelo) {
+
+        Cliente cliente = serCli.getOne(id);
+        modelo.put("cliente", cliente);
+
+        return "clientePerfil.html";
+    }
+
+    @GetMapping("/editar_perfil/{id}")
+    public String editar_perfil(@PathVariable String id, ModelMap modelo) {
+
+        Cliente cliente = serCli.getOne(id);
+        modelo.put("cliente", cliente);
+
+        return "actualizarCliente.html";
+    }
+
+    // falta MultipartFile archivo, password, 
+    @PostMapping("/editar_perfil/{id}")
+    public String editar_perfil(@PathVariable String id, MultipartFile archivo, @RequestParam String nombre, @RequestParam String email,
+            Barrio barrio, String manzana, int casa, ModelMap modelo) {
+
+        try {
+            serCli.modificarCliente(id, archivo, nombre, email, barrio, manzana, casa);
+            modelo.put("exito", "Tu perfil ha sido actualizado!!");
+            return this.perfil(id, modelo);
+        } catch (MyException ex) {
+            modelo.put("error", ex.getMessage());
+            return this.editar_perfil(id, modelo);
+        }
+    }
 }
