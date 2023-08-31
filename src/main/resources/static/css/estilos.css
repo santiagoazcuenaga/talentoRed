@@ -161,9 +161,6 @@ header {
  #lifooter {
     font-size: 15px;
  }
-<<<<<<< HEAD
-=======
-
  /*estilos agregados por guille para vista proveedores*/
 
 .card-img-top {
@@ -295,10 +292,6 @@ label:hover ~ label {
 input[type="radio"]:checked ~ label {
   color: orange;
 }
-
-
-/*===============================hasta aca lo de Guille==========================*/
->>>>>>> d2fb1ac27ac86484de7b91944dc62232f6a97ef8
 
 /*=====================background vista registro=============================*/
 
