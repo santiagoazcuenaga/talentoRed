@@ -26,6 +26,20 @@
         <p th:text="${proveedor.email}"></p>
         <p>Tu rol</p>
         <p th:text="${proveedor.rol}"></p>
+        <p>Info</p>
+        <p th:text="${descripcion.rol}"></p>
+
+    </div>
+
+    <div align="center">
+        <p>Te agredecemos por ser parte de nuestra comunidad y confiar en nosotros!!,
+            Al tener el rol de proveedor los clientes podran ver la cantidad de servicios
+             que has echo y tu puntajee.
+        </p>
+        <div>
+            <img src="/image/estrellas.png" alt="estrellitas" width="80" height="80" align="center" /> <br><br>
+
+        </div>
     </div>
 
     <footer th:replace="/fragments/footer :: footer"> </footer>

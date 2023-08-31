@@ -59,34 +59,6 @@ public class PortalControlador {
         }
     }
     
-    
-    
-    
-    
-      @GetMapping("/registrarPro")
-    public String registrarPro() {
-        return "registroPro.html";
-    }
-
-    @PostMapping("/registroPro")
-    public String registroPro(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, String password, String password2) {
-        try {
-            serusa.crearUsuario(archivo, nombre, email, password,password2);
-            // Registro exitoso, redirigir a la página de inicio de sesión
-            return "redirect:/";
-        } catch (MyException e) {
-            // Error durante el registro, mostrar mensaje de error en la página de registro
-            // Puedes agregar el mensaje de error a través del Model y mostrarlo en la plantilla
-            // o redirigir a una página de error personalizada
-            System.out.println(e.getMessage());
-            return "registroPro.html";
-        }
-    }
-    
-    
-    
-    
-    
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
