@@ -54,6 +54,22 @@
                     <div class="col-md-6">
 
                         <form class="form-control" th:action="@{/registroCliente}" method="POST">
+                            <div>
+                                <div th:if="${error != null}"  class="card text-white bg-danger my-3 mensajeError" > <!--Tarjeta en color rojo con una condicion-->
+                                    <!--$ se usa para el envio de variables y todo lor valores van entre llaves-->
+                                    <div class="card-body">
+                                        <h5 class="card-title">Error</h5>
+                                        <p class="card-text" th:text="${error}"></p>
+                                    </div>            
+                                </div>
+        
+                                <div th:if="${exito != null}"  class="card text-white bg-success my-3 mt-3 mensajeExito" >
+                                    <div class="card-body">
+                                        <h5 class="card-title">Exito</h5>
+                                        <p class="card-text" th:text="${exito}"></p>
+                                    </div> 
+                                </div>
+                            </div>
 
 
                             <div>
@@ -124,19 +140,24 @@
 
                                     <input type="submit" class="btn btn-primary" value="Registrarme">
                                 </div>
+                                <div>
+                        <div th:if="${error != null}"  class="card text-white bg-danger my-3 mensajeError" > <!--Tarjeta en color rojo con una condicion-->
+                            <!--$ se usa para el envio de variables y todo lor valores van entre llaves-->
+                            <div class="card-body">
+                                <h5 class="card-title">Error</h5>
+                                <p class="card-text" th:text="${error}"></p>
+                            </div>            
+                        </div>
+
+                        <div th:if="${exito != null}"  class="card text-white bg-success my-3 mt-3 mensajeExito" >
+                            <div class="card-body">
+                                <h5 class="card-title">Exito</h5>
+                                <p class="card-text" th:text="${exito}"></p>
+                            </div> 
+                        </div>
+                    </div>
                         </form>
 
-                        <!-- <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-                                <div class="card-body">
-                                    <h5 class="card-title">Exito!</h5>
-                                    <p class="card-text" th:text="${exito}"></p>
-                                </div>
-                            </div>
-                             <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
-                                 <div class="card-body">
-                                     <h5 class="card-title">Error ð</h5>
-                                     <p class="card-text" th:text="${error}"></p>
-                                 </div> -->
                     </div>
                 </div>
             </div>
