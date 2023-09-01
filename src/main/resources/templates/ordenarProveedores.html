@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+
+-->
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace= "/fragments/head :: head"> </head>
+    <body>
+    
+        <div>
+            <header th:replace= "/fragments/header :: header"> </header>
+         <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Tipo Servicio</th>
+                            
+
+                    </tr>
+                </thead>
+                <tbody th:each="usuario : ${usuarios}">
+                    <tr>
+                        <th scope="row" th:text="${usuario.id}"></th>
+                        <td th:text="${usuario.email}"></td> <!-- Cambio a usuario.email -->
+                        <td th:text="${usuario.rol}"></td>
+                        <td th:text="${usuario.servicio}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
