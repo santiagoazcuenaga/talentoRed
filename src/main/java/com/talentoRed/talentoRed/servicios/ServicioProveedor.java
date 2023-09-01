@@ -60,7 +60,8 @@ public class ServicioProveedor implements UserDetailsService {
     }
     
      public List<Proveedor> listarProveedor(TipoServicio servicio){
-     List<Proveedor> proveedor = new ArrayList();   
+     List<Proveedor> proveedor = new ArrayList(); 
+     
      repoPro.listarProveedorPorRubro(servicio);
      return proveedor;
     }
