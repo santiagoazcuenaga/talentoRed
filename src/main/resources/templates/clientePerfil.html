@@ -20,10 +20,22 @@
 
     <div style="text-align: center">
         <input hidden th:value="${cliente.id}" name="id">
-        <h2>Hola!!!</h2>
+        <h2>Tu perfil</h2>
         <h2 th:text="${cliente.nombre}"></h2>
-        <p>Correo Electronico</p>
-        <p th:text="${cliente.email}"></p>
+        
+        <div>
+            <div class="row">
+                <div class="col">
+                    <p>Correo Electronico</p>
+                </div>
+                <div class="col">
+                   <p th:text="${cliente.email}"></p>
+                    
+                </div>
+            </div>
+        </div>
+
+
         <p>Tu rol</p>
         <p th:text="${cliente.rol}"></p>
     </div>

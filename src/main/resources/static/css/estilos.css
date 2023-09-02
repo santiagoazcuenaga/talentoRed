@@ -10,9 +10,14 @@
     color: #f3f3f3;
 }
 
+body{
+  font-family: 'Oswald', sans-serif;
+}
+
 /*======================SLIDER DE IMAGENES======================*/
 .carousel-inner {
     max-height: 38rem;
+    font-family: 'Oswald', sans-serif;
 }
 
 @media (min-width: 768px) {
