@@ -2,6 +2,7 @@
 <!--
 Llamar fragmento desde plantilla => <navbar th:replace= "/fragments/navbar :: navbar"> </navbar>
 -->
+<<<<<<< HEAD
 <navbar class="d-inline-flex mt-2 mt-md-0 ms-auto">
     <a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary" href="/" >Inicio</a>
     <a class="me-3 py-2 link-body-emphasis text-decoration-none text-primary" href="#">Servicios</a>
@@ -15,3 +16,61 @@ Llamar fragmento desde plantilla => <navbar th:replace= "/fragments/navbar :: na
     </li>
 
 </navbar>
+=======
+<navbar class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+    <a  class="me-3 py-2  text-white" href="/" >Inicio</a>
+    <a class="me-3 py-2   text-white" href="#">Servicios</a>
+    
+    <li class="nav dropdown">
+        <a class="me-3 dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false" th:if="${session.usuariosession == null}">Registrarse</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/registrarCliente">Quiero ser Cliente</a></li>
+            <li><a class="dropdown-item" href="/proveedor/registrar">Quiero ser prestador</a></li>
+        </ul>
+    </li>
+
+
+    <a class="me-3 py-2  text-white" th:if="${session.usuariosession == null}" href="/login" >Iniciar Sesion</a>
+    <!--
+    <div class="text-end">
+        <button type="button" class="btn btn-primary">Resgistarse</button>
+        <button type="button" class="btn btn-primary">Iniciar Sesión</button>
+    </div>
+    -->
+
+<!--*********************intervencion kidver***********************************-->
+
+    <div class="dropdown-center" th:if="${session.usuariosession != null}">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="me-3 dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
+                Mi perfil
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <p></p>
+                </li>
+                <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')" th:href="@{/mi_perfil/__${user.id}__}">Ver Perfil</a></li>
+                <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')" th:href="@{/editar_perfil/__${user.id}__}">Editar Perfil</a></li>
+                <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')" th:href="@{/proveedor/mi_perfil/__${user.id}__}">Ver Perfil</a></li>
+                <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')" th:href="@{/proveedor/editar_perfil/__${user.id}__}">Editar Perfil</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="btn btn-outline-danger d-flex justify-content-center mx-3 px-2 "
+                        href="http://localhost:8080/logout">Cerrar sesion</a></li>
+            </ul>
+        </ul>
+    </div>
+    <div class="btn-group">
+<!--
+    retoque lukaku
+
+    
+       
+<!--*********************FIN intervencion kidver***********************************-->
+
+
+    </div>
+</navbar>
+
+>>>>>>> f49ee884e082281881ae5125ec6703fdeadb914d

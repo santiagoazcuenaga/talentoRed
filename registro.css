@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Concert+One&family=Montserrat:wght@800&family=Press+Start+2P&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
+    margin: 0;
+    padding: auto;
+    box-sizing: border-box;
+    font-family: 'Montserrat Alternates', sans-serif;
+    
+}
+
+body{
+    background-image: url(img/fondo.jpg);
+
+}
+
+form{
+padding: 30px;
+width: 400px;
+margin: auto;
+margin-top: 100px;
+background-color: rgb(196, 202, 196);
+border-radius: 5px;
+}
+
+.text-form{
+    font-family: 'Anton', sans-serif;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.control{
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid;
+    border-color: green;
+}
+
+.boton{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid;
+    border-color: green;
+
+}
+
+.boton:hover{
+    background-color:  green;
+    border-color: black;
+}
+

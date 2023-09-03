@@ -8,15 +8,17 @@ import com.talentoRed.talentoRed.enums.Rol;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- *
  * @author Usuario
  */
 @Entity
@@ -29,25 +31,34 @@ public class Usuario implements UserDetails {
     private String id;
     private String nombre;
     private String email;
+    private String telefono;
     private String password;
     private String direccion;
+    @OneToOne
+    private Imagen imagen;
     private Boolean alta;
+    @Enumerated(EnumType.STRING)
     private Rol rol;
 
     public Usuario() {
     }
 
-    public Usuario(String id, String nombre, String email, String password, String direccion, Rol rol) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.password = password;
-        this.direccion = direccion;
-        this.rol = rol;
+  
+
+    public String getTelefono() {
+        return telefono;
     }
 
-    public Usuario(String email, String password, List<GrantedAuthority> permisos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
     }
 
     public Boolean getAlta() {

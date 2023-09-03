@@ -1,0 +1,194 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en"
+    class="h-100" data-bs-theme="auto">
+
+<head th:replace="/fragments/head :: head"> </head>
+
+<div>
+    <thead>
+        <th scope="col" sec:authorize="hasRole('USER')">Acciones</th>
+    </thead>
+
+</div>
+<div>
+    <style>
+        body::after {
+            content: "";
+            background: url(/image/345397.jpg);
+            opacity: 0.4;
+            top: 22%;
+            left: 0%;
+            bottom: -76%;
+            right: 0%;
+            position: absolute;
+            z-index: -1;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+    </style>
+</div>
+
+<body class="d-flex h-100 text-center text-bg-ligth">
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+        <header th:replace= "/fragments/header :: header"> </header>
+        <!--Formulario de registro de proveedor -->
+
+
+
+        <h2 style="color:black;">Registra tus datos para acceder a nuestra red de servicios como
+            prestador</h2> <br>
+
+            <div>
+                <img src="/image/user.png" alt="logousuario" width="100" height="100"  /> <br><br>
+
+            </div>
+        <!---->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form class="form-control" th:action="@{/proveedor/registro}" method="POST">
+
+                        <!--Seleccion de tipo de servicio-->
+                        <select class="form-select" aria-label="Default select example" name="tipoServicio">
+                            <option selected required th:value="${TipoServicio}">Seleccione su Servicio</option>
+                            <option value="PLOMERO">Plomero</option>
+                            <option value="ELECTRICISTA">Electricista</option>
+                            <option value="GASISTA">Gasista</option>
+                            <option value="ALBAÑIL">Albañil</option>
+                            <option value="JARDINERO">Jardinero</option>
+                            <option value="MECANICO">Mecanico</option>
+                            <option value="CARPINTERO">Carpintero</option>
+                            <option value="TECNICO">Tecnico</option>
+                        </select><br />
+
+
+                        <!--<label for="nombre">Nombre:</label> <br>-->
+                        <input type="text" class="form-control" id="nombre" required th:value="${nombre}" name="nombre"
+                            placeholder="Nombre y Apellido"><br>
+
+
+                        <!--<label for="email">Email:</label><br>-->
+                        <input type="email" class="form-control" id="email" th:value="${email}" name="email"
+                            placeholder="email" required><br>
+
+
+                        <!--<label for="contrasena">Contraseña:</label><br>-->
+                        <input type="password" class="form-control" id="contrasena" required name="password"
+                            th:value="${password}" placeholder="contraseña"><br>
+
+
+                        <!--<label for="confirmar_contrasena">Confirmar Contraseña:</label><br>-->
+                        <input type="password" class="form-control" id="confirmar_contrasena" name="password2"
+                            placeholder="confirmar contraseña" required th:value="${password2}"><br>
+
+                        <!-- <select class="form-select" autocomplete="country" aria-label="Código de país">
+                            <option selected th:value="${nroContacto}">Pais</option>
+                            <option th:value="${nroContacto}">Estados Unidos +1</option>
+                            <option th:value="${nroContacto}">Canadá +1</option>
+                            <option th:value="${nroContacto}">Reino Unido +44</option>
+                            <option th:value="${nroContacto}">Argentina +54</option>
+                        </select> -->
+
+                        <div data-a-target="security-phone-input">
+                            <input required name="telefono" th:value="${telefono}" id="phone-input"
+                                aria-label="Número de teléfono" type="text" class="form-control" autocapitalize="off"
+                                autocorrect="off" data-a-target="tw-input" inputmode="tel"
+                                placeholder="Numero de Telefono">
+                        </div>
+
+                        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                        <label
+                            style="background-color: rgba(126, 99, 33, 0.685); color:aliceblue; padding: 1%;">Matricula</label>
+                        <br>
+                        <input type="checkbox" id="true" th:value="${matriculaono}" />
+                        <label for="true">Si</label>
+                        <input type="checkbox" id="false" th:value="${matriculaono}" />
+                        <label for="false">No</label><br> -->
+                        <!-- <div>
+                            <label for="exampleFormControlTextarea1" class="form-label">En caso de SI,
+                                escriba su matricula</label>
+                            <input class="form-control" id="exampleFormControlTextarea1" th:value="${matricula}"
+                                name="matricula"></input>
+                        </div> -->
+
+                        <label style="background-color: #d37203; color:aliceblue; padding: 1%;">Tiene Matricula?</label>
+                        <br>
+                        <input type="radio" name="tieneMatricula" value="true" id="siRadio" /> <!-- Valor verdadero -->
+                        <label for="siRadio">Si</label>
+                        <input type="radio" name="tieneMatricula" value="false" id="noRadio" /> <!-- Valor falso -->
+                        <label for="noRadio">No</label>
+                        <br>
+                        <input class="form-control" type="text" id="inputOculto" style="display: none;"
+                            th:value="${matricula}" name="matricula">
+                        <div class="mb-3">
+                            <label style="background-color: #d37203; color:aliceblue; padding: 1%;"
+                                for="exampleFormControlTextarea1" class="form-label" required
+                                th:value="${Descripcion}" name="descripcion">Descripcion</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+
+                        <select class="form-select" aria-label="Default select example" name="disponibilidad">
+                            <option selected th:value="${Disponibilidad}">
+                                Elige tu disponibilidad</option>
+                            <option value="MAÑANA">Mañana</option>
+                            <option value="TARDE">Tarde</option>
+                            <option value="NOCHE">Noche</option>
+                            <option value="FERIADOS">Feriados</option>
+                        </select><br>
+
+                        <!--Seleccion de barrio-->
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected th:value="${MetodoPago}">Seleccione su Metodo de pago</option>
+                            <option value="EFECTIVO">Efectivo</option>
+                            <option value="DEBITO">Debito</option>
+                            <option value="MERCADOPAGO">MercadoPago</option>
+                        </select><br>
+
+                        <div style="width:300px align-justify" class="mb-3">
+                            <label for="formFile" class="form-label"
+                                style="background-color: #d37203; color:aliceblue; padding: 1%; ">
+                                ingrese una foto de perfil</label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+
+                        <div style="width:500 px align-justify" class="mb-3">
+                            <label for="formFilePortada" class="form-label"
+                                style="background-color: #d37203; color:aliceblue; padding: 1%; ">
+                                Ingrese una foto de portada (opcional)</label>
+                            <input class="form-control" type="file" id="formFilePortada">
+                        </div>
+
+
+                        <input type="submit" class="btn btn-outline-dark" value="Registrarme">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <script>
+            const siRadio = document.getElementById('siRadio');
+            const inputOculto = document.getElementById('inputOculto');
+
+            siRadio.addEventListener('change', function () {
+                if (siRadio.checked) {
+                    inputOculto.style.display = 'block';
+                } else {
+                    inputOculto.style.display = 'none';
+                }
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+            <br>
+
+        <footer th:replace="/fragments/footer :: footer"> </footer>
+    </div>
+</body>
+
+
+</html>

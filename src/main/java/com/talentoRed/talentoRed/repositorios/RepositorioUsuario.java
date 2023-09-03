@@ -5,6 +5,7 @@
 package com.talentoRed.talentoRed.repositorios;
 
 import com.talentoRed.talentoRed.entidades.Usuario;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,9 +16,13 @@ import org.springframework.stereotype.Repository;
  * @author Usuario
  */
 @Repository
-public interface repositorioUsuario extends JpaRepository<Usuario,String> {
+public interface RepositorioUsuario extends JpaRepository<Usuario,String> {
     @Query("SELECT a FROM Usuario a WHERE a.email = :email ")
     public Usuario buscarUsuarioPorEmail(@Param("email") String email );
     
-
+    @Query("SELECT u FROM Usuario u WHERE u.rol = 'Proveedor'")
+    public List<Usuario> findAllProveedoresOrderedByTipoServicio();
+    
+    @Query("SELECT u FROM Usuario u WHERE u.rol = 'Cliente'")
+    public List<Usuario> findAllClientes();
 }
