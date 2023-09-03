@@ -8,6 +8,7 @@ import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.enums.TipoServicio;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,6 +22,7 @@ import javax.persistence.OneToOne;
 public class Proveedor extends Usuario {
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "servicio")
     private TipoServicio servicio;
 
     private Boolean tieneMatricula;
