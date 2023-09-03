@@ -1,4 +1,10 @@
+/*======================MENU======================*/
+/*@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
 
+		font-family: 'Montserrat Alternates', sans-serif;
+}*/
+/* Eliminamos los margenes y paddings */
 *{
     padding: 0;
     margin: 0;
@@ -34,6 +40,7 @@ header {
 .formregistro {
     display: grid;
     place-items: center;
+
     height: 100px;
     width: 200px
 
@@ -41,21 +48,21 @@ header {
 
 /*=====================Logo=============================*/
 .logo{
-    border-radius: 55%;
-    margin-top: 15px;
-    margin-left: 10px;
-
+     border-radius: 55%;
+     margin-top: 15px;
+     margin-left: 10px;
+    
 }
 
 .text-logo{
-    color: white;
-    font-weight: 300;
-    font-size: 22px;
-    margin-left: 20px;
-    text-decoration: none;
-    margin-top: 20px;
-
-}
+		color: white;
+		font-weight: 300;
+		font-size: 22px;
+		margin-left: 20px;
+                text-decoration: none;
+                margin-top: 20px;
+                
+	}
 
 /*=====================Navbar=============================*/
 
@@ -70,29 +77,28 @@ header {
 		border-bottom: 5px solid transparent;
 		font-size: 18px;
 		margin-right: 5px;
-    margin-top: 20px;
+                margin-top: 20px;
 }
 
 .me-3:hover{
-    border-bottom: 7px solid #d37203;
-    color:  white;
-    padding-bottom: 5px;
-
+                border-bottom: 7px solid #d37203;
+                color:  white;
+		padding-bottom: 5px;
 }
 
 /*Las lista dentro de los enlaces*/
 .dropdown-item{
-    display: block;
-    text-decoration: none;
-    padding: 20px;
-    color: #d37203;
-    border-left: 8px solid transparent;
-    transition: all 400ms ease;
+                display: block;
+		text-decoration: none;
+		padding: 20px;
+		color: #d37203;
+		border-left: 8px solid transparent;
+		transition: all 400ms ease;
 }
     
 .dropdown-menu li a:hover{
-    border-left: 8px solid #d37203;
-    background: #d37203;
+    	border-left: 8px solid #d37203;
+        background: #d37203;
 }
 
 /*=====================Categorias=============================*/
@@ -110,18 +116,18 @@ header {
     width: 25%; 
     padding: 10px;
     box-sizing: border-box;
-    text-decoration: none;
-    margin-bottom: 10px;
-    border-radius: 25%;
-    margin-right: 50px;
-
+     text-decoration: none;
+     margin-bottom: 10px;
+     border-radius: 25%;
+     margin-right: 50px;
+        
 }
 
 .contenedor-img{
-
-    border-radius: 10%;
-    box-shadow: 0 0 10px rgb(0, 0, 0,0.8);
-
+       
+          border-radius: 10%;
+          box-shadow: 0 0 10px rgb(0, 0, 0,0.8);
+         
 }
 .categoria a{
     text-decoration: none;
@@ -154,7 +160,160 @@ header {
  #lifooter {
     font-size: 15px;
  }
- /*estilos agregados por guille para vista proveedores*/
+
+ /* css Perfil Proveedor */
+ .nav-top {
+  height: 63px; 
+  background-color: white !important; 
+  border-top:0.5px solid #dbdbdb; 
+  border-bottom:1px solid #dbdbdb;
+}
+
+.nav-container {
+  padding-left: 25% !important; 
+  padding-right: 25% !important;
+}
+
+@media screen and (max-width: 1605px) {
+  .nav-container {
+      padding-left: 20% !important; 
+      padding-right: 20% !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .nav-container {
+      padding-left: 5% !important; 
+      padding-right: 5% !important;
+  }
+}
+
+.img-nav {
+  border-radius: 100%;
+  -o-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%; 
+  max-width:30px; 
+  max-height:25px;
+}
+
+.img-profile {
+  border-radius: 100%;
+  -o-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%; 
+  max-width:200px; 
+  max-height:150px;
+}
+
+.username {
+  font-weight: 300; font-size: 28px;
+}
+
+.name {
+  font-size: 16px; display: inline; font-weight: 600 !important;
+}
+
+.profile-datas {
+  font-size: 16px;
+}
+
+.profile-desc {
+  font-size: 16px; 
+}
+
+.nav-feed {
+  border-bottom: none !important; 
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.nav-link-1 {
+  color: #495057;
+  background-color: #fafafa !important;
+  border-color: gray #fff #fff !important;
+  border-top-right-radius: .0rem !important;
+  border-top-left-radius: .0rem !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.nav-link-2 {
+  color: #a2a8af;
+  background-color: #fafafa !important;
+  border-color: #fff #fff #fff !important;
+  border-top-right-radius: .0rem !important;
+  border-top-left-radius: .0rem !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+.card {
+  border: 0px solid rgba(0,0,0,.125) !important;
+  border-radius: .0rem !important;
+}
+
+.card .card-img, .card-img-top {
+  border-top-left-radius: 0rem !important;
+  border-top-right-radius: 0rem !important;
+}
+
+.stories{
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.form-control {
+  border-radius: .15rem !important;
+  padding: 0% !important; 
+  background-color: #fafafa !important; 
+  text-align: center; 
+  font-size: 15px !important;
+}
+
+.icons {
+  padding: 4%; 
+  font-size: 25px;
+}
+
+.button-edit {
+  color: black !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  border-color: #dae1e7 !important;
+}
+
+.btn {
+  padding: .100rem .50rem !important;
+}
+
+/*=====================background vista registro=============================*/
+
+
+/*Datos personales prestador*/
+
+.lista-datos {
+  width: 50%;
+  list-style: none;
+  text-align: left;
+}
+
+.lista-datos li {
+  padding: 5px 0;
+}
+
+.lista-datos li>.icono {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+
+/*estilos agregados por guille para vista proveedores*/
 
 .card-img-top {
   width: 100px;
@@ -210,22 +369,6 @@ body {
   font-family: Arial, sans-serif;
 }
 
-
-/* Estilos de from generales */
-/*.form-control:focus{
-  background-color: #d37203;
-  border-color: #d37203;
-  border: 1px solid;
-}
-.form-control:hover{
-border-color: #d37203;
-}*/
-
-/* FIn Estilos de btn */
-
-
-
-
 /* Estilos de la barra lateral */
 
 
@@ -238,6 +381,7 @@ border-color: #d37203;
   top: 130px; /* Ajusta esto según tus preferencias */
   left: 20 px;
   bottom: 0;
+  text-align: justify;
 }
 
 .sidebar h2 {
@@ -295,18 +439,12 @@ label {
 
 label:hover,
 label:hover ~ label {
-  color: orange;
+  color: gold;
 }
 
 input[type="radio"]:checked ~ label {
-  color: orange;
-}
-
-/*=====================background vista registro=============================*/
-
-.carru{
-  background-image: url(/image/345397.jpg);
-  
+  color: gold;
 }
 
 
+/*===============================hasta aca lo de Guille==========================*/

@@ -137,6 +137,7 @@ private ServicioProveedor serPro;
         modelo.addAttribute("usuarios", proveedores);
         return "listaProveedores.html";
     }
+  
     
     @GetMapping("/comofun")
     public String comofun(ModelMap modelo, HttpSession session) {

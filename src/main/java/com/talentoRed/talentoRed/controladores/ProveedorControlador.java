@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import com.talentoRed.talentoRed.servicios.ServicioUsuario;
+import com.talentoRed.talentoRed.entidades.Usuario;
 
 /**
  * @author Kidver
@@ -76,14 +78,14 @@ public class ProveedorControlador {
     
   //controlador para vista de proveedores x Guille
     
-  /*  @GetMapping("/proveedores")
+   /* @GetMapping("/proveedores")
     public String Proveedores() {
         return "proveedores.html";
-    }
+    }*/
     
     //controlador para vista de proveedores x Servicio
     
-    @GetMapping("/ordenados")
+   /* @GetMapping("/ordenados")
     public String ordenarProveedores(ModelMap model, HttpSession session) {
         try {
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
@@ -98,6 +100,16 @@ public class ProveedorControlador {
         }
         
         
+    }*/
+      @Autowired
+    ServicioUsuario usuarioservicio;
+      
+    
+    @GetMapping("/listarProveedores")
+    public String mostrarProveedores(ModelMap modelo) {
+        List<Usuario> usuarios = usuarioservicio.mostrarProveedores();
+        modelo.addAttribute("usuarios", usuarios);
+        return "ordenarProveedores";
     }
 
-}//The end
+}
