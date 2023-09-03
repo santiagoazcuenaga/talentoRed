@@ -24,6 +24,7 @@ PANEL ADMINISTRADOR
                         <th>Rol</th>
                         <th>Estado</th>
                         <th>Acciones</th>
+                        <th>Ver</th>
                     </tr>
                 </thead>
                 <tbody th:each="usuario : ${usuarios}">
@@ -41,6 +42,10 @@ PANEL ADMINISTRADOR
                             <form th:action="@{/admin/eliminarUsuario/__${usuario.id}__}" method="POST">
                                 <button type="submit">Eliminar Usuario</button>
                             </form>
+                        </td>
+                        <td>
+                           <a th:attr="href=@{/admin/verUsuario/{id}(id=${usuario.id})}"><button> Ver perfil</button></a>
+
                         </td>
                     </tr>
                 </tbody>

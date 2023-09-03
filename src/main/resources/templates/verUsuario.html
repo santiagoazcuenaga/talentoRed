@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace= "/fragments/head :: head"> </head>
+    <body>
+        <header th:replace= "/fragments/header :: header"> </header>
+        <h1>Detalles del Usuario</h1>
+        <table>
+            <tr>
+                <th>Rol</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Imagen</th>
+            </tr>
+            <tr>
+                <td th:text="${usuario.rol}"></td>
+                <td th:text="${usuario.nombre}"></td>
+                <td th:text="${usuario.telefono}"></td>
+                <!-- Otros atributos aquí -->
+                <!--            <td th:text="${usuario.direccion}"></td>-->
+                <!--            <td>
+                                <img th:src="${usuario.imagen}" alt="Imagen de Usuario" width="100px" height="100px" />
+                            </td>-->
+            </tr>
+        </table>
+        <a href="/admin/dashboard">Volver al Panel de Administración</a>
+    </body>
+</html>
