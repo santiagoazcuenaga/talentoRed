@@ -152,4 +152,27 @@ public class ServicioUsuario implements UserDetailsService {
            throw new MyException("Las contraseñas no coinciden.");
        }
     }
+    @Transactional
+    public void cambiarRol(String id, Rol rol) {
+        Optional<Usuario> respuesta = repositorioUsuario.findById(id);
+
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setRol(rol);
+        }
+    }
+    
+    @Transactional
+    public void cambiarEstado(String id) {
+        Optional<Usuario> respuesta = repositorioUsuario.findById(id);
+
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            if(usuario.getAlta()!=true){
+                usuario.setAlta(true);
+            } else{
+                usuario.setAlta(false);
+            }
+        }
+    }
 }

@@ -77,7 +77,6 @@ private ServicioProveedor serPro;
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_CLIENTE', 'ROLE_PROVEEDOR')")
-
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
         try {

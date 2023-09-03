@@ -1,10 +1,10 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en"
-    class="h-100" data-bs-theme="auto">
+      class="h-100" data-bs-theme="auto">
 
-<head th:replace="/fragments/head :: head"> </head>
+    <head th:replace="/fragments/head :: head"> </head>
 
-<body class="d-flex h-100 text-center text-bg-ligth">
+    <body class="d-flex h-100 text-center text-bg-ligth">
 
     <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
         <header th:replace= "/fragments/header :: header"> </header>
@@ -46,6 +46,11 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
+                </div>
+                <!---->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
 
                             <form th:action="@{/registroCliente}" method="POST">
 
@@ -82,34 +87,34 @@
                                             th:value="${password2}"><br>
                                     </div>
 
-                                    <div>
-                                        <!--Seleccion de barrio-->
-                                        <select class="form-select" aria-label="Default select example" name="barrio"
-                                            required th:value="${barrio}">
-                                            <option selected>Seleccione Barrio</option>
-                                            <option value="ALTOS_DE_CHACRAS">Altos de Chacras</option>
-                                            <option value="PORTAL_LUJAN">Portal Lujan</option>
-                                            <option value="COMPLEJO_CHACRAS_DE_CORIA">Complejo Chacras de Coria</option>
+                                        <div>
+                                            <!--Seleccion de barrio-->
+                                            <select class="form-select" aria-label="Default select example" name="barrio"
+                                                    required th:value="${barrio}">
+                                                <option selected>Seleccione Barrio</option>
+                                                <option value="ALTOS_DE_CHACRAS">Altos de Chacras</option>
+                                                <option value="PORTAL_LUJAN">Portal Lujan</option>
+                                                <option value="COMPLEJO_CHACRAS_DE_CORIA">Complejo Chacras de Coria</option>
 
-                                        </select>
+                                            </select>
 
-                                    </div>
-
-                                    <!--Manzana y casa-->
-                                    <div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="text" class="form-control" name="manzana"
-                                                    placeholder="Manzana" aria-label="Manzana" required
-                                                    th:value="${manzana}">
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" class="form-control" name="casa" placeholder="Casa"
-                                                    aria-label="Casa" required th:value="${casa}">
-                                            </div>
                                         </div>
 
-                                    </div>
+                                        <!--Manzana y casa-->
+                                        <div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input type="text" class="form-control" name="manzana"
+                                                           placeholder="Manzana" aria-label="Manzana" required
+                                                           th:value="${manzana}">
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" name="casa" placeholder="Casa"
+                                                           aria-label="Casa" required th:value="${casa}">
+                                                </div>
+                                            </div>
+
+                                        </div>
 
 
 
@@ -124,20 +129,20 @@
                                 </div>
                         </form>
 
-                        <!-- <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-                                <div class="card-body">
-                                    <h5 class="card-title">Exito!</h5>
-                                    <p class="card-text" th:text="${exito}"></p>
+                            <!-- <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+                                    <div class="card-body">
+                                        <h5 class="card-title">Exito!</h5>
+                                        <p class="card-text" th:text="${exito}"></p>
+                                    </div>
                                 </div>
-                            </div>
-                             <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
-                                 <div class="card-body">
-                                     <h5 class="card-title">Error ð</h5>
-                                     <p class="card-text" th:text="${error}"></p>
-                                 </div> -->
+                                 <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
+                                     <div class="card-body">
+                                         <h5 class="card-title">Error ð</h5>
+                                         <p class="card-text" th:text="${error}"></p>
+                                     </div> -->
+                        </div>
                     </div>
                 </div>
-            </div>
 
         </main>
         
