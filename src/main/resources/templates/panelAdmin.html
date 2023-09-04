@@ -10,9 +10,10 @@ PANEL ADMINISTRADOR
             <header th:replace= "/fragments/header :: header"> </header>
             <h1>Panel del Administrador</h1>
             <p>Bienvenido!</p>
-            <p>
-                Lista de usuarios<br>
-                Panel de funciones<br>
+            <p> Panel de funciones<br>
+                <a href="/admin/ordenar">Listar Usuarios Ordenados</a> 
+                <a href="/admin/mostrar">Mostrar Clientes Ordenados</a>
+                <a href="/admin/mostrarPro">Mostrar Proveedores Ordenados</a> <br>
                 <a href="/">VOLVER AL INICIO</a>
             </p>
             <table>
@@ -23,6 +24,7 @@ PANEL ADMINISTRADOR
                         <th>Rol</th>
                         <th>Estado</th>
                         <th>Acciones</th>
+                        <th>Ver</th>
                     </tr>
                 </thead>
                 <tbody th:each="usuario : ${usuarios}">
@@ -40,6 +42,10 @@ PANEL ADMINISTRADOR
                             <form th:action="@{/admin/eliminarUsuario/__${usuario.id}__}" method="POST">
                                 <button type="submit">Eliminar Usuario</button>
                             </form>
+                        </td>
+                        <td>
+                           <a th:attr="href=@{/admin/verUsuario/{id}(id=${usuario.id})}"><button> Ver perfil</button></a>
+
                         </td>
                     </tr>
                 </tbody>

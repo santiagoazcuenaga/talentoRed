@@ -40,7 +40,7 @@ public class ServicioCliente implements UserDetailsService {
     private RepositorioCliente repositorioCliente;
     @Autowired
     private ServicioImagen servicioImagen;
-
+    //crear un cliente
     @Transactional
     public void crearCliente(MultipartFile archivo, String nombre, String email, String password,
             String password2,String telefono, Barrio barrio, String manzana, int casa) throws MyException {
@@ -60,7 +60,7 @@ public class ServicioCliente implements UserDetailsService {
         repositorioCliente.save(cliente);
 
     }
-
+    //funcion para validar datos completados
     private void validar(String nombre, String email, String password, String password2) throws MyException {
         if (email.isEmpty() || email == null) {
             throw new MyException("el email no puede ser nulo");
@@ -75,13 +75,14 @@ public class ServicioCliente implements UserDetailsService {
             throw new MyException("Las contraseñas no coinciden.");
         }
     }
-
+    //lista de usuarios
     public List<Cliente> listarUsuarios() {
         List<Cliente> cliente = new ArrayList();
         cliente = repositorioCliente.findAll();
         return cliente;
     }
-    
+    //lista de clientes
+  
    
     
 
@@ -130,4 +131,6 @@ public class ServicioCliente implements UserDetailsService {
             repositorioCliente.save(cliente);
         }
     }
+    
+    
 }
