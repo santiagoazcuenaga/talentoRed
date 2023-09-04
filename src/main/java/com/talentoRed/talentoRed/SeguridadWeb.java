@@ -4,7 +4,6 @@
  */
 package com.talentoRed.talentoRed;
 
-import com.talentoRed.talentoRed.servicios.ServicioCliente;
 import com.talentoRed.talentoRed.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +23,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     public ServicioUsuario servicioUsuario;
 
@@ -39,22 +37,25 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/CSS/*", "/js/*", "/image/*", "/**")
-                .permitAll()
-            .and().formLogin()
+                .antMatchers("/proveedores").hasAnyRole("CLIENTE", "PROVEEDOR", "ADMIN")//SOLUCION PARA DAR PERMISOS PARA INGRESAR
+                .antMatchers("/proveedor/ordenados").hasAnyRole("CLIENTE", "PROVEEDOR", "ADMIN")//A LAS VISTAS LOGUEADOS
+                .antMatchers("/CSS/*", "/js/*", "/image/*", "/**").permitAll()
+                .and()
+                .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/inicio")
                 .permitAll()
-            .and().logout()
+                .and()
+                .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .permitAll()
-                .and().csrf()
+                .and()
+                .csrf()
                 .disable();
-
     }
 
 }

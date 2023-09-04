@@ -1,0 +1,46 @@
+*   [33mf64602f[m[33m ([m[1;31morigin/lmcarballo[m[33m, [m[1;32mlmcarballo[m[33m)[m Merge branch 'master' of https://github.com/santiagoazcuenaga/talentoRed into lmcarballo
+[31m|[m[32m\[m  
+[31m|[m * [33m886e8cc[m[33m ([m[1;31morigin/santi[m[33m, [m[1;31morigin/master[m[33m)[m aa
+[31m|[m *   [33me7edd38[m a
+[31m|[m [33m|[m[34m\[m  
+[31m|[m [33m|[m * [33m9a48d20[m[33m ([m[1;31morigin/kidver[m[33m)[m login proveedor
+[31m|[m * [34m|[m [33m99fa01d[m aa
+* [34m|[m [34m|[m [33ma6c1087[m preparando commit
+* [34m|[m [34m|[m   [33maa2121c[m traje version ultima
+[35m|[m[36m\[m [34m\[m [34m\[m  
+[35m|[m * [34m\[m [34m\[m   [33mc440107[m segundo commit
+[35m|[m [34m|[m[1;32m\[m [34m\[m [34m\[m  
+[35m|[m [34m|[m [1;32m|[m[34m/[m [34m/[m  
+[35m|[m [34m|[m[34m/[m[1;32m|[m [34m|[m   
+* [34m|[m [1;32m|[m [34m|[m   [33mdcec246[m Merge branch 'kidver' of https://github.com/santiagoazcuenaga/talentoRed into lmcarballo
+[1;33m|[m[34m\[m [34m\[m [1;32m\[m [34m\[m  
+[1;33m|[m [34m|[m [34m|[m[34m_[m[1;32m|[m[34m/[m  
+[1;33m|[m [34m|[m[34m/[m[34m|[m [1;32m|[m   
+[1;33m|[m * [34m|[m [1;32m|[m [33m7766dae[m login cliente
+[1;33m|[m * [34m|[m [1;32m|[m [33mf299f4d[m trabajando en log-in
+[1;33m|[m * [34m|[m [1;32m|[m   [33m476ff18[m merge Demo 2
+[1;33m|[m [1;35m|[m[1;36m\[m [34m\[m [1;32m\[m  
+[1;33m|[m [1;35m|[m * [34m|[m [1;32m|[m [33mb782072[m[33m ([m[1;31morigin/Guille[m[33m)[m ok para demo
+[1;33m|[m * [1;36m|[m [34m|[m [1;32m|[m [33m56fac90[m Demo 2
+[1;33m|[m * [1;36m|[m [34m|[m [1;32m|[m   [33m9692053[m aun no funciona el log-in
+[1;33m|[m [1;32m|[m[34m\[m [1;36m\[m [34m\[m [1;32m\[m  
+[1;33m|[m [1;32m|[m [34m|[m [1;36m|[m[34m/[m [1;32m/[m  
+[1;33m|[m [1;32m|[m [34m|[m[34m/[m[1;36m|[m [1;32m/[m   
+[1;33m|[m [1;32m|[m [34m|[m[1;32m_[m[1;36m|[m[1;32m/[m    
+[1;33m|[m [1;32m|[m[1;32m/[m[34m|[m [1;36m|[m     
+[1;33m|[m [1;32m|[m * [1;36m|[m [33m192c1a7[m actualizo guille
+[1;33m|[m [1;32m|[m [33m|[m[1;36m\[m[1;36m|[m 
+[1;33m|[m [1;32m|[m [33m|[m * [33mabd3967[m agregando direccion a registro usuario
+[1;33m|[m [1;32m|[m [33m|[m * [33m72c8950[m agregando direccion a registro usuario
+[1;33m|[m [1;32m|[m [33m|[m * [33m52bf4b2[m agregando direccion a registro usuario
+[1;33m|[m [1;32m|[m [33m|[m *   [33m832a5d4[m agregando direccion a registro usuario
+[1;33m|[m [1;32m|[m [33m|[m [35m|[m[36m\[m  
+[1;33m|[m [1;32m|[m [33m|[m * [36m|[m [33m83cb3d2[m agregando direccion a registro usuario
+[1;33m|[m [1;32m|[m * [36m|[m [36m|[m [33m82abc88[m corregir logueo
+[1;33m|[m [1;32m|[m [36m|[m [36m|[m[36m/[m  
+[1;33m|[m [1;32m|[m [36m|[m[36m/[m[36m|[m   
+[1;33m|[m [1;32m|[m * [36m|[m   [33m2a72588[m Merge branch 'Morenita' of https://github.com/santiagoazcuenaga/talentoRed into lmcarballo
+[1;33m|[m [1;32m|[m [1;31m|[m[1;32m\[m [36m\[m  
+[1;33m|[m [1;32m|[m * [1;32m|[m [36m|[m [33mbcc92b1[m actualizamos
+[1;33m|[m * [1;32m|[m [1;32m|[m [36m|[m [33m5bc99d6[m log-in aun no funciona
+[1;33m|[m [1;32m|[m[1;32m/[m [1;32m/[m [36m/[m  

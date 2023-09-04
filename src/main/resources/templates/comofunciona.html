@@ -1,0 +1,138 @@
+<!doctype html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace= "/fragments/head :: head"> </head>
+
+  <body class="d-flex h-100 text-center text-bg-ligth">
+
+  <div class="cover-container d-flex w-100 h-100 mx-auto flex-column"> 
+
+
+    <header th:replace="/fragments/header :: header"></header>
+    <!-- header section ends -->
+
+     <!--Slider de imagenes-->
+
+  <main class="px-10" style="background: url(/image/345397.jpg);  background-repeat: no-repeat;
+  background-size: cover; "  >
+    <div class="como-funci"  >
+
+      <h1 class="featurette-heading" style="color: white;"><strong> ¿Como Funciona?</strong>  </h1>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h1 class="featurette-heading" style="color: white;"><strong> Acceder al sistema.</strong>  </h1>
+        <br>
+        <p class="lead" style="color: white;">Lo primero que hay que realizar es el registro. <br>
+               Para acceder al sistema con tu clave y usario,es facil y rapido!<br>
+                Para reistrarte hace   <a href="/registrarCliente" style="text-decoration: none; color: rgb(240, 93, 8);"> click Aqui.</a>
+               
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img src="image/N1.png" alt="N1" height="250px" width="250px" style="border-radius: 400px;">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider" style="color: rgb(240, 98, 3);">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h1 class="featurette-heading" style="color: white;"><strong>Personalizá tu pedido</strong>  </h1>
+        <br>
+        <p class="lead" style="color: white;"><strong>¡Es gratis!</strong> Hacé una solicitud indicando lo que necesitás hora,dia,etc!<br>
+           mientras más detalles incluyás más fácil será <br>
+            un profesional que se adapte a vos.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+          <img src="image/N2.png" alt="N1" height="250px" width="250px" style="border-radius: 400px;">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider" style="color: rgb(240, 98, 3);">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading" style="color: white;"><strong>Timbra a los profesionales</strong> </h2>
+        <br>
+        <p class="lead" style="color: white;">
+          Elegí a todos los profesionales para conseguír más respuestas rápidamente o elegí al profesional que más te convezca.<br>
+          Una vez que el profesional ha revisado tu solicitud se pondrá en contacto con vos,<br>
+          para aclarar dudas, enviar más información, concretar la fecha para la visita…<br>
+          Una vez pactado el profesional aceptara tu solicitud y listo!<br>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img src="image/N3.png" alt="N1" height="250px" width="250px" style="border-radius: 400px;">
+
+      </div>
+    </div>
+    <hr class="featurette-divider" style="color: rgb(240, 98, 3);">
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <br>
+        <h2 class="featurette-heading" style="color: white;"><strong>¡Valorá al profesional!</strong> </h2>
+          <br>
+        <p class="lead" style="color: white;">
+          No olvidés valorar el trabajo del profesional para ayudar a otros usuarios <br>
+                    a encontrar el mejor profesional del hogar.
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img src="image/N4.png" alt="N1" height="250px" width="250px" style="border-radius: 400px;">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider" style="color: rgb(240, 98, 3);">
+  </div>
+  <div class="b-example-divider"></div>
+
+  <div class="container px-4 py-5" id="icon-grid">
+    <h2 style="color: white;">Beneficio de usar Talento Red</h2>
+    <hr class="featurette-divider" style="color: rgb(240, 98, 3);">
+
+    <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-3 g-3 py-5">
+      <div class="col d-flex align-items-start" style="color: white;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-piggy-bank-fill" viewBox="0 0 16 16">
+          <path d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069c0-.145-.007-.29-.02-.431.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a.95.95 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.735.735 0 0 0-.375.562c-.024.243.082.48.32.654a2.112 2.112 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595Zm7.173 3.876a.565.565 0 0 1-.098.21.704.704 0 0 1-.044-.025c-.146-.09-.157-.175-.152-.223a.236.236 0 0 1 .117-.173c.049-.027.08-.021.113.012a.202.202 0 0 1 .064.199Zm-8.999-.65a.5.5 0 1 1-.276-.96A7.613 7.613 0 0 1 7.964 3.5c.763 0 1.497.11 2.18.315a.5.5 0 1 1-.287.958A6.602 6.602 0 0 0 7.964 4.5c-.64 0-1.255.09-1.826.254ZM5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
+        </svg>
+        <div>
+          <h4 class="fw-bold mb-0" >Es gratis</h4>
+          <p>Para utilizarlo solo tenés que registrarte.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start" style="color: white;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+        </svg>
+        <div>
+          <h4 class="fw-bold mb-0">Seguro</h4>
+          <p>Cuando un prestador/a brinda un servicio, es calificado por el cliente y desactivado de la plataforma ante incumplimientos.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start" style="color: white;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-envelope-heart-fill" viewBox="0 0 16 16">
+          <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555l-4.2 2.568a2.785 2.785 0 0 0-.051-.105c-.666-1.3-2.363-1.917-3.699-1.25-1.336-.667-3.033-.05-3.699 1.25l-.05.105L.05 3.555ZM11.584 8.91a4.694 4.694 0 0 1-.073.139L16 11.8V4.697l-4.003 2.447c.027.562-.107 1.163-.413 1.767Zm-4.135 3.05c-1.048-.693-1.84-1.39-2.398-2.082L.19 12.856A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144L10.95 9.878c-.559.692-1.35 1.389-2.398 2.081L8 12.324l-.551-.365ZM4.416 8.91c-.306-.603-.44-1.204-.413-1.766L0 4.697v7.104l4.49-2.752a4.742 4.742 0 0 1-.074-.138Z"/>
+          <path d="M8 5.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
+        </svg>
+        <div>
+          <h4 class="fw-bold mb-0">Es simple</h4>
+          <p>Es muy sencillo, realizá tu solicitud y seleccionas a todos los profesionales. ¡Ellos se pondrán en contacto con vos!</p>
+        </div>
+      </div>
+    
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+    <!--inicio footer-->
+    <footer th:replace= "/fragments/footer :: footer"> </footer>
+    <!--fin footer-->
+</div>
+
+</html>

@@ -22,72 +22,14 @@
 <body class="d-flex h-100 text-center text-bg-ligth">
   
   <div class="cover-container d-flex w-100 h-100 mx-auto flex-column" id="arriba" >
-    <header class="mb-auto border-bottom" style="position: fixed; width: 100%; z-index: 1000;">
-      <nav>
-          <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-              <!--inicio logo-->
-              <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                  <img class="logo" src="/image/LogoPic.jpg" width="120" height="80" alt="logo_talentoRed">
-              </a>
-              <a class="text-logo" href="/">
-                  <h1>TalentoRed</h1>
-              </a>
-              <!--fin logo-->
-  
-              <!--inicio navbar-->
-              <navbar class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                  <a class="me-3 py-2  text-white" href="/">Inicio</a>
-                  <a class="me-3 py-2   text-white" href="#">Servicios</a>
-  
-                  <li class="nav dropdown">
-                      <a class="me-3 dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false"
-                          th:if="${session.usuariosession == null}">Registrarse</a>
-                      <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="/registrarCliente">Quiero ser Cliente</a></li>
-                          <li><a class="dropdown-item" href="/proveedor/registrar">Quiero ser prestador</a></li>
-                      </ul>
-                  </li>
-  
-  
-                  <a class="me-3 py-2  text-white" th:if="${session.usuariosession == null}" href="/login">Iniciar
-                      Sesion</a>
-                  <div class="dropdown-center" th:if="${session.usuariosession != null}">
-                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <a class="me-3 dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
-                              Mi perfil
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-end">
-                              <li>
-                                  <p></p>
-                              </li>
-                              <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')"
-                                      th:href="@{/mi_perfil/__${user.id}__}">Ver Perfil</a></li>
-                              <li><a class="dropdown-item" sec:authorize="hasRole('CLIENTE')"
-                                      th:href="@{/editar_perfil/__${user.id}__}">Editar Perfil</a></li>
-                              <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')"
-                                      th:href="@{/proveedor/mi_perfil/__${user.id}__}">Ver Perfil</a></li>
-                              <li><a class="dropdown-item" sec:authorize="hasRole('PROVEEDOR')"
-                                      th:href="@{/proveedor/editar_perfil/__${user.id}__}">Editar Perfil</a></li>
-                              <li>
-                                  <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="btn btn-outline-danger d-flex justify-content-center mx-3 px-2 "
-                                      href="http://localhost:8080/logout">Cerrar sesion</a></li>
-                          </ul>
-                      </ul>
-                  </div>
-                  <div class="btn-group">
-  
-                  </div>
-              </navbar>
-          </div>
-      </nav>
-  </header>
+    
+      <header th:replace= "/fragments/header :: header"> </header>
 
     <!--Barra lateral-->
 
     <div class="sidebar">
-      <h2>Elegí un rubro </h2>
+      <h2> Categorías </h2>
+      <hr>
       <ul>
         <li><a href="#electricidad">Electricidad</a></li>
         <li><a href="#mecanica">Mecanica</a></li>
@@ -114,10 +56,10 @@
 
 
 
-    <main style="margin-top: 150px;">
+    <main style="margin-top: 100px;">
         <!--La vista de las tarjetas de profesionales sera una sola dividida por rubro en <div>  -->
 
-        <div class="contenedor-gral" >
+        <div class="contenedor-gral" style="margin-top: auto" >
 
           <h2 class="titulo-Rubro" id="electricidad"> Electricidad </h2>
           <br>
@@ -125,7 +67,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la imagen subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="imagen proveedor">
+                <img src="/image/userpro.jpg" class="card-img-top" style="width: 150px; height: 150px; border-radius: 75px" alt="imagen proveedor">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -166,7 +108,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la  subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="...">
+                <img src="/image/userpro.jpg" style="width: 150px; height: 150px; border-radius: 75px" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -200,7 +142,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la  subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="...">
+                <img src="/image/userpro.jpg" class="card-img-top" style="width: 150px; height: 150px; border-radius: 75px" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -234,7 +176,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la  subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="...">
+                <img src="/image/userpro.jpg" class="card-img-top" style="width: 150px; height: 150px; border-radius: 75px" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -267,7 +209,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la  subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="...">
+                <img src="/image/userpro.jpg" class="card-img-top" style="width: 150px; height: 150px; border-radius: 75px" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -302,7 +244,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la  subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="...">
+                <img src="/image/userpro.jpg" class="card-img-top" style="width: 150px; height: 150px; border-radius: 75px" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -337,7 +279,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la  subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="...">
+                <img src="/image/userpro.jpg" class="card-img-top" style="width: 150px; height: 150px; border-radius: 75px" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -371,7 +313,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la  subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="...">
+                <img src="/image/userpro.jpg" class="card-img-top" style="width: 150px; height: 150px; border-radius: 75px" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -406,7 +348,7 @@
             <div class="col">
               <div class="card h-100">
                 <!--cada img se debe traer de donde quede la  subida por el prestador-->
-                <img src="/image/userpro.jpg" class="card-img-top" alt="...">
+                <img src="/image/userpro.jpg" class="card-img-top"  style="width: 150px; height: 150px; border-radius: 75px" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre de Profesional</h5>
                   <p class="card-text">Breve reseña de las incumbencias del profesional o prestador</p>
@@ -442,15 +384,103 @@
 
 </body>
 <!--inicio footer-->
-<footer th:replace="/fragments/footer :: footer"> </footer>
+<!--<footer <!--th:replace="/fragments/footer :: footer"> -->
+<footer  class="bg-dark text-light pt-1 pb-1"  style="margin-left: 200px">
+    <div class="container text-center text-md-start">
+        <div class="row text-center text-md-start">
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <div class="text-center mb-2">
+                    <!--<a href="/" class="d-flex text-center text-align-center mb-3 link-dark text-decoration-none">-->
+                    <a href="/">
+                        <img  class="logo"  src="/image/LogoPic.jpg"   width="80"  height="70"  alt="logo_talentoRed">
+                    </a>
+                    <!--
+                    <a href="/">
+                        <strong class="text-warning">Talento Red</strong>
+                    </a>
+                    -->
+                    <p id="pfooter">
+                        Encuentra proveedores de servicios para tu vivienda confiables y de forma inmediata.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Nosotros</h5>
+                <hr class="mb-4">
+                <p id="pfooter">
+                    <a id="afooter" href="#" class="text-light">Quienes Somos</a>
+                </p>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Dejanos ayudarte</h5>
+                <hr class="mb-4">
+                <p>
+                    <a id="afooter" href="#" class="text-light">Tu cuenta</a>
+                </p>
+                <p>
+                    <a id="afooter" href="#" class="text-light">Tus ordenes</a>
+                </p>
+                <p>
+                    <a id="afooter" href="#" class="text-light">Manejo de cuenta</a>
+                </p>
+
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contacto</h5>
+                <hr class="mb-4">
+                <p>
+                <li id="lifooter" class="fas fa-envelope"></li> info@talentored.com.mar
+                </p>
+                <p>
+                <li id="lifooter" class="fas fa-phone"></li> 0800-220-0005
+                </p>
+            </div>
+
+            <hr class="mb-4">
+
+            <div class="text-center mb-2">
+                <p>
+                    <a id="afooter" href="/" class="text-light">Talento Red</a>
+                    <i id="ifooter" class="fa fa-copyright" aria-hidden="true"></i> Todos Los Derechos Reservados 2023.
+                </p>
+            </div>
+
+            <div class="text-center">
+                <ul class="list-unstyled lis-inline">
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-facebook text-warning"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-twitter text-warning"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-google-plus text-warning"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-linkedin-in text-warning"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="afooter" href="#"><i id="ifooter" class="fab fa-youtube text-warning"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  
+  
+  
+  
+  </footer>
 <!--fin footer-->
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

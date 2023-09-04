@@ -1,13 +1,16 @@
 package com.talentoRed.talentoRed.servicios;
 
 import com.talentoRed.talentoRed.entidades.Proveedor;
+import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.repositorios.RepositorioProveedor;
+import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -34,9 +37,12 @@ public class ServicioProveedor implements UserDetailsService {
     
     @Autowired
     private RepositorioProveedor repoPro;
+    //Agregar instancia de servicio Usuario
+    @Autowired  
+    private RepositorioUsuario repoUser;
     
     @Transactional
-    public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2, 
+    public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2,String telefono, 
           boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
             MetodoPago metodoPago, MultipartFile portada){
         
@@ -47,7 +53,7 @@ public class ServicioProveedor implements UserDetailsService {
         proveedor.setEmail(email);
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
         proveedor.setRol(Rol.PROVEEDOR);
- 
+ proveedor.setTelefono(telefono);
         proveedor.setTieneMatricula(tieneMatricula);
         proveedor.setMatricula(matricula);
         proveedor.setDisponibilidad(disponibilidad);
@@ -118,5 +124,28 @@ public class ServicioProveedor implements UserDetailsService {
     public Proveedor getOne(String id){
         Proveedor proveedor = repoPro.getOne(id);
         return proveedor;
+    }
+    
+    public List<Usuario> getProveedoresOrderedByTipoServicio() {
+        List<Usuario> usuarios = repoUser.findAllProveedoresOrderedByTipoServicio();
+        return usuarios;
+    }
+    
+   public List<Proveedor> obtenerProveedoresOrdenados() {
+        List<Proveedor> proveedores = repoPro.findAll();
+
+        Comparator<Proveedor> comparador = Comparator.comparing(Proveedor::getServicio)
+                .thenComparing(Proveedor::getNombre);
+        //OTRA MANERA FUNCION COMPARE TO
+//        Comparator<Proveedor> comparador = (p1, p2) -> {
+//            int tipoComparison = p1.getServicio().compareTo(p2.getServicio());
+//            if (tipoComparison != 0) {
+//                return tipoComparison;
+//            }
+//            return p1.getNombre().compareTo(p2.getNombre());
+//        };
+        proveedores.sort(comparador);
+
+        return proveedores;
     }
 }

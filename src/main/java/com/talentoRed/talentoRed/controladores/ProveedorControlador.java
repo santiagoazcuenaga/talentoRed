@@ -1,14 +1,16 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * 
  */
 package com.talentoRed.talentoRed.controladores;
 
 import com.talentoRed.talentoRed.entidades.Proveedor;
+import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.servicios.ServicioProveedor;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -38,10 +40,10 @@ public class ProveedorControlador {
     @PostMapping("/registro")
     public String registrarProveedor(MultipartFile archivo, TipoServicio tipoServicio, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2,
-            int nroContacto, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
+            String telefono, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
             MetodoPago metodoPago, MultipartFile portada) {
         try {
-            serPro.crearProveedor(archivo, tipoServicio, nombre, email, password, password2, tieneMatricula, matricula, descripcion,
+            serPro.crearProveedor(archivo, tipoServicio, nombre, email, password, password2, telefono, tieneMatricula, matricula, descripcion,
                     disponibilidad, metodoPago, portada);
             return "redirect:/";
             //agregar el modelo con mensaje exito
@@ -58,7 +60,7 @@ public class ProveedorControlador {
         Proveedor proveedor = serPro.getOne(id);
         modelo.put("user", proveedor);
 
-        return "clientePerfil.html";
+        return "proveedorPerfil.html";
     }
 
     @GetMapping("/editar_perfil/{id}")
@@ -68,6 +70,31 @@ public class ProveedorControlador {
         modelo.put("user", proveedor);
 
         return "actualizarCliente.html";
+    }
+
+    //controlador para vista de proveedores x Guille
+//    @GetMapping("/")
+//    public String Proveedores(ModelMap modelo,TipoServicio servicio) {
+//        List<Proveedor> proveedores = serPro.listarProveedor(servicio);
+//        modelo.addAttribute("usuarios", proveedores);
+//        return "listaProveedores.html";
+//    }
+//    
+//    
+    //controlador para vista de proveedores x Servicio
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/ordenados")
+    public String ordenarProveedores(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.addAttribute("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
+            model.put("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            return "index.html";
+        }
     }
 
 }//The end
