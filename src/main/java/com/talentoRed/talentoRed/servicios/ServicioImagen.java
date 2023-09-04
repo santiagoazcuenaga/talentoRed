@@ -27,7 +27,7 @@ public class ServicioImagen {
      if (archivo != null) {
          try {
             Imagen imagen = new Imagen();
-
+            
             imagen.setMime(archivo.getContentType());
             imagen.setNombre(archivo.getName());
             imagen.setContenido(archivo.getBytes());
