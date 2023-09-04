@@ -7,6 +7,7 @@
 <body>
     <header th:replace= "/fragments/header :: header"> </header>
 
+    <main class="px-10">
     <div style="text-align: center">
         <input hidden th:value="${user.id}" name="id">
         <h2>Hola!!!</h2>
@@ -16,7 +17,8 @@
         <p>Tu rol</p>
         <p th:text="${user.rol}"></p>
     </div>
-
+</main>
+    <hr>
         <footer th:replace="/fragments/footer :: footer"> </footer>
     </body>
 

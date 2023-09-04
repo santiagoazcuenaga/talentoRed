@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-
-        /*======================MENU======================*/
-=======
->>>>>>> f49ee884e082281881ae5125ec6703fdeadb914d
-
+/*======================MENU======================*/
 *{
     padding: 0;
     margin: 0;
@@ -14,145 +9,11 @@
     font-weight: bold;
     color: #f3f3f3;
 }
-
-<<<<<<< HEAD
-        @media (min-width: 768px) {
-          .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          }
-        }
-        
-
-         nav {
-          width: 100%;
-          height: 70px;
-          /*
-          /*Fondo de navbar verde en degrade */
-          background: -webkit-linear-gradient(#3f9a15, #388813, #3f9a15, #388813, #3f9a15);
-          background: -o-linear-gradient(#3f9a15, #388813, #3f9a15, #388813, #3f9a15);
-          background: linear-gradient(#3f9a15, #388813, #3f9a15, #388813, #3f9a15);
-           
-          border-radius: 6px !important;
-          -moz-border-radius: 6px !important;
-          
-         }
-         
-         nav {
-          width: 100%;
-          height: 70px;
-    
-         }
-          
-         
-         
-         /* Color fondo de elementos de lista desplegable navbar
-        .dropdown-item{
-          background-color: #3f9a15;
-        }*/
-         
-        /* cambiar fondo de elementos de lista desplegable navbar
-        .dropdown-item:hover{
-          background-color: #15e0e0;
-        }*/
-        
-        /* Tamaño de fuente elementos de navbar*/
-        .me-3 {
-          font-family: sans-serif;
-          font-size: 18px;
-        }
-        
-       
-        .dropdown-item {
-          font-family: sans-serif;
-          font-size: 16px;
-        }
-        
-        .nav-link {
-          font-family: sans-serif;
-          font-size: 18px;
-        }
-/*
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Concert+One&family=Montserrat:wght@800&family=Press+Start+2P&family=Special+Elite&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
-*/
-*{
-    margin: 0;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Montserrat Alternates', sans-serif;
-    
+/*=== Margen superior  main ===*/
+main {
+    padding-top: 150px;
 }
 
-.form-login{
-    padding: 30px;
-    width: 500px;
-    margin: auto;
-    margin-top: 200px;
-    background-color: rgb(196, 202, 196);
-    border-radius: 5px;
-    }
-    
-    form .form label{
-         margin-left: 7px;
-         
-    }
-    
-    
-    .text-form{
-        font-family: 'Anton', sans-serif;
-        text-align: center;
-        margin-bottom: 25px;
-        border-bottom: solid black;
-            }
-    
-    .control{
-        width: 100%;
-        background-color: white;
-        padding: 10px;
-        border-radius: 5px;
-        margin-top: 10px;
-        margin-bottom: 15px;
-        border: 1px solid;
-        border-color: rgb(8, 221, 150);
-    }
-    /*
-    .control:hover{
-        border-color: black;
-    }
-    
-    .boton{
-        width: 100%;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        border: 1px solid;
-        border-color:rgb(8, 221, 150);
-    
-    }
-    
-    .boton:hover{
-        background-color:  rgb(8, 221, 150);
-        border-color: black;
-    }
-    
-
-    .card-link{
-        margin-right: 25px;
-        margin-left: 20px;
-    }
-    
-
-    .card-link:hover{
-    color: aquamarine;
-    }
- 
-    .footer{
-        display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 100px; 
-    }*/
-=======
 /*======================SLIDER DE IMAGENES======================*/
 .carousel-inner {
     max-height: 38rem;
@@ -167,11 +28,11 @@
 header {
     background-color: rgb(41, 41, 41);
     text-align: right;
-    /*Para dejar fijo el nav
+    /*Para dejar fijo el nav    */
     width: 100%;
     position: fixed;
     z-index: 100;
-    */
+
 }
 
 .formregistro {
@@ -203,16 +64,16 @@ header {
 /*=====================Navbar=============================*/
 
 .me-3{
-              
-		
-		padding: 6px;
-		line-height: normal;
-		text-decoration: none;
-		color: black;
-		transition: all 0.3s ease;
-		border-bottom: 5px solid transparent;
-		font-size: 18px;
-		margin-right: 5px;
+
+
+    padding: 6px;
+    line-height: normal;
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+    border-bottom: 5px solid transparent;
+    font-size: 18px;
+    margin-right: 5px;
     margin-top: 20px;
 }
 
@@ -232,7 +93,7 @@ header {
     border-left: 8px solid transparent;
     transition: all 400ms ease;
 }
-    
+
 .dropdown-menu li a:hover{
     border-left: 8px solid #d37203;
     background: #d37203;
@@ -276,7 +137,7 @@ header {
 }
 
 /* css footer */
-   
+
 #afooter {
     text-decoration: none;
     font-size: 15px;
@@ -294,63 +155,63 @@ header {
     font-size: 15px;
 }
 
- #lifooter {
+#lifooter {
     font-size: 15px;
- }
- /*estilos agregados por guille para vista proveedores*/
+}
+/*estilos agregados por guille para vista proveedores*/
 
 .card-img-top {
-  width: 100px;
-  height: 150px;
+    width: 100px;
+    height: 150px;
 
-  padding: 2px;
+    padding: 2px;
 
-  border: 5px solid #666;
-  /*border-radius: 50%, 50% ;*/
-  text-align: justify;
+    border: 5px solid #666;
+    /*border-radius: 50%, 50% ;*/
+    text-align: justify;
 
-  margin: auto;
-  display:inline;
+    margin: auto;
+    display:inline;
 }
 
 
 .card-body {
-  text-align: center;
+    text-align: center;
 
 }
 
 .titulo-Rubro {
 
-  text-align: center;
+    text-align: center;
 }
 
 .enlaces-rubros{
-  a{
-      text-align: center;
-  }
+    a{
+        text-align: center;
+    }
 
 }
 .contenedor-gral{
 
-  padding: 10px 20px 10px 300px; 
+    padding: 10px 20px 10px 300px; 
 
 }
 
 .enlaces-rubros{
 
-  padding: 15px;
+    padding: 15px;
 }
 
 /*Estilos de la barra lateral*/
 
 /* Resetear estilos por defecto del navegador */
 body, h1, h2, ul, li, p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 
@@ -373,84 +234,83 @@ border-color: #d37203;
 
 
 .sidebar {
-  width: 250px;
-  background-color: rgb(235, 113, 31);
-  color:  rgb(85, 81, 81);
-  padding: 20px;
-  position: fixed;
-  top: 130px; /* Ajusta esto según tus preferencias */
-  left: 20 px;
-  bottom: 0;
+    width: 250px;
+    background-color: rgb(235, 113, 31);
+    color:  rgb(85, 81, 81);
+    padding: 20px;
+    position: fixed;
+    top: 130px; /* Ajusta esto según tus preferencias */
+    left: 20 px;
+    bottom: 0;
 }
 
 .sidebar h2 {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .sidebar ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .sidebar li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .sidebar a {
-  color: rgb(85, 81, 81);
-  text-decoration: none;
+    color: rgb(85, 81, 81);
+    text-decoration: none;
 }
 
 /* Estilos del contenido principal */
 .content {
-  margin-left: 250px;
-  padding: 20px;
+    margin-left: 250px;
+    padding: 20px;
 }
 
 /* estilos de la calificacion de estrellas */
 
 #form {
-  width: 250px;
-  margin: 0 auto;
-  height: 50px;
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
 }
 
 #form p {
-  text-align: center;
+    text-align: center;
 }
 
 #form label {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 input[type="radio"] {
-  display: none;
+    display: none;
 }
 
 label {
-  color: grey;
+    color: grey;
 }
 
 .clasificacion {
-  direction: rtl;
-  unicode-bidi: bidi-override;
+    direction: rtl;
+    unicode-bidi: bidi-override;
 }
 
 label:hover,
 label:hover ~ label {
-  color: orange;
+    color: orange;
 }
 
 input[type="radio"]:checked ~ label {
-  color: orange;
+    color: orange;
 }
 
 /*=====================background vista registro=============================*/
 
 .carru{
-  background-image: url(/image/345397.jpg);
-  
+    background-image: url(/image/345397.jpg);
+
 }
 
 
->>>>>>> f49ee884e082281881ae5125ec6703fdeadb914d

@@ -39,25 +39,17 @@ public class PortalControlador {
 @Autowired
 private ServicioProveedor serPro;
     
+/*borrar*/
+    @GetMapping("/calificaProveedor")
+    public String calificaProveedor() {
+        return "vistaProveedorCalificacion.html";
+    }
+    /*----------*/
     
     @GetMapping("/")
     public String index() {
         return "index.html";
     }
-<<<<<<< HEAD
-       @GetMapping("/registrar")
-   public String registrar(){
-       return "registro.html";
-   }
-   
-         @GetMapping("/iniciosesion")
-   public String iniciosesion(){
-       return "login.html";
-   }
-
-    @PostMapping("/registro") // Cambiado a POST en lugar de GET
-    public String registrar(@RequestParam String nombre,@RequestParam String email,@RequestParam String password,String direccion) {
-=======
 
     @GetMapping("/registrarCliente")
     public String registrar() {
@@ -67,7 +59,7 @@ private ServicioProveedor serPro;
     @PostMapping("/registroCliente")
     public String registrar(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email,
             String password, String password2,String telefono, Barrio barrio, String manzana, int casa) {
->>>>>>> f49ee884e082281881ae5125ec6703fdeadb914d
+
         try {
             serCli.crearCliente(archivo, nombre, email, password, password2,telefono, barrio, manzana, casa);
             return "redirect:/";
@@ -168,10 +160,5 @@ private ServicioProveedor serPro;
 
         }
     }
-    
-<<<<<<< HEAD
-=======
-    
 
->>>>>>> f49ee884e082281881ae5125ec6703fdeadb914d
 }
