@@ -8,6 +8,7 @@ import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.enums.TipoServicio;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,14 +21,17 @@ import javax.persistence.OneToOne;
 @Entity
 public class Proveedor extends Usuario {
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "servicio")
     private TipoServicio servicio;
-    private int nroContacto;
+
     private Boolean tieneMatricula;
     private String matricula;
     private int calificacion;
     @Enumerated(EnumType.STRING)
     private Disponibilidad disponibilidad;
     private String Descripcion;
+    @Enumerated(EnumType.STRING)
     private MetodoPago metodoPago;
     private int cantServ;
     @OneToOne
@@ -42,14 +46,6 @@ public class Proveedor extends Usuario {
 
     public void setServicio(TipoServicio servicio) {
         this.servicio = servicio;
-    }
-
-    public int getNroContacto() {
-        return nroContacto;
-    }
-
-    public void setNroContacto(int nroContacto) {
-        this.nroContacto = nroContacto;
     }
 
     public Boolean getTieneMatricula() {

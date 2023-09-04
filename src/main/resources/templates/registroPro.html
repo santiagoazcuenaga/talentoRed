@@ -14,12 +14,12 @@
     <style>
         body::after {
             content: "";
-            background: url(/image/image2.jpg);
+            background: url(/image/345397.jpg);
             opacity: 0.4;
             top: 22%;
-            left: 1%;
+            left: 0%;
             bottom: -76%;
-            right: 1%;
+            right: 0%;
             position: absolute;
             z-index: -1;
             background-size: cover;
@@ -30,33 +30,19 @@
 </div>
 
 <body class="d-flex h-100 text-center text-bg-ligth">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto border-bottom">
-            <!-- header section start -->
-
-            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-                <!--inicio logo-->
-                <a th:replace="/fragments/logo :: a"> </a>
-                <!--fin logo-->
-                <!--inicio navbar-->
-                <navbar th:replace="/fragments/navbar :: navbar"> </navbar>
-                <!--fin navbar-->
-
-            </div>
-
-            <title>Formulario de Registro como Proveedor</title>
-        </header>
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+        <header th:replace= "/fragments/header :: header"> </header>
         <!--Formulario de registro de proveedor -->
 
 
 
-        <h2 style="color:rgb(19, 155, 209);">Registra tus datos para acceder a nuestra red de servicios como
+        <h2 style="color:black;">Registra tus datos para acceder a nuestra red de servicios como
             prestador</h2> <br>
 
-        <div>
-            <img src="/image/usersimple.jpg" alt="logoproveedor" width="80" height="80" align="center" /> <br><br>
+            <div>
+                <img src="/image/user.png" alt="logousuario" width="100" height="100"  /> <br><br>
 
-        </div>
+            </div>
         <!---->
         <div class="container">
             <div class="row justify-content-center">
@@ -64,7 +50,7 @@
                     <form class="form-control" th:action="@{/proveedor/registro}" method="POST">
 
                         <!--Seleccion de tipo de servicio-->
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="tipoServicio">
                             <option selected required th:value="${TipoServicio}">Seleccione su Servicio</option>
                             <option value="PLOMERO">Plomero</option>
                             <option value="ELECTRICISTA">Electricista</option>
@@ -105,8 +91,8 @@
                         </select> -->
 
                         <div data-a-target="security-phone-input">
-                            <input required name="nroContacto" th:value="${nroContacto}" id="phone-input"
-                                aria-label="Número de teléfono" type="number" class="form-control" autocapitalize="off"
+                            <input required name="telefono" th:value="${telefono}" id="phone-input"
+                                aria-label="Número de teléfono" type="text" class="form-control" autocapitalize="off"
                                 autocorrect="off" data-a-target="tw-input" inputmode="tel"
                                 placeholder="Numero de Telefono">
                         </div>
@@ -140,12 +126,12 @@
                         <div class="mb-3">
                             <label style="background-color: #d37203; color:aliceblue; padding: 1%;"
                                 for="exampleFormControlTextarea1" class="form-label" required
-                                th:value="${Descripcion}">Descripcion</label>
+                                th:value="${Descripcion}" name="descripcion">Descripcion</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected th:value="${Disponibilidad}" name="disponibilidad">
+                        <select class="form-select" aria-label="Default select example" name="disponibilidad">
+                            <option selected th:value="${Disponibilidad}">
                                 Elige tu disponibilidad</option>
                             <option value="MAÑANA">Mañana</option>
                             <option value="TARDE">Tarde</option>
@@ -156,9 +142,9 @@
                         <!--Seleccion de barrio-->
                         <select class="form-select" aria-label="Default select example">
                             <option selected th:value="${MetodoPago}">Seleccione su Metodo de pago</option>
-                            <option value="Efectivo">Efectivo</option>
-                            <option value="Debito">Debito</option>
-                            <option value="MercadoPago">MercadoPago</option>
+                            <option value="EFECTIVO">Efectivo</option>
+                            <option value="DEBITO">Debito</option>
+                            <option value="MERCADOPAGO">MercadoPago</option>
                         </select><br>
 
                         <div style="width:300px align-justify" class="mb-3">
@@ -176,13 +162,13 @@
                         </div>
 
 
-                        <input type="submit" class="btn btn-primary" value="Registrarme">
+                        <input type="submit" class="btn btn-outline-dark" value="Registrarme">
 
                     </form>
                 </div>
             </div>
         </div>
-
+        <br>
 
         <script>
             const siRadio = document.getElementById('siRadio');
@@ -199,6 +185,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
+            <br>
+
         <footer th:replace="/fragments/footer :: footer"> </footer>
     </div>
 </body>

@@ -4,50 +4,47 @@
 
     <head th:replace= "/fragments/head :: head"> </head>
 
-  <body class="d-flex h-100 text-center text-bg-ligth">
+    <body class="d-flex h-100 text-center text-bg-ligth">
 
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
-  <!-- header section start -->  
-  <header class="mb-auto border-bottom">
-        <nav>
-              <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-                <!--inicio logo-->
-                <a th:replace= "/fragments/logo :: a"> </a>
-                <!--fin logo-->                  
-                    <!--inicio navbar-->
-                    <navbar th:replace= "/fragments/navbar :: navbar"> </navbar>
-                    <!--fin navbar-->
-              </div>
-        </nav>
-    </header>
+  <div class="cover-container d-flex w-100 h-100 mx-auto flex-column"> 
+
+
+    <header th:replace="/fragments/header :: header"></header>
     <!-- header section ends -->
 
-     <!--Slider de imagenes-->
+            <!--Slider de imagenes-->
 
   <main class="px-10" >
-    <div id="myCarousel" class="carousel slide mb-6">
+      <div class="container">
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="5">
-          <h1>¿BUSCAS PROFESIONALES PARA TU VIVIENDA?</h1>
-          <p>Podrás buscar, comparar y contratar servicios de una manera fácil, segura y sin intermediarios. Es rápido, sencillo y totalmente gratuito. Selecciona los profesionales con las mejores valoraciones segun la experiencia de los clientes.</p>
-          <img src="image/image2.jpg" class="d-block w-100" alt="slide1">
-        </div>
+        <div class="carousel-item active" data-bs-interval="7000">
+           <h1>¿Como funciona?</h1>
+                      <p>Es simple, Talento Red te brinda los mejores profesionales para el hogar.</p>
+                      Enterate como y sus beneficios haciendo click <a href="/comofun">aqui</a>. 
+                    <img src="image/comofunci.png" class="d-block w-100" max-width alt="slide1">
+          
+                  </div>
 
-        <div class="carousel-item" data-bs-interval="5">
-          <h1>¿ERES PROFESIONAL?</h1>
-          <p>Te sorprenderá lo rápido que es conseguir clientes que buscan un profesional como vos. Te ponemos en contacto con clientes que solicitan servicios relacionados con tu especialidad. Gracias a nuestro sistema de valoraciones tu trabajo será reconocido, destando tu pefil.</p>
-          <img src="image/image3.jpg" class="d-block w-100" alt="slide2">
+        <div class="carousel-item" data-bs-interval="5000">
+            <h1>¿BUSCAS PROFESIONALES PARA TU VIVIENDA?</h1>
+            <p>Es simple aqui encontras de manera segura y facil, los mejores profesionales.
+                Para que vos puedas relajarte y disfrutar de tu hogar.
+            </p>
+            <img src="image/carru-clientes.png" class="d-block w-100" alt="slide2">
+     
         </div>
           
-         <div class="carousel-item" data-bs-interval="5">
-          <h1>¿Como funciona?</h1>
-          <p>Te sorprenderá lo rápido que es conseguir clientes que buscan un profesional como vos. Te ponemos en contacto con clientes que solicitan servicios relacionados con tu especialidad. Gracias a nuestro sistema de valoraciones tu trabajo será reconocido, destando tu pefil.</p>
-          <img src="image/image3.jpg" class="d-block w-100" alt="slide3">
+         <div class="carousel-item" data-bs-interval="5000">
+            <h1>¿ERES PROFESIONAL?</h1>
+            <p>Te sorprenderá lo rápido que es conseguir clientes que buscan un profesional como vos. Te ponemos en contacto con clientes que solicitan servicios relacionados con tu especialidad. Gracias a nuestro sistema de valoraciones tu trabajo será reconocido, destacando tu pefil.</p>
+            <img src="image/carru-trabajadores.png" class="d-block w-100" alt="slide3">
+            
         </div>
      
       <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
@@ -59,29 +56,29 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+        </div>
 <!--fin Slider de imagenes-->
 <hr>
-
-
+      </div>
 <section id="categorias">
     <div class="container">
         <div class="cabecera">
-            <h1 class="titulo">Nuestras categorias</h1>
+            <h1 class="titulo">Nuestras Categorias</h1>
 
         </div>
         <div class="cuerpo">
             <div class="listado-categorias">
                 
             <div class="categoria">
-                <a href="">
-                    <div class="contenedor-img">
-                        <img src="/image/albañil2.png" alt="albañin" height="160" width="160">
+                <a href="/proveedores">
+                    <div class="contenedor-img" >
+                        <img src="/image/albañil2.png" alt="albañin" height="160" width="160" >
                     </div>
                     <span>Albañil</span>
                 </a>
             </div>
             <div class="categoria">
-                <a href="">
+                <a href="/proveedores">
                     <div class="contenedor-img">
                         <img src="/image/carpintero.png" alt="carpintero" height="160" width="160">
                     </div>
@@ -90,7 +87,7 @@
             </div>  
                 
                 <div class="categoria">
-                <a href="">
+                <a href="/proveedores">
                     <div class="contenedor-img">
                         <img src="/image/electrisita.png" alt="electrisista" height="160" width="160">
                     </div>
@@ -98,7 +95,7 @@
                 </a>
             </div>
                 <div class="categoria">
-                <a href="">
+                <a href="/proveedores">
                     <div class="contenedor-img">
                         <img src="/image/jardinero.png" alt="jardinero" height="150" width="160">
                     </div>
@@ -107,7 +104,7 @@
             </div>
                
                 <div class="categoria">
-                <a href="">
+                <a href="/proveedores">
                     <div class="contenedor-img">
                         <img src="/image/gas.png" alt="gasista" height="160" width="160">
                     </div>
@@ -115,7 +112,7 @@
                 </a>
             </div>
                   <div class="categoria">
-                <a href="">
+                <a href="/proveedores">
                     <div class="contenedor-img">
                         <img src="/image/plomero.png" alt="plomero" height="160" width="150">
                     </div>
@@ -123,7 +120,7 @@
                 </a>
             </div>
                   <div class="categoria">
-                <a href="">
+                <a href="/proveedores">
                     <div class="contenedor-img">
                         <img src="/image/mecanico.png" alt="mecanico" height="150" width="150">
                     </div>
@@ -131,7 +128,7 @@
                 </a>
             </div>
                  <div class="categoria">
-                <a href="">
+                <a href="/proveedores">
                     <div class="contenedor-img">
                         <img src="/image/tecnico.png" alt="Tencnico" height="150" width="150">
                     </div>
@@ -145,12 +142,16 @@
     
 </section>
 
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-</body>
-    <!--inicio footer-->
-    <footer th:replace= "/fragments/footer :: footer"> </footer>
-    <!--fin footer-->
-</div>
+            </main>
+            <hr>
+                <!--inicio footer-->
+                <footer th:replace= "/fragments/footer :: footer"> </footer>
+                <!--fin footer-->
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+            
+        </body>
+
 
 </html>

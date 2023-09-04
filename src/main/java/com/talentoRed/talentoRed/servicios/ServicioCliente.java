@@ -6,6 +6,8 @@ package com.talentoRed.talentoRed.servicios;
 
 import com.talentoRed.talentoRed.entidades.Cliente;
 import com.talentoRed.talentoRed.entidades.Imagen;
+import org.springframework.stereotype.Service;
+
 import com.talentoRed.talentoRed.enums.Barrio;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.myExceptions.MyException;
@@ -38,16 +40,16 @@ public class ServicioCliente implements UserDetailsService {
     private RepositorioCliente repositorioCliente;
     @Autowired
     private ServicioImagen servicioImagen;
-
+    //crear un cliente
     @Transactional
     public void crearCliente(MultipartFile archivo, String nombre, String email, String password,
-            String password2, Barrio barrio, String manzana, int casa) throws MyException {
+            String password2,String telefono, Barrio barrio, String manzana, int casa) throws MyException {
 
         validar(nombre, email, password, password2);
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
         cliente.setEmail(email);
-        // usuario.setDireccion(direccion);
+     cliente.setTelefono(telefono);
         cliente.setPassword(new BCryptPasswordEncoder().encode(password));
         cliente.setRol(Rol.CLIENTE);
         Imagen imagen = servicioImagen.guardar(archivo);
@@ -58,7 +60,7 @@ public class ServicioCliente implements UserDetailsService {
         repositorioCliente.save(cliente);
 
     }
-
+    //funcion para validar datos completados
     private void validar(String nombre, String email, String password, String password2) throws MyException {
         if (email.isEmpty() || email == null) {
             throw new MyException("el email no puede ser nulo");
@@ -73,12 +75,16 @@ public class ServicioCliente implements UserDetailsService {
             throw new MyException("Las contraseñas no coinciden.");
         }
     }
-
+    //lista de usuarios
     public List<Cliente> listarUsuarios() {
         List<Cliente> cliente = new ArrayList();
         cliente = repositorioCliente.findAll();
         return cliente;
     }
+    //lista de clientes
+  
+   
+    
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -104,7 +110,7 @@ public class ServicioCliente implements UserDetailsService {
         return cliente;
     }
 
-    public void modificarCliente(String id, MultipartFile archivo, String nombre, String email, Barrio barrio, String manzana, int casa) throws MyException {
+    public void modificarCliente(String id, MultipartFile archivo, String nombre, String email,String telefono, Barrio barrio, String manzana, int casa) throws MyException {
 
         //this.validar(nombre, email, password, password2);
         Optional<Cliente> respuesta = repositorioCliente.findById(id);
@@ -113,6 +119,7 @@ public class ServicioCliente implements UserDetailsService {
             Cliente cliente = respuesta.get();
             cliente.setNombre(nombre);
             cliente.setEmail(email);
+            cliente.setTelefono(telefono);
             // usuario.setDireccion(direccion);
             //validar de forma aparte la contraseña
             //cliente.setPassword(new BCryptPasswordEncoder().encode(password));
@@ -124,4 +131,6 @@ public class ServicioCliente implements UserDetailsService {
             repositorioCliente.save(cliente);
         }
     }
+    
+    
 }
