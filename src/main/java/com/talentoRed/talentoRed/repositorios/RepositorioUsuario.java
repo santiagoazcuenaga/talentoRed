@@ -22,4 +22,7 @@ public interface RepositorioUsuario extends JpaRepository<Usuario,String> {
     
     @Query("SELECT u FROM Usuario u WHERE u.rol = 'Proveedor'")
     public List<Usuario> findAllProveedoresOrderedByTipoServicio();
+    
+    @Query("SELECT u FROM Usuario u WHERE u.rol = 'Cliente'")
+    public List<Usuario> findAllClientes();
 }

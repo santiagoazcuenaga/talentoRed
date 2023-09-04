@@ -1,6 +1,7 @@
 
 package com.talentoRed.talentoRed.servicios;
 
+import com.talentoRed.talentoRed.comparator.UsuarioRolComparator;
 import com.talentoRed.talentoRed.entidades.Imagen;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Rol;
@@ -56,13 +57,33 @@ public class ServicioUsuario implements UserDetailsService {
         repositorioUsuario.save(usuario);
         
     }
-
+    // listar a los usuarios
     public List<Usuario> listarUsuarios() {
         List<Usuario> usuario = new ArrayList();
         usuario = repositorioUsuario.findAll();
         return usuario;
     }
-
+    // ordenar a los usuarios
+    public List<Usuario> ordenarUsuarios(){
+        List<Usuario> usuario = new ArrayList();
+        usuario = repositorioUsuario.findAll();
+        usuario.sort(new UsuarioRolComparator());
+        return usuario;
+    }
+    //Mostrar solo clientes ordenados
+    public List<Usuario> mostrarClientes(){
+        List<Usuario> usuario = new ArrayList();
+        usuario = repositorioUsuario.findAllClientes();
+        usuario.sort(new UsuarioRolComparator());
+        return usuario;
+    }
+    //MOstrar a los proveedores ordernados
+    public List<Usuario> mostrarProveedores(){
+        List<Usuario> usuario = new ArrayList();
+        usuario = repositorioUsuario.findAllProveedoresOrderedByTipoServicio();
+        usuario.sort(new UsuarioRolComparator());
+        return usuario;
+    }
     @Transactional
     public void actualizarUsuario(String idUsuario, String nombre, String email, String password,String telefono, String direccion,String password2) throws MyException {
         validar(nombre, email, password,password2);
@@ -176,5 +197,5 @@ public class ServicioUsuario implements UserDetailsService {
                 usuario.setAlta(false);
             }
         }
-    }
+    }  
 }
