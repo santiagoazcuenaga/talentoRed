@@ -47,7 +47,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6">
 
-                            <form th:action="@{/registroCliente}" method="POST">
+                            <form th:action="@{/registroCliente}" method="POST" enctype="multipart/form-data" >
 
 
 
@@ -121,7 +121,7 @@
                                     <div width:300 px align-justify class="mb-3">
                                         <label for="formFile" class="form-label">Si lo desea, ingrese una foto de
                                             perfil</label>
-                                        <input class="form-control" type="file" id="formFile" name="archivo">
+                                        <input class="form-control" type="file" id="formFile" name="archivo" >
                                     </div>
                                        <div class="d-grid gap-2 col-6 mx-auto">
                                     <input type="submit" class="btn btn-outline-dark" value="Registrarme">

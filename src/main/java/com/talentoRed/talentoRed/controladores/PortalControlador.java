@@ -134,7 +134,7 @@ public class PortalControlador {
         try {
             // Envía los datos del usuario a la página una vez esté logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-            modelo.addAttribute("user", logueado);
+            modelo.put("user", logueado);
             List<Proveedor> proveedores = serPro.listarProveedor(servicio);
             modelo.addAttribute("usuarios", proveedores);
             return "listaProveedores.html";

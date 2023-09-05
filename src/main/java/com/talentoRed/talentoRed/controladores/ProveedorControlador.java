@@ -88,9 +88,9 @@ public class ProveedorControlador {
         try {
             // Envía los datos del usuario a la página una vez esté logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-            model.addAttribute("user", logueado);
+            model.put("user", logueado);
             List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
-            model.put("usuarios", usuarios);
+            model.addAttribute("usuarios", usuarios);
             return "ordenarProveedores.html";
         } catch (Exception e) {
             return "index.html";

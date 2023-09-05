@@ -23,19 +23,27 @@ public class OrdenControlador {
     @Autowired
     private ServicioOrden ordenservicio;
     
-    @PostMapping("/contratar")
-    public String contratarServicio(@RequestParam String idCliente, @RequestParam String idProvee){
-        
-        ordenservicio.crearOrden(idCliente, idProvee);
-        
-        return "contratalo";//reemplazar
+    @GetMapping("/contrata")
+    public String contrateServicio(){
+        return "contratalo.html";
     }
+    @PostMapping("/contratar")
+    public String contratarServicio(@RequestParam String idCliente, @RequestParam String idProvee, Boolean estadoServicio, int calificacion, String comentario){
+        
+        ordenservicio.crearOrden(idCliente, idProvee,estadoServicio,calificacion,comentario);
+        
+        return "contratalo.html";//reemplazar
+    }
+    
+    
+
+    
     @PostMapping("/pagalo")
     public String finalizarServicio(@RequestParam String id, @RequestParam int cal, String comentario){
         
         ordenservicio.finalizarOrden(id, cal, comentario);
         
-        return "pagado";//reemplazar
+        return "pagado.html";//reemplazar
     }
     
     @PostMapping("/cancelar")
@@ -43,10 +51,10 @@ public class OrdenControlador {
         
         ordenservicio.cancelarOrden(id);
         
-        return "cancelado";//reemplazar
+        return "cancelado.html";//reemplazar
     }
     @GetMapping("/listar")
     public String listarOrdenes(){
-        return "listado";
+        return "listado.html";
     }
 }

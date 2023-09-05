@@ -7,6 +7,7 @@ package com.talentoRed.talentoRed.servicios;
 import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
+import com.talentoRed.talentoRed.enums.EstadoSolicitud;
 import com.talentoRed.talentoRed.repositorios.RepositorioOrden;
 import java.util.List;
 import java.util.Optional;
@@ -39,16 +40,18 @@ public class ServicioOrden {
     }
     
     @Transactional
-    public void crearOrden(String idCliente, String idProvee){
+    public void crearOrden(String idCliente, String idProvee, Boolean estadoServicio, int calificacion, String comentario){
         //instaciar al cliente y al prestador
         Usuario usuario = buscarUsuario(idCliente);
         Proveedor provee = buscarProvee(idProvee);
         
         //crea la Orden
         OrdenDeServicio orden = new OrdenDeServicio();
-        orden.setComentario(" ");
-        orden.setCalificacion(0);
-        orden.setEstadoServicio(true);//está en proceso
+
+        orden.setComentario(comentario);
+        orden.setCalificacion(calificacion);
+        orden.setEstadoServicio(EstadoSolicitud.PENDIENTE);//está en proceso
+
                                     //cuando finaliza cambia a "false"
         orden.setProveedor(provee);
         orden.setUsuario(usuario);
@@ -59,7 +62,7 @@ public class ServicioOrden {
     
     @Transactional
     public void cancelarOrden(String id){
-        repOrden.getReferenceById(id);
+        repOrden.deleteById(id);
     }
     
     @Transactional
@@ -69,7 +72,8 @@ public class ServicioOrden {
             OrdenDeServicio ordena = repOrden.getOne(id);
             ordena.setCalificacion(calificacion);
             ordena.setComentario(comentario);
-            ordena.setEstadoServicio(false);
+            ordena.setEstadoServicio(EstadoSolicitud.COMPLETADA);
+            repOrden.save(ordena);
             //hay que ver cómo hacemos que la orden se reemplace o que se duplique.
         }
     }

@@ -1,4 +1,3 @@
-
 package com.talentoRed.talentoRed.enums;
 
 /**
@@ -14,4 +13,5 @@ JARDINERO,
 MECANICO,
 PLOMERO,
 TECNICO,
+
 }
