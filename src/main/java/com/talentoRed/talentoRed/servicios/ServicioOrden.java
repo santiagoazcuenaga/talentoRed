@@ -39,16 +39,16 @@ public class ServicioOrden {
     }
     
     @Transactional
-    public void crearOrden(String idCliente, String idProvee){
+    public void crearOrden(String idCliente, String idProvee, Boolean estadoServicio, int calificacion, String comentario){
         //instaciar al cliente y al prestador
         Usuario usuario = buscarUsuario(idCliente);
         Proveedor provee = buscarProvee(idProvee);
         
         //crea la Orden
         OrdenDeServicio orden = new OrdenDeServicio();
-        orden.setComentario(" ");
-        orden.setCalificacion(0);
-        orden.setEstadoServicio(true);//está en proceso
+        orden.setComentario(comentario);
+        orden.setCalificacion(calificacion);
+        orden.setEstadoServicio(estadoServicio);//está en proceso
                                     //cuando finaliza cambia a "false"
         orden.setProveedor(provee);
         orden.setUsuario(usuario);
@@ -59,7 +59,7 @@ public class ServicioOrden {
     
     @Transactional
     public void cancelarOrden(String id){
-        repOrden.getReferenceById(id);
+        repOrden.deleteById(id);
     }
     
     @Transactional
@@ -70,6 +70,7 @@ public class ServicioOrden {
             ordena.setCalificacion(calificacion);
             ordena.setComentario(comentario);
             ordena.setEstadoServicio(false);
+            repOrden.save(ordena);
             //hay que ver cómo hacemos que la orden se reemplace o que se duplique.
         }
     }
