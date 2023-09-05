@@ -125,7 +125,7 @@
                         <div class="mb-3">
                             <label style="background-color: #d37203; color:aliceblue; padding: 1%;"
                                 for="exampleFormControlTextarea1" class="form-label" required
-                                th:value="${Descripcion}" name="descripcion">Descripcion</label>
+                                th:value="${descripcion}" name="descripcion">Descripcion</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
 
@@ -139,7 +139,7 @@
                         </select><br>
 
                         <!--Seleccion de barrio-->
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name = "metodoPago">
                             <option selected th:value="${MetodoPago}">Seleccione su Metodo de pago</option>
                             <option value="EFECTIVO">Efectivo</option>
                             <option value="DEBITO">Debito</option>
