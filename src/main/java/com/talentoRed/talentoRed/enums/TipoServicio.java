@@ -1,4 +1,3 @@
-
 package com.talentoRed.talentoRed.enums;
 
 /**
@@ -6,5 +5,12 @@ package com.talentoRed.talentoRed.enums;
  * @author Kidver
  */
 public enum TipoServicio {
-    PLOMERO, ELECTRICISTA, GASISTA, ALBAÑIL, JARDINERO, MECANICO, CARPINTERO, TECNICO;
+    ALBAÑIL,
+    CARPINTERO,
+    ELECTRICISTA,
+    GASISTA,
+    JARDINERO,
+    MECANICO,
+    PLOMERO,
+    TECNICO,
 }

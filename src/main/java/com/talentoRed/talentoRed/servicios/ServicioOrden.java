@@ -59,7 +59,7 @@ public class ServicioOrden {
     
     @Transactional
     public void cancelarOrden(String id){
-        repOrden.getReferenceById(id);
+        repOrden.deleteById(id);
     }
     
     @Transactional
@@ -70,6 +70,7 @@ public class ServicioOrden {
             ordena.setCalificacion(calificacion);
             ordena.setComentario(comentario);
             ordena.setEstadoServicio(false);
+            repOrden.save(ordena);
             //hay que ver cómo hacemos que la orden se reemplace o que se duplique.
         }
     }
