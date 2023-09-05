@@ -1,5 +1,6 @@
 package com.talentoRed.talentoRed.servicios;
 
+import com.talentoRed.talentoRed.entidades.Imagen;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
@@ -41,11 +42,13 @@ public class ServicioProveedor implements UserDetailsService {
     //Agregar instancia de servicio Usuario
     @Autowired  
     private RepositorioUsuario repoUser;
+    @Autowired
+    private ServicioImagen servicioImagen;
     
     @Transactional
     public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2,String telefono, 
           boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
-            MetodoPago metodoPago, MultipartFile portada){
+            MetodoPago metodoPago, MultipartFile portada) throws MyException{
         
         //validar 
         Proveedor proveedor = new Proveedor();
@@ -54,14 +57,15 @@ public class ServicioProveedor implements UserDetailsService {
         proveedor.setEmail(email);
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
         proveedor.setRol(Rol.PROVEEDOR);
- proveedor.setTelefono(telefono);
+        proveedor.setTelefono(telefono);
         proveedor.setTieneMatricula(tieneMatricula);
         proveedor.setMatricula(matricula);
         proveedor.setDisponibilidad(disponibilidad);
         proveedor.setDescripcion(descripcion);
         proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
         proveedor.setCantServ(0);
-        //proveedor.setImagen(imagen);
+        Imagen imagen = servicioImagen.guardar(archivo);
+        proveedor.setImagen(imagen);
         //proveedor.setPortada(portada);
         repoPro.save(proveedor);
     }

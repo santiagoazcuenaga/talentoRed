@@ -7,7 +7,6 @@ package com.talentoRed.talentoRed.servicios;
 import com.talentoRed.talentoRed.entidades.Cliente;
 import com.talentoRed.talentoRed.entidades.Imagen;
 import org.springframework.stereotype.Service;
-
 import com.talentoRed.talentoRed.enums.Barrio;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.myExceptions.MyException;
