@@ -4,20 +4,64 @@
 
     <head th:replace="/fragments/head :: head"> </head>
 
-<body>
+<body style=" background: url(/image/345397.jpg);  background-repeat: no-repeat;background-size: cover;">
     <header th:replace= "/fragments/header :: header"> </header>
 
-    <div style="text-align: center">
-        <input hidden th:value="${user.id}" name="id">
-        <h2>Hola!!!</h2>
-        <h2 th:text="${user.nombre}"></h2>
-        <p>Correo Electronico</p>
-        <p th:text="${user.email}"></p>
-        <p>Tu rol</p>
-        <p th:text="${user.rol}"></p>
-         
+          <section>
+    <div class="container">
+        <div class="row">
+            <div class="row mb-3 text-center">
+                <div class="col-xxl-4 themed-grid-col" th:value="${user.id}" name="id">
+                    <img class="img-prestador rounded-circle" width="140" height="140" src="/image/user.png"></img>
+            
+                    <h2 class="fs-3" th:text="${user.nombre}" style="color:white"></h2>
+                    <h2 class="fs-5" th:text="${user.barrio}" style="color:white"></h2>
+                     <div class="card-body">
+                       
                         
+                        <br>
+                            <button type="button" class="btn btn-warning text-center" >Editar</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>       
     </div>
+</section>
+<!--Fin Seccion portada prestador -->
+<hr>
+
+<!--Incio Seccion de opiniones -->
+<section>
+    <div class="container">
+        <div class="bg-white rounded shadow-sm p-4 mb-1 rating-review-select-page">
+            <div class="row" th:value="${user.id}" name="id">
+                <div class="col-md-6 " >
+                    <ul class="lista-datos">
+                        <li  ><i class="bi bi-person-bounding-box"></i> <strong>Rol: </strong><span th:text="${user.rol}"></span> </li>
+                        <li  class="d-flex align-items-center"><i class="bi bi-envelope-at-fill"></i> <strong>Email:  </strong> <span th:text="${user.email}"></span></li>
+                        <li  ><i class="bi bi-telephone-fill"></i> <strong>Telefono: </strong><span th:text="${user.telefono}"></span></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="lista-datos">
+                        <li  ><i class="bi bi-clock-fill"></i><strong>Barrio: </strong>  <span th:text="${user.barrio}"></span></li>
+                        <li  ><i class="bi bi-card-heading"></i> <strong>Casa: </strong> <span th:text="${user.casa}"></span></li>
+                        <li  ><i class="bi bi-cash"></i><strong>Manzana: </strong>  <span th:text="${user.manzana}" ></span></li>
+                     
+                    </ul>
+                   
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+   
+</section>
+<br>
+
 
         <footer th:replace="/fragments/footer :: footer"> </footer>
     </body>

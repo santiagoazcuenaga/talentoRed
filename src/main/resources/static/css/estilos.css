@@ -1,13 +1,22 @@
 
+  
+  
 *{
     padding: 0;
-    margin: 0;
+    margin: 0; 
+    
+ font-family: a;
+  
+
 }
 
 #menu a {
     font-size: 18px;
     font-weight: bold;
     color: #f3f3f3;
+}
+main{
+  margin-top: 150px;
 }
 
 /*======================SLIDER DE IMAGENES======================*/
@@ -24,11 +33,11 @@
 header {
     background-color: rgb(41, 41, 41);
     text-align: right;
-    /*Para dejar fijo el nav
+   
     width: 100%;
     position: fixed;
     z-index: 100;
-    */
+    
 }
 
 .formregistro {
@@ -98,7 +107,7 @@ header {
 /*=====================Categorias=============================*/
 
 .cabecera .titulo{
-    font-size: 100px;
+    font-size: 50px;
     margin-bottom: 50px;
 }
 .listado-categorias {
@@ -107,20 +116,23 @@ header {
 }
 
 .categoria{
-    width: 25%; 
-    padding: 10px;
+    width: 20%; 
     box-sizing: border-box;
     text-decoration: none;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    margin-left: 5px;
     border-radius: 25%;
     margin-right: 50px;
+    padding-left: 50px;;
+    align-items: center;
+    align-content: center;
 
 }
 
 .contenedor-img{
 
     border-radius: 10%;
-    box-shadow: 0 0 10px rgb(0, 0, 0,0.8);
+    box-shadow: 0 0 10px rgba(228, 138, 2, 0.8);
 
 }
 .categoria a{
@@ -133,6 +145,7 @@ header {
 }
 
 /* css footer */
+
    
 #afooter {
     text-decoration: none;
@@ -155,6 +168,13 @@ header {
     font-size: 15px;
  }
  /*estilos agregados por guille para vista proveedores*/
+
+ .card{
+    
+  padding-top: 5px;
+  height: 450px;
+  box-shadow: 0 0 10px rgba(228, 138, 2, 0.8);
+}
 
 .card-img-top {
   width: 100px;
@@ -229,6 +249,7 @@ border-color: #d37203;
 /* Estilos de la barra lateral */
 
 
+
 .sidebar {
   width: 250px;
   background-color: rgb(235, 113, 31);
@@ -237,16 +258,15 @@ border-color: #d37203;
   position: fixed;
   top: 130px; /* Ajusta esto según tus preferencias */
   left: 20 px;
-  bottom: 0;
+  height: 800px;
+ 
 }
-
-.sidebar h2 {
-  margin-bottom: 10px;
-}
-
-.sidebar ul {
+  .sidebar ul {
   list-style: none;
   padding: 0;
+}
+.sidebar h2 {
+  margin-bottom: 10px;
 }
 
 .sidebar li {
@@ -270,6 +290,7 @@ border-color: #d37203;
   width: 250px;
   margin: 0 auto;
   height: 50px;
+  
 }
 
 #form p {
@@ -284,13 +305,22 @@ input[type="radio"] {
   display: none;
 }
 
-label {
+.clasificacion label {
   color: grey;
+  font-size: 25px;
+  align-items: center;
 }
 
 .clasificacion {
   direction: rtl;
   unicode-bidi: bidi-override;
+  align-items: center;
+  margin-right: 100px;
+
+}
+.clasificacion p{
+  align-items: center;
+  align-content: center;
 }
 
 label:hover,
@@ -310,3 +340,15 @@ input[type="radio"]:checked ~ label {
 }
 
 
+h1.titulo {
+  background-color: rgb(255, 255, 255);
+  color: rgb(10, 10, 10);
+  padding: 10px;
+  font-size: 5px;
+  text-align: center;
+  /* Agrega líneas naranjas a los lados */
+  border-left: 6px solid orange;
+  border-right: 6px solid orange;
+  margin-left: 20px; /* Espacio a la izquierda */
+  margin-right: 20px; /* Espacio a la derecha */
+}

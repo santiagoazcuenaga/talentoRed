@@ -1,8 +1,8 @@
 <!doctype html>
 <html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
     
     <head th:replace= "/fragments/head :: head"> </head>
+    
 
     <body class="d-flex h-100 text-center text-bg-ligth">
         
@@ -11,8 +11,19 @@
             <header th:replace= "/fragments/header :: header"> </header>
       
             <main class="px-10" >
-                <h1 style="background-color: rgb(41, 41, 41); color: white;">Bienvenido!</h1>
+               
       <div class="container">
+        <h1 style=  "background-color: rgb(255, 255, 255);
+                color: rgb(10, 10, 10);
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                /* Agrega líneas naranjas a los lados */
+                border-left: 6px solid orange;
+                border-right: 6px solid orange;
+                margin-left: 20px; /* Espacio a la izquierda */
+                margin-right: 20px; /* Espacio a la derecha */">Bienvenido!</h1>
+                <hr>
         
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -23,16 +34,16 @@
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="7000">
            <h1>¿Como funciona?</h1>
-                      <p>Es simple, Talento Red te brinda los mejores profesionales para el hogar.</p>
-                      Enterate como y sus beneficios haciendo click <a href="/comofun">aqui</a>. 
+                      <p><strong>Es simple, Talento Red te brinda los mejores profesionales para el hogar.</p>
+                      Enterate como y sus beneficios haciendo click <a href="/comofun">aqui</a>. </strong>
                     <img src="image/comofunci.png" class="d-block w-100" max-width alt="slide1">
           
                   </div>
 
         <div class="carousel-item" data-bs-interval="5000">
             <h1>¿BUSCAS PROFESIONALES PARA TU VIVIENDA?</h1>
-            <p>Es simple aqui encontras de manera segura y facil, los mejores profesionales.
-                Para que vos puedas relajarte y disfrutar de tu hogar.
+            <p><strong>Es simple aqui encontras de manera segura y facil, los mejores profesionales.
+                Para que vos puedas relajarte y disfrutar de tu hogar.</strong>
             </p>
             <img src="image/carru-clientes.png" class="d-block w-100" alt="slide2">
      
@@ -40,7 +51,7 @@
           
          <div class="carousel-item" data-bs-interval="5000">
             <h1>¿ERES PROFESIONAL?</h1>
-            <p>Te sorprenderá lo rápido que es conseguir clientes que buscan un profesional como vos. Te ponemos en contacto con clientes que solicitan servicios relacionados con tu especialidad. Gracias a nuestro sistema de valoraciones tu trabajo será reconocido, destacando tu pefil.</p>
+            <p><strong>Te sorprenderá lo rápido que es conseguir clientes que buscan un profesional como vos. Te ponemos en contacto con clientes que solicitan servicios relacionados con tu especialidad. Gracias a nuestro sistema de valoraciones tu trabajo será reconocido, destacando tu pefil.</strong></p>
             <img src="image/carru-trabajadores.png" class="d-block w-100" alt="slide3">
             
         </div>
