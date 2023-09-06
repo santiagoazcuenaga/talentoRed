@@ -29,11 +29,11 @@ public class OrdenDeServicio {
     @OneToOne
     private Usuario usuario;//el Cliente que realiza la solicitud
     @OneToOne
-    private Proveedor proveedor;//El proveedor que acepta o rechaza la solicitud
+    private Proveedor proveedor;//El proveedor que acepta o rechaza la solicitud CREAR METODO ACEPTAR QUE CONTENGA EL ESTADODELSERVICIO
     @Enumerated(EnumType.STRING)
-    private EstadoSolicitud estadoServicio; // EN proceso - Finalizado
-    private int calificacion;
-    private String comentario;
+    private EstadoSolicitud estadoServicio; // EN proceso - Finalizado LO MODIFICA EL PROVEEDOR CREAR METODO.
+    private Integer calificacion; //CALIFICA LUEGO DE LA ORDEN EL CLIENTE
+    private String comentario; //OPCIONAL PARTE DEL CLIENTE.
 
   
 

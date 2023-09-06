@@ -63,26 +63,28 @@ public class ProveedorControlador {
         return "proveedorPerfil.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
     @GetMapping("/editar_perfil/{id}")
     public String editar_perfil(@PathVariable String id, ModelMap modelo) {
 
         Proveedor proveedor = serPro.getOne(id);
         modelo.put("user", proveedor);
 
-        return "actualizarCliente.html"; // a la espera del nuevo html
+        return "actualizarProveedor.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
     @PostMapping("/editar_perfil/{id}")
     public String editar_perfil(MultipartFile archivo, @PathVariable String id, TipoServicio tipoServicio, @RequestParam String nombre, @RequestParam String email,
-            @RequestParam String password, @RequestParam String password2,
             String telefono, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
             MetodoPago metodoPago, MultipartFile portada) {
         
         try {            
             serPro.modificarProveedor(archivo, id, tipoServicio, nombre, email, telefono, tieneMatricula, matricula, descripcion, disponibilidad, metodoPago, portada);
-            return "redirect:/inicio";
+            return "redirect:/proveedor/mi_perfil/"+id;
         } catch (Exception e) {
-            return "actualizarCliente.html"; // a la espera del nuevo html
+            System.out.println(e.getMessage());
+            return "actualizarProveedor.html";
         }
     }
 

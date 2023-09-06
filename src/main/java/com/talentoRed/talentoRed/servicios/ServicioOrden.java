@@ -39,8 +39,10 @@ public class ServicioOrden {
         return proveeservicio.getOne(id);
     }
     
+    
+    //METODO EXCLUSIVO DEL CLIENTE.
     @Transactional
-    public void crearOrden(String idCliente, String idProvee, Boolean estadoServicio, int calificacion, String comentario){
+    public void crearOrden(String idCliente, String idProvee){
         //instaciar al cliente y al prestador
         Usuario usuario = buscarUsuario(idCliente);
         Proveedor provee = buscarProvee(idProvee);
@@ -48,10 +50,9 @@ public class ServicioOrden {
         //crea la Orden
         OrdenDeServicio orden = new OrdenDeServicio();
 
-        orden.setComentario(comentario);
-        orden.setCalificacion(calificacion);
+        orden.setComentario(" ");
+        orden.setCalificacion(0);
         orden.setEstadoServicio(EstadoSolicitud.PENDIENTE);//está en proceso
-
                                     //cuando finaliza cambia a "false"
         orden.setProveedor(provee);
         orden.setUsuario(usuario);
@@ -64,6 +65,20 @@ public class ServicioOrden {
     public void cancelarOrden(String id){
         repOrden.deleteById(id);
     }
+    
+    @Transactional
+    //ESTE METODO ES EXCLUSIVO DEL PROVEEDOR.
+    public void aceptarORechazar(String id,EstadoSolicitud estadoServicio){
+     Optional<OrdenDeServicio> respuesta = repOrden.findById(id);
+     OrdenDeServicio orden = respuesta.get();
+     if(respuesta.isPresent()){
+    orden.setEstadoServicio(estadoServicio);
+    repOrden.save(orden);
+     }
+        
+    }
+    
+    
     
     @Transactional
     public void finalizarOrden(String id, int calificacion, String comentario){

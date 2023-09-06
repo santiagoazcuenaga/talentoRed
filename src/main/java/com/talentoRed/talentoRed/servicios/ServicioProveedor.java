@@ -69,24 +69,30 @@ public class ServicioProveedor implements UserDetailsService {
 
     public void modificarProveedor(MultipartFile archivo, String id, TipoServicio tipoServicio, String nombre, String email, String telefono,
             boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
-            MetodoPago metodoPago, MultipartFile portada) {
-        Optional<Proveedor> respuesta = repoPro.findById(id);
-        if (respuesta.isPresent()) {
-            Proveedor proveedor = respuesta.get();
-            proveedor.setServicio(tipoServicio);
-            proveedor.setNombre(nombre);
-            proveedor.setEmail(email);
-            //proveedor.setPassword(new BCryptPasswordEncoder().encode(password)); se modificara en oto metodo
-            proveedor.setTelefono(telefono);
-            proveedor.setTieneMatricula(tieneMatricula);
-            proveedor.setMatricula(matricula);
-            proveedor.setDisponibilidad(disponibilidad);
-            proveedor.setDescripcion(descripcion);
-            proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
-            proveedor.setCantServ(0);
-            //proveedor.setImagen(imagen);
-            //proveedor.setPortada(portada);
-            repoPro.save(proveedor);
+            MetodoPago metodoPago, MultipartFile portada) throws Exception {
+        
+        try {
+            Optional<Proveedor> respuesta = repoPro.findById(id);
+            if (respuesta.isPresent()) {
+                Proveedor proveedor = respuesta.get();
+                proveedor.setServicio(tipoServicio);
+                proveedor.setNombre(nombre);
+                proveedor.setEmail(email);
+                //proveedor.setPassword(new BCryptPasswordEncoder().encode(password)); se modificara en oto metodo
+                proveedor.setTelefono(telefono);
+                proveedor.setTieneMatricula(tieneMatricula);
+                proveedor.setMatricula(matricula);
+                proveedor.setDisponibilidad(disponibilidad);
+                proveedor.setDescripcion(descripcion);
+                proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
+                proveedor.setCantServ(0);
+                //proveedor.setImagen(imagen);
+                //proveedor.setPortada(portada);
+                repoPro.save(proveedor);                
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw e;
         }
 
     }
