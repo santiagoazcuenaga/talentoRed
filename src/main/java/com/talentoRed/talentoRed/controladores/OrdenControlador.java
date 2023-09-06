@@ -3,6 +3,7 @@
  */
 package com.talentoRed.talentoRed.controladores;
 
+import com.talentoRed.talentoRed.enums.EstadoSolicitud;
 import com.talentoRed.talentoRed.servicios.ServicioOrden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class OrdenControlador {
         return "contratalo.html";
     }
     @PostMapping("/contratar")
-    public String contratarServicio(@RequestParam String idCliente, @RequestParam String idProvee, Boolean estadoServicio, int calificacion, String comentario){
+    public String contratarServicio(@RequestParam String idCliente, @RequestParam String idProvee, EstadoSolicitud estadoServicio, int calificacion, String comentario){
         
         ordenservicio.crearOrden(idCliente, idProvee,estadoServicio,calificacion,comentario);
         
