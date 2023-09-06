@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <h4 class="card-title" scope="row" th:text="${usuario.nombre}"></h4>
                                 <h6 class="card-text">Soy <p th:text="${usuario.servicio}">y podes contratarme atravez de TalentoRed</h6>
-                                <a href=""> Solicitar presupuesto</a>
+                                <a th:href="@{/orden/contratar/__${usuario.id}__}"> Solicitar presupuesto</a>
                             </div>
                             <div class="card-footer">
                                 <!-- formulario para puntuacion, posiblemente deba ir en la ficha del prestador de servicio y

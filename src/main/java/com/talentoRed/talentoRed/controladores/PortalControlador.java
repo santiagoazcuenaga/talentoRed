@@ -110,7 +110,7 @@ public class PortalControlador {
 
         Cliente cliente = serCli.getOne(id);
         modelo.put("user", cliente);
-
+        
         return "actualizarCliente.html";
     }
 

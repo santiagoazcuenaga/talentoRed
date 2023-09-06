@@ -32,7 +32,7 @@ public class OrdenDeServicio {
     private Proveedor proveedor;//El proveedor que acepta o rechaza la solicitud CREAR METODO ACEPTAR QUE CONTENGA EL ESTADODELSERVICIO
     @Enumerated(EnumType.STRING)
     private EstadoSolicitud estadoServicio; // EN proceso - Finalizado LO MODIFICA EL PROVEEDOR CREAR METODO.
-    private int calificacion; //CALIFICA LUEGO DE LA ORDEN EL CLIENTE
+    private Integer calificacion; //CALIFICA LUEGO DE LA ORDEN EL CLIENTE
     private String comentario; //OPCIONAL PARTE DEL CLIENTE.
 
   

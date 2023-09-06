@@ -42,7 +42,7 @@ public class ServicioOrden {
     
     //METODO EXCLUSIVO DEL CLIENTE.
     @Transactional
-    public void crearOrden(String idCliente, String idProvee, EstadoSolicitud estadoServicio, int calificacion, String comentario){
+    public void crearOrden(String idCliente, String idProvee){
         //instaciar al cliente y al prestador
         Usuario usuario = buscarUsuario(idCliente);
         Proveedor provee = buscarProvee(idProvee);
@@ -50,10 +50,9 @@ public class ServicioOrden {
         //crea la Orden
         OrdenDeServicio orden = new OrdenDeServicio();
 
-        orden.setComentario(comentario);
-        orden.setCalificacion(calificacion);
+        orden.setComentario(" ");
+        orden.setCalificacion(0);
         orden.setEstadoServicio(EstadoSolicitud.PENDIENTE);//está en proceso
-
                                     //cuando finaliza cambia a "false"
         orden.setProveedor(provee);
         orden.setUsuario(usuario);
