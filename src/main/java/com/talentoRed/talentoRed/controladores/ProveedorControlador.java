@@ -33,7 +33,7 @@ public class ProveedorControlador {
 
     @Autowired
     private ServicioProveedor serPro;
-    
+
     @GetMapping("/registrar")
     public String registrarProveedor() {
         return "registroPro.html";
@@ -45,7 +45,7 @@ public class ProveedorControlador {
             String telefono, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
             MetodoPago metodoPago, MultipartFile portada) {
         try {
-            serPro.crearProveedor(archivo, tipoServicio, nombre, email, password, password2,telefono, tieneMatricula, matricula, descripcion,
+            serPro.crearProveedor(archivo, tipoServicio, nombre, email, password, password2, telefono, tieneMatricula, matricula, descripcion,
                     disponibilidad, metodoPago, portada);
             return "redirect:/";
             //agregar el modelo con mensaje exito
@@ -54,7 +54,6 @@ public class ProveedorControlador {
             return "registroPro.html";
         }
     }
-    
 
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
     @GetMapping("/mi_perfil/{id}")
@@ -74,6 +73,7 @@ public class ProveedorControlador {
 
         return "actualizarCliente.html";
     }
+
     
     
   //controlador para vista de proveedores x Guille
@@ -86,18 +86,38 @@ public class ProveedorControlador {
     //controlador para vista de proveedores x Servicio
     
    /* @GetMapping("/ordenados")
+=======
+
+    //controlador para vista de proveedores x Guille
+//    @GetMapping("/")
+//    public String Proveedores(ModelMap modelo,TipoServicio servicio) {
+//        List<Proveedor> proveedores = serPro.listarProveedor(servicio);
+//        modelo.addAttribute("usuarios", proveedores);
+//        return "listaProveedores.html";
+//    }
+//    
+//    
+    //controlador para vista de proveedores x Servicio
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/ordenados")
+>>>>>>> master
     public String ordenarProveedores(ModelMap model, HttpSession session) {
         try {
+            // Envía los datos del usuario a la página una vez esté logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-        model.addAttribute("usuario", logueado); // Cambio a addAttribute
-
-        List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
-        model.put("usuarios", usuarios);
-       return "ordenarProveedores.html";// 
+            System.err.println("errorlogueo1");
+            model.addAttribute("user", logueado);
+            System.err.println("errorlogueo2");
+            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
+            System.err.println("errorlogueo3");
+            model.put("usuarios", usuarios);
+            System.err.println("errorlogueo4");
+            return "ordenarProveedores.html";
         } catch (Exception e) {
-            
+            System.err.println(" error catch");
             return "index.html";
         }
+<<<<<<< HEAD
         
         
     }*/
@@ -110,6 +130,7 @@ public class ProveedorControlador {
         List<Usuario> usuarios = usuarioservicio.mostrarProveedores();
         modelo.addAttribute("usuarios", usuarios);
         return "ordenarProveedores";
+
     }
 
 }
