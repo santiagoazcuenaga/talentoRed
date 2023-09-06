@@ -29,25 +29,23 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-
 /**
  * @author usuario
  */
-
 @Service
 public class ServicioProveedor implements UserDetailsService {
-    
+
     @Autowired
     private RepositorioProveedor repoPro;
     //Agregar instancia de servicio Usuario
     @Autowired
     private ServicioImagen servicioImagen;
-    
+
     @Transactional
-    public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password,String password2,String telefono, 
-          boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
-            MetodoPago metodoPago, MultipartFile portada) throws MyException{
-        
+    public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password, String password2, String telefono,
+            boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
+            MetodoPago metodoPago, MultipartFile portada) throws MyException {
+
         //validar 
         Proveedor proveedor = new Proveedor();
         proveedor.setServicio(tipoServicio);
@@ -68,38 +66,38 @@ public class ServicioProveedor implements UserDetailsService {
         //proveedor.setPortada(portada);
         repoPro.save(proveedor);
     }
-    public void modificarProveedor(MultipartFile archivo,String id, TipoServicio tipoServicio, String nombre, String email, String password,String password2,String telefono, 
-          boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
-            MetodoPago metodoPago, MultipartFile portada){
+
+    public void modificarProveedor(MultipartFile archivo, String id, TipoServicio tipoServicio, String nombre, String email, String telefono,
+            boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
+            MetodoPago metodoPago, MultipartFile portada) {
         Optional<Proveedor> respuesta = repoPro.findById(id);
-        if(respuesta.isPresent()){
+        if (respuesta.isPresent()) {
             Proveedor proveedor = respuesta.get();
-             proveedor.setServicio(tipoServicio);
-        proveedor.setNombre(nombre);
-        proveedor.setEmail(email);
-        proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
- proveedor.setTelefono(telefono);
-        proveedor.setTieneMatricula(tieneMatricula);
-        proveedor.setMatricula(matricula);
-        proveedor.setDisponibilidad(disponibilidad);
-        proveedor.setDescripcion(descripcion);
-        proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
-        proveedor.setCantServ(0);
-        //proveedor.setImagen(imagen);
-        //proveedor.setPortada(portada);
-        repoPro.save(proveedor);
+            proveedor.setServicio(tipoServicio);
+            proveedor.setNombre(nombre);
+            proveedor.setEmail(email);
+            //proveedor.setPassword(new BCryptPasswordEncoder().encode(password)); se modificara en oto metodo
+            proveedor.setTelefono(telefono);
+            proveedor.setTieneMatricula(tieneMatricula);
+            proveedor.setMatricula(matricula);
+            proveedor.setDisponibilidad(disponibilidad);
+            proveedor.setDescripcion(descripcion);
+            proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
+            proveedor.setCantServ(0);
+            //proveedor.setImagen(imagen);
+            //proveedor.setPortada(portada);
+            repoPro.save(proveedor);
         }
-        
+
     }
-    
-    
-     public List<Proveedor> listarProveedor(TipoServicio servicio){
-     List<Proveedor> proveedor = new ArrayList(); 
-     
-     repoPro.listarProveedorPorRubro(servicio);
-     return proveedor;
+
+    public List<Proveedor> listarProveedor(TipoServicio servicio) {
+        List<Proveedor> proveedor = new ArrayList();
+
+        repoPro.listarProveedorPorRubro(servicio);
+        return proveedor;
     }
-    
+
     //REVISAR IMPLEMENTACION DE LOS METODOS DEL PROVEEDOR
 
     /*      validar(nombre, email, password, password2);
@@ -115,26 +113,23 @@ public class ServicioProveedor implements UserDetailsService {
 
     
      */
-    
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Proveedor proveedor = repoPro.buscarProveedorPorEmail(email);
-        if(proveedor != null){
+        if (proveedor != null) {
             List<GrantedAuthority> permisos = new ArrayList();
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + proveedor.getRol().toString());
-            permisos.add(p);  
+            permisos.add(p);
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("usuariosession", proveedor);
-             return new User(proveedor.getEmail(), proveedor.getPassword(), permisos);
-        }else{
-            return null; 
+            return new User(proveedor.getEmail(), proveedor.getPassword(), permisos);
+        } else {
+            return null;
         }
-        
+
     }
-    
-    
-    
+
     private void validar(String nombre, String email, String password, String password2) throws MyException {
         if (email.isEmpty() || email == null) {
             throw new MyException("el email no puede ser nulo"); //
@@ -149,15 +144,14 @@ public class ServicioProveedor implements UserDetailsService {
             throw new MyException("Las contraseñas no coinciden.");
         }
     }
-    
-    public Proveedor getOne(String id){
+
+    public Proveedor getOne(String id) {
         Proveedor proveedor = repoPro.getOne(id);
         return proveedor;
     }
-    
-    
-   public List<Proveedor> obtenerProveedoresOrdenados() {
-       
+
+    public List<Proveedor> obtenerProveedoresOrdenados() {
+
         List<Proveedor> proveedores = repoPro.findAll();
         Comparator<Proveedor> comparador = Comparator.comparing(Proveedor::getServicio)
                 .thenComparing(Proveedor::getNombre);

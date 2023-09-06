@@ -142,6 +142,8 @@ public class PortalControlador {
             return "usuario no encontrado";
         }
     }
+    
+    
         @GetMapping("/comofun")
         public String comofun
         (ModelMap modelo, HttpSession session

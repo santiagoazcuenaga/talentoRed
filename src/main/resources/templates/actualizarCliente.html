@@ -51,17 +51,14 @@
                             <input type="email" class="form-control" id="e-mail" name="email" placeholder="e-mail"
                                 required th:value="${user.email}"><br>
 
-                            <div>
-                                Seleccion de barrio
-                                <select class="form-select" aria-label="Default select example" name="barrio" required
-                                    th:value="${user.barrio}">
-                                    <option selected>Seleccione Barrio</option>
-                                    <option value="ALTOS_DE_CHACRAS">Altos de Chacras</option>
-                                    <option value="PORTAL_LUJAN">Portal Lujan</option>
-                                    <option value="COMPLEJO_CHACRAS_DE_CORIA">Complejo Chacras de Coria</option>
+                                                           
+                                <select class="form-select" aria-label="Default select example" name="barrio" required>
+                                    <option value="" th:if="${user.barrio == null}">Seleccione barrio</option>
+                                    <option value="ALTOS_DE_CHACRAS" th:selected="${user.barrio == 'ALTOS_DE_CHACRAS'}">Altos de Chacras</option>
+                                    <option value="PORTAL_LUJAN" th:selected="${user.barrio == 'PORTAL_LUJAN'}">Portal Lujan</option>
+                                    <option value="COMPLEJO_CHACRAS_DE_CORIA" th:selected="${user.barrio == 'COMPLEJO_CHACRAS_DE_CORIA'}">Complejo Chacras de Coria</option>
+                                </select>
 
-                                    </select>
-                                </div>
 
                             <!--Manzana y casa-->
                             <div class="row">
