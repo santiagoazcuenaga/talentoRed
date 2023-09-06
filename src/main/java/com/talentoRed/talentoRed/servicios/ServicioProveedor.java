@@ -40,8 +40,6 @@ public class ServicioProveedor implements UserDetailsService {
     @Autowired
     private RepositorioProveedor repoPro;
     //Agregar instancia de servicio Usuario
-    @Autowired  
-    private RepositorioUsuario repoUser;
     @Autowired
     private ServicioImagen servicioImagen;
     
@@ -63,6 +61,7 @@ public class ServicioProveedor implements UserDetailsService {
         proveedor.setDisponibilidad(disponibilidad);
         proveedor.setDescripcion(descripcion);
         proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
+        proveedor.setCalificacion(0);
         proveedor.setCantServ(0);
         Imagen imagen = servicioImagen.guardar(archivo);
         proveedor.setImagen(imagen);
@@ -157,14 +156,9 @@ public class ServicioProveedor implements UserDetailsService {
     }
     
     
-    public List<Usuario> getProveedoresOrderedByTipoServicio() {
-        List<Usuario> usuarios = repoUser.findAllProveedoresOrderedByTipoServicio();
-        return usuarios;
-    }
-    
    public List<Proveedor> obtenerProveedoresOrdenados() {
+       
         List<Proveedor> proveedores = repoPro.findAll();
-
         Comparator<Proveedor> comparador = Comparator.comparing(Proveedor::getServicio)
                 .thenComparing(Proveedor::getNombre);
         //OTRA MANERA FUNCION COMPARE TO

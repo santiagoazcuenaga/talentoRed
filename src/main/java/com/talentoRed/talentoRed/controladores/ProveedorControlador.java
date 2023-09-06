@@ -79,8 +79,8 @@ public class ProveedorControlador {
 //        modelo.addAttribute("usuarios", proveedores);
 //        return "listaProveedores.html";
 //    }
-//    
-//    
+    
+    
     //controlador para vista de proveedores x Servicio
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
     @GetMapping("/ordenados")
@@ -88,11 +88,12 @@ public class ProveedorControlador {
         try {
             // Envía los datos del usuario a la página una vez esté logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-            model.put("user", logueado);
-            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
-            model.addAttribute("usuarios", usuarios);
+            model.put("user", logueado);            
+            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();     
+            model.addAttribute("usuarios", usuarios);           
             return "ordenarProveedores.html";
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return "index.html";
         }
     }

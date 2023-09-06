@@ -15,7 +15,7 @@
                 <div class="row mb-3 text-center">
                     <div class="col-xxl-4 themed-grid-col" th:value="${user.id}" name="id">
                         <img class="img-prestador rounded-circle" width="140" height="140"
-                            src="/image/foto-albaÃ±il.jpg"></img>
+                            th:src="@{/imagen/perfil/__${user.id}__}"></img>
 
                         <h2 class="fs-3" th:text="${user.nombre}" style="color:white"></h2>
                         <h2 class="fs-5" th:text="${user.servicio}" style="color:white"></h2>
@@ -32,7 +32,7 @@
                                 <p th:text="${user.descripcion}"> </p>
                             </div>
                             <br>
-                            <button type="button" class="btn btn-warning text-center">Editar</button>
+                            <button type="button" class="btn btn-warning text-center" th:href="@{/proveedor/editar_perfil/__${user.id}__}">Editar</button>
                         </div>
 
                     </div>
