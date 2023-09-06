@@ -69,7 +69,7 @@ public class ProveedorControlador {
         Proveedor proveedor = serPro.getOne(id);
         modelo.put("user", proveedor);
 
-        return "actualizarCliente.html";
+        return "actualizarProveedor.html";
     }
 
     //controlador para vista de proveedores x Guille

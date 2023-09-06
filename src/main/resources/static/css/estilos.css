@@ -11,24 +11,29 @@
 }
 
 body{
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Philosopher', sans-serif;
+}
+footer{
+  font-family: 'Philosopher', sans-serif;
 }
 
 /*======================SLIDER DE IMAGENES======================*/
 .carousel-inner {
     max-height: 38rem;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Philosopher', sans-serif;
 }
 
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
+        font-family: 'Philosopher', sans-serif;
     }
 }
 
 header {
     background-color: rgb(41, 41, 41);
     text-align: right;
+    font-family: 'Philosopher', sans-serif;
     /*Para dejar fijo el nav
     width: 100%;
     position: fixed;
@@ -37,10 +42,12 @@ header {
 }
 
 .formregistro {
+  font-family: 'Philosopher', sans-serif;
     display: grid;
     place-items: center;
     height: 100px;
     width: 200px
+    
 
 }
 
@@ -211,7 +218,7 @@ body, h1, h2, ul, li, p {
   padding: 0;
 }
 
-body {
+.body {
   font-family: Arial, sans-serif;
 }
 
@@ -312,6 +319,14 @@ input[type="radio"]:checked ~ label {
 .carru{
   background-image: url(/image/345397.jpg);
   
+
 }
 
+.container{
+  font-family: 'Philosopher', sans-serif;
+}
+
+/* header{
+  box-shadow: 10px 10px 10px #2b2a28;
+} */
 
