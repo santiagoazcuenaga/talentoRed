@@ -47,13 +47,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6">
 
-                            <form th:action="@{/registroCliente}" method="POST" enctype="multipart/form-data" >
-
-
-
-
-
-                            <div>
+                            <form th:action="@{/registroCliente}" method="POST" enctype="multipart/form-data" > <div>
 
                                 <div>
                                     <!--<label for="nombre">Nombre:</label> <br>-->
@@ -80,6 +74,7 @@
                                         <input type="password" class="form-control" id="contraseña" name="password"
                                             placeholder="Contraseña" required th:value="${password}"><br>
                                     </div>
+                                    
                                     <div>
                                         <!--<label for="confirmar_contrasena">Confirmar Contraseña:</label><br>-->
                                         <input type="password" class="form-control" id="confirmar contraseña"
@@ -97,7 +92,6 @@
                                                 <option value="COMPLEJO_CHACRAS_DE_CORIA">Complejo Chacras de Coria</option>
 
                                             </select>
-
                                         </div>
 
                                         <!--Manzana y casa-->
