@@ -71,13 +71,36 @@
                   placeholder="e-mail"
                   required
                   th:value="${user.email}"
-                /><br />
+                /><br/>
+
+
+
+
+
+               
+              
+                   <label for="contrasena">Contraseña:</label><br>
+                    <input type="password" class="form-control" id="contraseña" name="password"
+                         required th:value="${password}"><br>
+               
+                
+                    <label for="confirmar_contrasena"></label><br>
+                    <input type="password" class="form-control" id="confirmar contraseña"
+                        name="password2" placeholder="Confirmar contraseña" required
+                        th:value="${password2}"><br>
+
+
+                         <label for="contrasena">Telefono:</label><br>
+                         <input type="text" class="form-control" id="contraseña" name="telefono"
+                          required th:value="${user.telefono}"><br>
+
 
                 <div>
-                  Seleccion de barrio
+                  <label for="barrio" >Seleccione el barrio</label> <br />
                   <select
                     class="form-select"
                     aria-label="Default select example"
+                    id="barrio"
                     name="barrio"
                     required
                     th:value="${user.barrio}"
@@ -131,15 +154,9 @@
                   style="margin: 10px"
                   type="submit"
                   value="Actualizar"
-                /> 
+                /><br> 
 
-                <!-- <script type="text/javascript">
-                  function mostrar(){
-                    swal("Seguro que desea continuar?", {
-                      buttons: ["Si", "No"],
-                    });
-                  }
-                </script> -->
+             
                 
               </form>
             </div>
@@ -149,7 +166,7 @@
     </div>
 
     <!--inicio footer-->
-    <footer th:replace="/fragments/footer :: footer"></footer>
+    <br><footer th:replace="/fragments/footer :: footer"></footer>
     <!--fin footer-->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

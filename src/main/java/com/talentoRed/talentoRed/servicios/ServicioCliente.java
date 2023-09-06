@@ -75,6 +75,16 @@ public class ServicioCliente implements UserDetailsService {
             throw new MyException("Las contraseñas no coinciden.");
         }
     }
+    
+    //validar contraseñas
+     private void validarContra(String password, String password2) throws MyException {
+        if (password.isEmpty() || password == null || password.length() < 8) {
+            throw new MyException("la contraseña debe tener mas de 8 caracteres");
+        }
+        if (!password.equals(password2)) {
+            throw new MyException("Las contraseñas no coinciden.");
+        }
+    }
     //lista de usuarios
     public List<Cliente> listarUsuarios() {
         List<Cliente> cliente = new ArrayList();
@@ -110,16 +120,18 @@ public class ServicioCliente implements UserDetailsService {
         return cliente;
     }
 
-    public void modificarCliente(String id, MultipartFile archivo, String nombre, String email,String telefono, Barrio barrio, String manzana, int casa) throws MyException {
+    public void modificarCliente(String id, MultipartFile archivo, String nombre, String email,String telefono,String password,String password2, Barrio barrio, String manzana, int casa) throws MyException {
 
         //this.validar(nombre, email, password, password2);
         Optional<Cliente> respuesta = repositorioCliente.findById(id);
 
         if (respuesta.isPresent()) {
+            validarContra(password, password2);
             Cliente cliente = respuesta.get();
             cliente.setNombre(nombre);
             cliente.setEmail(email);
             cliente.setTelefono(telefono);
+             cliente.setPassword(new BCryptPasswordEncoder().encode(password));
             // usuario.setDireccion(direccion);
             //validar de forma aparte la contraseña
             //cliente.setPassword(new BCryptPasswordEncoder().encode(password));

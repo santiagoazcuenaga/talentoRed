@@ -118,10 +118,10 @@ public class PortalControlador {
     // falta MultipartFile archivo, password, 
     @PostMapping("/editar_perfil/{id}")
     public String editar_perfil(@PathVariable String id, MultipartFile archivo, @RequestParam String nombre, @RequestParam String email,
-            Barrio barrio, String telefono, String manzana, int casa, ModelMap modelo) {
+            Barrio barrio, String telefono,String password,String password2, String manzana, int casa, ModelMap modelo) {
 
         try {
-            serCli.modificarCliente(id, archivo, nombre, email, telefono, barrio, manzana, casa);
+            serCli.modificarCliente(id, archivo, nombre, email, telefono, password,password2,barrio, manzana, casa);
             modelo.put("exito", "Tu perfil ha sido actualizado!!");
             return this.perfil(id, modelo);
         } catch (MyException ex) {
@@ -135,7 +135,7 @@ public class PortalControlador {
         try {
             // Envía los datos del usuario a la página una vez esté logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-            modelo.addAttribute("user", logueado);
+            modelo.put("user", logueado);
             List<Proveedor> proveedores = serPro.listarProveedor(servicio);
             modelo.addAttribute("usuarios", proveedores);
             return "listaProveedores.html";

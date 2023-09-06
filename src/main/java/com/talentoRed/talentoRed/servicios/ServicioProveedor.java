@@ -12,6 +12,7 @@ import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,9 +65,34 @@ public class ServicioProveedor implements UserDetailsService {
         //proveedor.setPortada(portada);
         repoPro.save(proveedor);
     }
+    public void modificarProveedor(MultipartFile archivo,String id, TipoServicio tipoServicio, String nombre, String email, String password,String password2,String telefono, 
+          boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad, 
+            MetodoPago metodoPago, MultipartFile portada){
+        Optional<Proveedor> respuesta = repoPro.findById(id);
+        if(respuesta.isPresent()){
+            Proveedor proveedor = respuesta.get();
+             proveedor.setServicio(tipoServicio);
+        proveedor.setNombre(nombre);
+        proveedor.setEmail(email);
+        proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
+ proveedor.setTelefono(telefono);
+        proveedor.setTieneMatricula(tieneMatricula);
+        proveedor.setMatricula(matricula);
+        proveedor.setDisponibilidad(disponibilidad);
+        proveedor.setDescripcion(descripcion);
+        proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
+        proveedor.setCantServ(0);
+        //proveedor.setImagen(imagen);
+        //proveedor.setPortada(portada);
+        repoPro.save(proveedor);
+        }
+        
+    }
+    
     
      public List<Proveedor> listarProveedor(TipoServicio servicio){
-     List<Proveedor> proveedor = new ArrayList();   
+     List<Proveedor> proveedor = new ArrayList(); 
+     
      repoPro.listarProveedorPorRubro(servicio);
      return proveedor;
     }
@@ -125,6 +151,7 @@ public class ServicioProveedor implements UserDetailsService {
         Proveedor proveedor = repoPro.getOne(id);
         return proveedor;
     }
+    
     
     public List<Usuario> getProveedoresOrderedByTipoServicio() {
         List<Usuario> usuarios = repoUser.findAllProveedoresOrderedByTipoServicio();

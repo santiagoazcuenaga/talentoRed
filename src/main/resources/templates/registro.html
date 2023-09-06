@@ -47,30 +47,10 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6">
 
-                            <form th:action="@{/registroCliente}" method="POST">
+                            <form th:action="@{/registroCliente}" method="POST" enctype="multipart/form-data" >
 
 
 
-<<<<<<< HEAD
-                        <form class="form-control" th:action="@{/registroCliente}" method="POST">
-                            <div>
-                                <div th:if="${error != null}"  class="card text-white bg-danger my-3 mensajeError" > <!--Tarjeta en color rojo con una condicion-->
-                                    <!--$ se usa para el envio de variables y todo lor valores van entre llaves-->
-                                    <div class="card-body">
-                                        <h5 class="card-title">Error</h5>
-                                        <p class="card-text" th:text="${error}"></p>
-                                    </div>            
-                                </div>
-        
-                                <div th:if="${exito != null}"  class="card text-white bg-success my-3 mt-3 mensajeExito" >
-                                    <div class="card-body">
-                                        <h5 class="card-title">Exito</h5>
-                                        <p class="card-text" th:text="${exito}"></p>
-                                    </div> 
-                                </div>
-                            </div>
-=======
->>>>>>> d37d124a270d713b3e68af8608b7ed5c6c8bd8e5
 
 
                             <div>
@@ -141,7 +121,7 @@
                                     <div width:300 px align-justify class="mb-3">
                                         <label for="formFile" class="form-label">Si lo desea, ingrese una foto de
                                             perfil</label>
-                                        <input class="form-control" type="file" id="formFile" name="archivo">
+                                        <input class="form-control" type="file" id="formFile" name="archivo" >
                                     </div>
                                        <div class="d-grid gap-2 col-6 mx-auto">
                                     <input type="submit" class="btn btn-outline-dark" value="Registrarme">
@@ -165,8 +145,6 @@
                     </div>
                         </form>
 
-<<<<<<< HEAD
-=======
                             <!-- <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
                                     <div class="card-body">
                                         <h5 class="card-title">Exito!</h5>
@@ -179,7 +157,6 @@
                                          <p class="card-text" th:text="${error}"></p>
                                      </div> -->
                         </div>
->>>>>>> d37d124a270d713b3e68af8608b7ed5c6c8bd8e5
                     </div>
                 </div>
 
