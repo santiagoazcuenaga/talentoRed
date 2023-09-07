@@ -146,9 +146,7 @@ public class PortalControlador {
     
         @GetMapping("/comofun")
         public String comofun
-        (ModelMap modelo, HttpSession session
-        
-            ) {
+        (ModelMap modelo, HttpSession session) {
         try {
                 // envia los datos del usuario a la pagina una vez este logueado
                 Usuario logueado = (Usuario) session.getAttribute("usuariosession");
