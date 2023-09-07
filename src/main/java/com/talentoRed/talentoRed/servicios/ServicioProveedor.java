@@ -1,6 +1,7 @@
 package com.talentoRed.talentoRed.servicios;
 
 import com.talentoRed.talentoRed.entidades.Imagen;
+import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
@@ -8,6 +9,7 @@ import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
+import com.talentoRed.talentoRed.repositorios.RepositorioOrden;
 import com.talentoRed.talentoRed.repositorios.RepositorioProveedor;
 import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
 import java.util.ArrayList;
@@ -34,7 +36,8 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Service
 public class ServicioProveedor implements UserDetailsService {
-
+    
+    
     @Autowired
     private RepositorioProveedor repoPro;
     //Agregar instancia de servicio Usuario
@@ -119,6 +122,14 @@ public class ServicioProveedor implements UserDetailsService {
 
     
      */
+  
+    
+    
+    
+    
+    
+    
+    
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Proveedor proveedor = repoPro.buscarProveedorPorEmail(email);
