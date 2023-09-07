@@ -170,7 +170,7 @@
         <div class="row">
             <div class="row mb-3 text-center">
                 <div class="col-xxl-4 themed-grid-col">
-                    <img class="img-prestador rounded-circle" width="140" height="140" src="./image/foto-albañil.jpg"></img>
+                    <img class="img-prestador rounded-circle" width="140" height="140" "th:src="@{/imagen/perfil/__${proveedor.id}__}"></img>
             
                     <h2 class="fs-3">Jonatan Encina</h2>
                     <h2 class="fs-5">Albañil</h2>
@@ -186,7 +186,7 @@
                         </div>
 
                     </div>
-                    <button type="button" class="btn btn-warning">Solicitar servicio</button>
+                    <button type="button" class="btn btn-warning" th:href="@{/orden/contratar/__${proveedor.id}__}">Solicitar servicio</button>
                 </div>
             </div>
         </div>       

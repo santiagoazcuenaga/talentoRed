@@ -113,6 +113,8 @@
                          th:href="@{/orden/cancelar/__${orden.id}__}"> Cancelar </a>
                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
                          th:href="@{/orden/finalizar/__${orden.id}__}"> Finalizar </a>
+                    
+                    
                     </div>
                 </div>
             </div>

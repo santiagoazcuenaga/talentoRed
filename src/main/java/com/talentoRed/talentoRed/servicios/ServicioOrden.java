@@ -62,6 +62,8 @@ public class ServicioOrden {
         
     }
     
+    
+    
     @Transactional
     public void cancelarOrden(String id){
         repOrden.deleteById(id);
@@ -82,17 +84,28 @@ public class ServicioOrden {
     
     
     @Transactional
-    public void finalizarOrden(String id, int calificacion, String comentario){
+    public void finalizarOrden(String id){
         Optional<OrdenDeServicio> orden = repOrden.findById(id);
         if(orden.isPresent()){
             OrdenDeServicio ordena = repOrden.getOne(id);
-            ordena.setCalificacion(calificacion);
-            ordena.setComentario(comentario);
             ordena.setEstadoServicio(EstadoSolicitud.FINALIZADA);
             repOrden.save(ordena);
             //hay que ver cómo hacemos que la orden se reemplace o que se duplique.
         }
     }
+    
+    @Transactional
+    public void comentarioYCalificacion(String id,Integer calificacion,String comentario){
+      Optional <OrdenDeServicio> orden = repOrden.findById(id);
+      if (orden.isPresent()){
+          OrdenDeServicio ordena = repOrden.getOne(id);
+          ordena.setCalificacion(calificacion);
+            ordena.setComentario(comentario);
+            repOrden.save(ordena);
+      }
+    }
+    
+    
     //listar las ordenes
     public List<OrdenDeServicio> listarOrdenes(){
         List<OrdenDeServicio> ordenes = repOrden.findAll();
