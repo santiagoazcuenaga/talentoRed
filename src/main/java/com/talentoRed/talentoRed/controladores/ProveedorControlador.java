@@ -132,5 +132,29 @@ public class ProveedorControlador {
         return "ordenarProveedores";
 
     }
+    
+    @GetMapping("/proveedorinfo/{id}")
+    public String proveedorinfo(@PathVariable String id, ModelMap modelo){
+          Proveedor proveedor = serPro.getOne(id);
+        modelo.put("user", proveedor);
+        
+        return "proveedorclasificacion.html";
+        
+    }
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/ordenados")
+    public String ordenarProveedores(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
 
 }

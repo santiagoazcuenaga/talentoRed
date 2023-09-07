@@ -18,9 +18,12 @@
 
         .card p {
            
-            max-height: 2.9em; /* Aproximadamente dos líneas de texto con un line-height típico. */
-            text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto se recorta. */
-        }
+            max-height: 2.0em; /* Aproximadamente dos líneas de texto con un line-height típico. */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto se recorta. */
+    overflow: hidden; /* Oculta el texto que excede la altura máxima. */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas. */
+}
+
          .container{
             position: relative;
          }
@@ -64,7 +67,7 @@
             
             
             
-            <main style=" margin-top: 110px;">
+            <main >
                 
                 <h1 style="text-align: center" >Nuestros proveedores</h1>
                 <br>
@@ -75,14 +78,16 @@
                     <div class="col-md-3" th:each="usuario : ${usuarios}" >
                         
                         <div class="card ">
+                            <br>
                             <!--cada img se debe traer de donde quede la imagen subida por el prestador-->
-                            <img src="/image/jardinero.png" class="card-img-top" style="width: 150px; height: 150px; border-radius: 75px" alt="imagen proveedor">
+                            <img  class="card-img-top" alt="prove" style="width: 150px ;border-radius: 75px;" >
+                            
                             <div class="card-body">
                                 <h4 class="card-title" scope="row" th:text="${usuario.nombre}" style="font-weight: bold" ></h4>
                                 <h6 class="card-text" th:text="${usuario.servicio}" style="font-weight: bold" ></h6>
                                 <p  th:text="${usuario.descripcion}"> </p>
                                 <br>
-                                <a href="" class="btn btn-outline-secondary"> Ver Perfil</a> 
+                                <a th:href="@{/proveedor/proveedorinfo/__${usuario.id}__}" class="btn btn-outline-secondary"> Ver Perfil</a> 
                                
                                 <a href="" class="btn btn-outline-warning" > Solicitar Servicio</a>
 
@@ -91,7 +96,7 @@
                          
 
                                 <form>
-                                    <p class="clasificacion">
+                                    <p class="clasificacion" style="">
                                            <input id="radio1" type="radio" name="estrellas" value="5"><!--
                                         --><label for="radio1">★</label><!--
                                         --><input id="radio2" type="radio" name="estrellas" value="4"><!--
