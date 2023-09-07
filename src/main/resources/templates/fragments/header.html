@@ -30,6 +30,7 @@ Llamar fragmento desde plantilla => <header th:replace= "/fragments/header :: he
 
                 <a class="me-3 py-2  text-white" th:if="${session.usuariosession == null}" href="/login">Iniciar
                     Sesion</a>
+
                 <div class="dropdown-center" th:if="${session.usuariosession != null}">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <a class="me-3 dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">

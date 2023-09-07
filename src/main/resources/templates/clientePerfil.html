@@ -12,7 +12,11 @@
         <div class="row">
             <div class="row mb-3 text-center">
                 <div class="col-xxl-4 themed-grid-col" th:value="${user.id}" name="id">
+<<<<<<< HEAD
                     <img class="img-prestador rounded-circle" width="140" height="140" src="/image/user.png"></img>
+=======
+                    <img class="img-prestador rounded-circle" width="140" height="140" th:src="@{/imagen/perfil/__${user.id}__}">
+>>>>>>> d700745222e5dce18536a69e066907895066a3ce
             
                     <h2 class="fs-3" th:text="${user.nombre}" style="color:white"></h2>
                     <h2 class="fs-5" th:text="${user.barrio}" style="color:white"></h2>
@@ -20,7 +24,11 @@
                        
                         
                         <br>
+<<<<<<< HEAD
                             <button type="button" class="btn btn-warning text-center" >Editar</button>
+=======
+                            <button type="button" class="btn btn-warning text-center" th:href="@{/editar_perfil/__${user.id}__}">Editar</button>
+>>>>>>> d700745222e5dce18536a69e066907895066a3ce
                     </div>
                     
                 </div>
@@ -61,6 +69,7 @@
    
 </section>
 <br>
+
 
         <footer th:replace="/fragments/footer :: footer"> </footer>
     </body>

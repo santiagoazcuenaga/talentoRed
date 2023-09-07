@@ -110,7 +110,7 @@ public class PortalControlador {
 
         Cliente cliente = serCli.getOne(id);
         modelo.put("user", cliente);
-
+        
         return "actualizarCliente.html";
     }
 
@@ -142,7 +142,6 @@ public class PortalControlador {
             return "usuario no encontrado";
         }
     }
-
 
         @GetMapping("/comofun")
         public String comofun

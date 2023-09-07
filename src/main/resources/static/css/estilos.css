@@ -302,9 +302,9 @@ border-color: #d37203;
   font-size: 20px;
 }
 
-input[type="radio"] {
+/* input[type="radio"] {
   display: none;
-}
+} */
 
 label {
   color: grey;

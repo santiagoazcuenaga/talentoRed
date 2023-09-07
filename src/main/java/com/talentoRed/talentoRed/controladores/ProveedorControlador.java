@@ -1,13 +1,13 @@
-/*
- * 
- */
+
 package com.talentoRed.talentoRed.controladores;
 
+import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.TipoServicio;
+import com.talentoRed.talentoRed.servicios.ServicioOrden;
 import com.talentoRed.talentoRed.servicios.ServicioProveedor;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -34,6 +34,9 @@ public class ProveedorControlador {
     @Autowired
     private ServicioProveedor serPro;
 
+    @Autowired
+    private ServicioOrden serOrden;
+    
     @GetMapping("/registrar")
     public String registrarProveedor() {
         return "registroPro.html";
@@ -61,66 +64,37 @@ public class ProveedorControlador {
 
         Proveedor proveedor = serPro.getOne(id);
         modelo.put("user", proveedor);
-
+        List<OrdenDeServicio> ordenes = serOrden.listarOrdenProveedor(id);
+        modelo.put("ordenes", ordenes);
         return "proveedorPerfil.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
     @GetMapping("/editar_perfil/{id}")
     public String editar_perfil(@PathVariable String id, ModelMap modelo) {
 
         Proveedor proveedor = serPro.getOne(id);
         modelo.put("user", proveedor);
 
-        return "actualizarCliente.html";
+        return "actualizarProveedor.html";
     }
 
-    
-    
-  //controlador para vista de proveedores x Guille
-    
-   /* @GetMapping("/proveedores")
-    public String Proveedores() {
-        return "proveedores.html";
-    }*/
-    
-    //controlador para vista de proveedores x Servicio
-    
-   /* @GetMapping("/ordenados")
-=======
-
-    //controlador para vista de proveedores x Guille
-//    @GetMapping("/")
-//    public String Proveedores(ModelMap modelo,TipoServicio servicio) {
-//        List<Proveedor> proveedores = serPro.listarProveedor(servicio);
-//        modelo.addAttribute("usuarios", proveedores);
-//        return "listaProveedores.html";
-//    }
-//    
-//    
-    //controlador para vista de proveedores x Servicio
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
-    @GetMapping("/ordenados")
->>>>>>> master
-    public String ordenarProveedores(ModelMap model, HttpSession session) {
-        try {
-            // Envía los datos del usuario a la página una vez esté logueado
-            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-            System.err.println("errorlogueo1");
-            model.addAttribute("user", logueado);
-            System.err.println("errorlogueo2");
-            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
-            System.err.println("errorlogueo3");
-            model.put("usuarios", usuarios);
-            System.err.println("errorlogueo4");
-            return "ordenarProveedores.html";
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
+    @PostMapping("/editar_perfil/{id}")
+    public String editar_perfil(MultipartFile archivo, @PathVariable String id, TipoServicio tipoServicio, @RequestParam String nombre, @RequestParam String email,
+            String telefono, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
+            MetodoPago metodoPago, MultipartFile portada) {
+        
+        try {            
+            serPro.modificarProveedor(archivo, id, tipoServicio, nombre, email, telefono, tieneMatricula, matricula, descripcion, disponibilidad, metodoPago, portada);
+            return "redirect:/proveedor/mi_perfil/"+id;
         } catch (Exception e) {
-            System.err.println(" error catch");
-            return "index.html";
+            System.out.println(e.getMessage());
+            return "actualizarProveedor.html";
         }
-<<<<<<< HEAD
-        
-        
-    }*/
+    }
+
+
       @Autowired
     ServicioUsuario usuarioservicio;
       
@@ -152,6 +126,7 @@ public class ProveedorControlador {
             model.addAttribute("usuarios", usuarios);
             return "ordenarProveedores.html";
         } catch (Exception e) {
+
             System.out.println(e.getMessage());
             return "index.html";
         }

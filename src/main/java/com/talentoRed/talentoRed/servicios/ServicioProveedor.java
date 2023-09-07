@@ -1,5 +1,7 @@
 package com.talentoRed.talentoRed.servicios;
 
+import com.talentoRed.talentoRed.entidades.Imagen;
+import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
@@ -7,6 +9,7 @@ import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.Rol;
 import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
+import com.talentoRed.talentoRed.repositorios.RepositorioOrden;
 import com.talentoRed.talentoRed.repositorios.RepositorioProveedor;
 import com.talentoRed.talentoRed.repositorios.RepositorioUsuario;
 import java.util.ArrayList;
@@ -33,17 +36,18 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Service
 public class ServicioProveedor implements UserDetailsService {
-
+    
+    
     @Autowired
     private RepositorioProveedor repoPro;
     //Agregar instancia de servicio Usuario
     @Autowired
-    private RepositorioUsuario repoUser;
+    private ServicioImagen servicioImagen;
 
     @Transactional
     public void crearProveedor(MultipartFile archivo, TipoServicio tipoServicio, String nombre, String email, String password, String password2, String telefono,
             boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
-            MetodoPago metodoPago, MultipartFile portada) {
+            MetodoPago metodoPago, MultipartFile portada) throws MyException {
 
         //validar 
         Proveedor proveedor = new Proveedor();
@@ -58,32 +62,40 @@ public class ServicioProveedor implements UserDetailsService {
         proveedor.setDisponibilidad(disponibilidad);
         proveedor.setDescripcion(descripcion);
         proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
+        proveedor.setCalificacion(0);
         proveedor.setCantServ(0);
-        //proveedor.setImagen(imagen);
+        Imagen imagen = servicioImagen.guardar(archivo);
+        proveedor.setImagen(imagen);
         //proveedor.setPortada(portada);
         repoPro.save(proveedor);
     }
 
-    public void modificarProveedor(MultipartFile archivo, String id, TipoServicio tipoServicio, String nombre, String email, String password, String password2, String telefono,
+    public void modificarProveedor(MultipartFile archivo, String id, TipoServicio tipoServicio, String nombre, String email, String telefono,
             boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
-            MetodoPago metodoPago, MultipartFile portada) {
-        Optional<Proveedor> respuesta = repoPro.findById(id);
-        if (respuesta.isPresent()) {
-            Proveedor proveedor = respuesta.get();
-            proveedor.setServicio(tipoServicio);
-            proveedor.setNombre(nombre);
-            proveedor.setEmail(email);
-            proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
-            proveedor.setTelefono(telefono);
-            proveedor.setTieneMatricula(tieneMatricula);
-            proveedor.setMatricula(matricula);
-            proveedor.setDisponibilidad(disponibilidad);
-            proveedor.setDescripcion(descripcion);
-            proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
-            proveedor.setCantServ(0);
-            //proveedor.setImagen(imagen);
-            //proveedor.setPortada(portada);
-            repoPro.save(proveedor);
+            MetodoPago metodoPago, MultipartFile portada) throws Exception {
+        
+        try {
+            Optional<Proveedor> respuesta = repoPro.findById(id);
+            if (respuesta.isPresent()) {
+                Proveedor proveedor = respuesta.get();
+                proveedor.setServicio(tipoServicio);
+                proveedor.setNombre(nombre);
+                proveedor.setEmail(email);
+                //proveedor.setPassword(new BCryptPasswordEncoder().encode(password)); se modificara en oto metodo
+                proveedor.setTelefono(telefono);
+                proveedor.setTieneMatricula(tieneMatricula);
+                proveedor.setMatricula(matricula);
+                proveedor.setDisponibilidad(disponibilidad);
+                proveedor.setDescripcion(descripcion);
+                proveedor.setMetodoPago(metodoPago);//configurar debe ser un List
+                proveedor.setCantServ(0);
+                //proveedor.setImagen(imagen);
+                //proveedor.setPortada(portada);
+                repoPro.save(proveedor);                
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw e;
         }
 
     }
@@ -110,6 +122,14 @@ public class ServicioProveedor implements UserDetailsService {
 
     
      */
+  
+    
+    
+    
+    
+    
+    
+    
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Proveedor proveedor = repoPro.buscarProveedorPorEmail(email);
@@ -147,18 +167,11 @@ public class ServicioProveedor implements UserDetailsService {
         return proveedor;
     }
 
-    public List<Usuario> getProveedoresOrderedByTipoServicio() {
-        List<Usuario> usuarios = repoUser.findAllProveedoresOrderedByTipoServicio();
-        return usuarios;
-    }
-
     public List<Proveedor> obtenerProveedoresOrdenados() {
 
         List<Proveedor> proveedores = repoPro.findAll();
-
         Comparator<Proveedor> comparador = Comparator.comparing(Proveedor::getServicio)
                 .thenComparing(Proveedor::getNombre);
-
         //OTRA MANERA FUNCION COMPARE TO
 //        Comparator<Proveedor> comparador = (p1, p2) -> {
 //            int tipoComparison = p1.getServicio().compareTo(p2.getServicio());
