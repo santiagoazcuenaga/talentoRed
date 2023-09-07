@@ -89,14 +89,14 @@
                                 <br>
                                 <a th:href="@{/proveedor/proveedorinfo/__${usuario.id}__}" class="btn btn-outline-secondary"> Ver Perfil</a> 
                                
-                                <a href="" class="btn btn-outline-warning" > Solicitar Servicio</a>
+                                <a th:href="@{/orden/contratar/__${usuario.id}__}" class="btn btn-outline-warning" > Solicitar Servicio</a>
 
                             </div>
                             <div class="card-footer">
                          
 
                                 <form>
-                                    <p class="clasificacion" style="">
+                                    <p class="clasificacion" >
                                            <input id="radio1" type="radio" name="estrellas" value="5"><!--
                                         --><label for="radio1">★</label><!--
                                         --><input id="radio2" type="radio" name="estrellas" value="4"><!--
