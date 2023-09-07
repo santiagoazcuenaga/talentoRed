@@ -3,14 +3,29 @@
     <head th:replace="/fragments/head :: head"> </head>
 
     <body style=" background: url(/image/345397.jpg);  background-repeat: no-repeat;background-size: cover;">
-<<<<<<< HEAD
-    <header th:replace= "/fragments/header :: header"> </header>
+   
+        <header th:replace= "/fragments/header :: header"> </header>
 
+        <style>
+       
+            #contenedor {
+    
+                width: 450px;
+                /* Define el ancho máximo del formulario */
+                
+                background-color: rgba(255, 188, 43, 0.8);
+                /* Fondo semi-transparente */
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+                /* Sombra suave */
+            }
+        </style>
 
+     <main>
     
     <section>
-    <div class="container">
-        <div class="row">
+         <div class="container">
+        <div class="row" style="margin-left:30% ;">
             <div class="row mb-3 text-center">
                 <div class="col-xxl-4 themed-grid-col" th:value="${user.id}" name="id">
                     <img class="img-prestador rounded-circle" width="140" height="140" src="/image/foto-albañil.jpg"></img>
@@ -35,11 +50,12 @@
                     
                 </div>
             </div>
-        </div>       
-    </div>
-</section>
-<!--Fin Seccion portada prestador -->
-<hr>
+                    </div>       
+                 </div>
+         </section>
+   <!--Fin Seccion portada prestador -->
+              <hr>
+
 
 <!--Incio Seccion de opiniones -->
 <section>
@@ -75,72 +91,51 @@
 
 <!-- Inicio Seccion ordenes-->
 
-<section class="ordenes">
-    <h1 class="text-black">Mis Ordenes de Serivicio</h1>
+<section class="ordenes"  >
+    <div class="container">
+        <div class="contenedor">
+    <h1 class="text-white" style="margin-left: 30%; " id="contenedor">Mis Ordenes de Serivicio</h1>
+     </div>
+    <br><br>
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <div class="col">
+            <div class="col" th:each="orden : ${ordenes}">
                 <div class="card mb-4 rounded-3 shadow-sm" style="width: 350px">
                   <div class="card-header py-3 bg-dark text-warning">
-                    <h4 class="my-0 fw-normal"> Apellido y Nombre Cliente</h4>
+                    <p>Nombre de cliente:</p>
+                    <h4 class="my-0 fw-normal" th:text="${orden.usuario.nombre}"> </h4>
                   </div>
-                  <!--Estado Orden de servicio
-                  <div class="group">
-                    <select class="mt-3" aria-label="Default select example" name="ordenEstado" style="width: 200px;">
-                        <option selected>Estado Actual</option>
-                        <option value="Pendiente">Pendiente</option>
-                        <option value="Cancelado">Cancelado</option>
-                        <option value="Completado">Completado</option>
-                    </select>
-                    <button class="btn btn-warning" type="button">Cambiar Estado</button>
-                  </div>-->
                     <hr>
                     <div class="align-self-center mt-2 mb-auto">
                         <ul class="list-unstyled">
-                        <li  class="bi bi-clock-fill"> Barrio:</li>
-                        <li  class="bi bi-card-heading"> Casa: </li>
-                        <li  class="bi bi-cash"> Manzana:</li>
-                        <li  class="bi bi-telephone-fill"> Telefono:</li>
-                        <li  class="bi bi-envelope-at-fill"> Email:</li>
+                        <li  class="bi bi-clock-fill"> Barrio: <span th:text="${orden.usuario.barrio}"></span></li>
+                        <li  class="bi bi-card-heading"> Manzana: <span th:text="${orden.usuario.manzana}"></span></li>
+                        <li  class="bi bi-cash"> Casa: <span th:text="${orden.usuario.casa}"></span></li>
+                        <li  class="bi bi-telephone-fill"> Telefono: <span th:text="${orden.usuario.telefono}"></span></li>
+                        <li  class="bi bi-envelope-at-fill"> Email: <span th:text="${orden.usuario.email}"></span></li>
+                        <hr>
+                        <li class="bi bi-envelope-at-fill"> Estado: <span th:text="${orden.estadoServicio}"></span> </l>
+            
                         </ul>
+                        <br>
                     </div>
-                    <hr>
+                    
                     <div class="group mb-3">
-                        <button class="btn btn-primary" type="button">Aceptar</button>
-                        <button class="btn btn-danger" type="button">Rechazar</button>
+                       <a class="btn btn-primary" type="button" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'PENDIENTE')}" 
+                        th:href="@{/orden/aceptada/__${orden.id}__}">Aceptar</a>
+                        <a class="btn btn-danger" type="button"  th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'PENDIENTE')}" 
+                        th:href="@{/orden/rechazada/__${orden.id}__}">Rechazar</a>
+                        <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
+                         th:href="@{/orden/cancelar/__${orden.id}__}"> Cancelar </a>
+                        <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
+                         th:href="@{/orden/finalizar/__${orden.id}__}"> Finalizar </a>
                     </div>
                 </div>
             </div>
-           
+         </div>  
+        </div>
   </section>
+</main>
 <!-- Fin Seccion ordenes-->
-
-<hr>
-<br>
-    
-
-<!-- tarjeta rproviciional de ordenes -->
-                <div>
-                    <table>
-                        <tbody th:each=" orden : ${ordenes}" >
-                        <td th:text="${orden.id}"> </td>
-                        <td th:text="${orden.estadoServicio}"></td> <!-- Cambio a usuario.email -->
-                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'PENDIENTE')}" 
-                         th:href="@{/orden/aceptada/__${orden.id}__}"> Aceptar </a>
-                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'PENDIENTE')}" 
-                         th:href="@{/orden/rechazada/__${orden.id}__}"> Rechazar </a>
-                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
-                         th:href="@{/orden/rechazada/__${orden.id}__}"> Finalizar </a>
-                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
-                         th:href="@{/orden/rechazada/__${orden.id}__}"> Cancelar </a>
-                         
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </section>
-        <br>
-
 
 
         <footer th:replace="/fragments/footer :: footer"> </footer>

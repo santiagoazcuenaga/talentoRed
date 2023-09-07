@@ -1,4 +1,3 @@
-
 package com.talentoRed.talentoRed.controladores;
 
 import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
@@ -21,8 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import com.talentoRed.talentoRed.servicios.ServicioUsuario;
-import com.talentoRed.talentoRed.entidades.Usuario;
 
 /**
  * @author Kidver
@@ -94,27 +91,7 @@ public class ProveedorControlador {
         }
     }
 
-
-      @Autowired
-    ServicioUsuario usuarioservicio;
-      
-    
-    @GetMapping("/listarProveedores")
-    public String mostrarProveedores(ModelMap modelo) {
-        List<Usuario> usuarios = usuarioservicio.mostrarProveedores();
-        modelo.addAttribute("usuarios", usuarios);
-        return "ordenarProveedores";
-
-    }
-    
-    @GetMapping("/proveedorinfo/{id}")
-    public String proveedorinfo(@PathVariable String id, ModelMap modelo){
-          Proveedor proveedor = serPro.getOne(id);
-        modelo.put("user", proveedor);
-        
-        return "proveedorclasificacion.html";
-        
-    }
+    //controlador para vista de proveedores x Servicio
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
     @GetMapping("/ordenados")
     public String ordenarProveedores(ModelMap model, HttpSession session) {
@@ -126,10 +103,18 @@ public class ProveedorControlador {
             model.addAttribute("usuarios", usuarios);
             return "ordenarProveedores.html";
         } catch (Exception e) {
-
             System.out.println(e.getMessage());
             return "index.html";
         }
     }
+    
+    @GetMapping("/proveedorinfo/{id}")
+    public String proveedorinfo(@PathVariable String id, ModelMap modelo){
+          Proveedor proveedor = serPro.getOne(id);
+        modelo.put("user", proveedor);
 
-}
+        return "proveedorclasificacion.html";
+
+    }
+
+}//The end

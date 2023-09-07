@@ -6,29 +6,44 @@
 
 <body style=" background: url(/image/345397.jpg);  background-repeat: no-repeat;background-size: cover;">
     <header th:replace= "/fragments/header :: header"> </header>
+    <style>
+       
+        #contenedor {
 
+            width: 450px;
+            /* Define el ancho máximo del formulario */
+            
+            background-color: rgba(255, 188, 43, 0.8);
+            /* Fondo semi-transparente */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            /* Sombra suave */
+        }
+    </style>
+<main>
           <section>
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-left:30% ;">
             <div class="row mb-3 text-center">
                 <div class="col-xxl-4 themed-grid-col" th:value="${user.id}" name="id">
-<<<<<<< HEAD
-                    <img class="img-prestador rounded-circle" width="140" height="140" src="/image/user.png"></img>
-=======
+
+
                     <img class="img-prestador rounded-circle" width="140" height="140" th:src="@{/imagen/perfil/__${user.id}__}">
->>>>>>> d700745222e5dce18536a69e066907895066a3ce
-            
-                    <h2 class="fs-3" th:text="${user.nombre}" style="color:white"></h2>
-                    <h2 class="fs-5" th:text="${user.barrio}" style="color:white"></h2>
+
+                      <br><br>
+                      <div class="contorno">
+                    <h2 class="fs-3" th:text="${user.nombre}" style="color:rgb(238, 238, 238)"></h2>
+                    <h2 class="fs-5" th:text="${user.barrio}" style="color:rgb(255, 255, 255)" ></h2>
+                </div>
                      <div class="card-body">
                        
                         
                         <br>
-<<<<<<< HEAD
-                            <button type="button" class="btn btn-warning text-center" >Editar</button>
-=======
+
+                            
+
                             <button type="button" class="btn btn-warning text-center" th:href="@{/editar_perfil/__${user.id}__}">Editar</button>
->>>>>>> d700745222e5dce18536a69e066907895066a3ce
+
                     </div>
                     
                 </div>
@@ -54,9 +69,9 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="lista-datos">
-                        <li  ><i class="bi bi-clock-fill"></i><strong>Barrio: </strong>  <span th:text="${user.barrio}"></span></li>
-                        <li  ><i class="bi bi-card-heading"></i> <strong>Casa: </strong> <span th:text="${user.casa}"></span></li>
-                        <li  ><i class="bi bi-cash"></i><strong>Manzana: </strong>  <span th:text="${user.manzana}" ></span></li>
+                        <li  ><i class="bi bi-houses-fill"></i></i><strong>Barrio: </strong>  <span th:text="${user.barrio}"></span></li>
+                        <li  ><i class="bi bi-house-door-fill"></i></i> <strong>Casa: </strong> <span th:text="${user.casa}"></span></li>
+                        <li  ><i class="bi bi-apple"></i></i><strong>Manzana: </strong>  <span th:text="${user.manzana}" ></span></li>
                      
                     </ul>
                    
@@ -69,7 +84,42 @@
    
 </section>
 <br>
-
+<section class="ordenes"  >
+    <div class="container">
+    <h1 class="text-white" style="margin-left: 30%;" id="contenedor">Mis Ordenes de Serivicio</h1>
+    <br><br>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" style="margin-top: 10%;">
+            <div class="col" th:each="orden : ${ordenes}">
+                <div class="card mb-4 rounded-3 shadow-sm" style="width: 350px">
+                  <div class="card-header py-3 bg-dark text-warning">
+                    <p>Nombre de Prestador:</p>
+                    <h4 class="my-0 fw-normal" th:text="${orden.proveedor.nombre}"> </h4>
+                  </div>
+                    <hr>
+                    <div class="align-self-center mt-2 mb-auto">
+                        <ul class="list-unstyled">
+                            <i class="bi bi-tools"></i> <strong>Servicio:</strong> <span th:text="${orden.proveedor.servicio}"></span></li>
+                        <li  class="bi bi-envelope-at-fill"> <strong>Email:</strong> <span th:text="${orden.proveedor.email}"></span></li>
+                        <i class="bi bi-cash"></i><strong> Metodo de pago: </strong> <span th:text="${orden.proveedor.metodoPago}"></span></li>
+                        <hr>
+                        <i class="bi bi-list-check"></i><strong> Estado del pedido:</strong>  <span th:text="${orden.estadoServicio}"></span> </l>
+            
+                        </ul>
+                        <br>
+                    </div>
+                    
+                   
+                        <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
+                         th:href="@{/orden/cancelar/__${orden.id}__}"> Cancelar </a>
+                        <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
+                         th:href="@{/orden/finalizar/__${orden.id}__}"> Finalizar </a>
+                    </div>
+                </div>
+            </div>
+         </div>  
+        </div>
+  </section>
+</main>
 
         <footer th:replace="/fragments/footer :: footer"> </footer>
     </body>

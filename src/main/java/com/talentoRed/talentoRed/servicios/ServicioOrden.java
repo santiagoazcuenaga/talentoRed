@@ -112,6 +112,7 @@ public class ServicioOrden {
          }
          return aux;   
     }
+ 
      //Listar las ordenes solicitadas por cliente
       public List<OrdenDeServicio> listarOrdenCliente(String id){
         List<OrdenDeServicio> ordenes = repOrden.findAll();

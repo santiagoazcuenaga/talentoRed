@@ -5,12 +5,14 @@
 package com.talentoRed.talentoRed.controladores;
 
 import com.talentoRed.talentoRed.entidades.Cliente;
+import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Barrio;
 import com.talentoRed.talentoRed.enums.TipoServicio;
 import com.talentoRed.talentoRed.myExceptions.MyException;
 import com.talentoRed.talentoRed.servicios.ServicioCliente;
+import com.talentoRed.talentoRed.servicios.ServicioOrden;
 import com.talentoRed.talentoRed.servicios.ServicioProveedor;
 import java.util.List;
 import java.util.logging.Level;
@@ -38,6 +40,8 @@ public class PortalControlador {
     private ServicioCliente serCli;
     @Autowired
     private ServicioProveedor serPro;
+    @Autowired
+    private ServicioOrden serOrden;
 
     @GetMapping("/")
     public String index() {
@@ -101,6 +105,8 @@ public class PortalControlador {
 
         Cliente cliente = serCli.getOne(id);
         modelo.put("user", cliente);
+        List<OrdenDeServicio> ordenes = serOrden.listarOrdenCliente(id);
+        modelo.put("ordenes", ordenes);
 
         return "clientePerfil.html";
     }
