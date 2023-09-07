@@ -69,11 +69,11 @@ public class OrdenDeServicio {
         this.estadoServicio = estadoServicio;
     }
 
-    public int getCalificacion() {
+    public Integer getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(int calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
 

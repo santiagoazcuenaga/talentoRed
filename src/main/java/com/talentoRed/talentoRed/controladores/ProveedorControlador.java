@@ -92,7 +92,7 @@ public class ProveedorControlador {
     }
 
     //controlador para vista de proveedores x Servicio
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    
     @GetMapping("/ordenados")
     public String ordenarProveedores(ModelMap model, HttpSession session) {
         try {
@@ -107,7 +107,7 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+
     @GetMapping("/albañil")
     public String ordenarAlbañil(ModelMap model, HttpSession session) {
         try {
@@ -122,7 +122,7 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+   
     @GetMapping("/carpintero")
     public String ordenarCarpintero(ModelMap model, HttpSession session) {
         try {
@@ -137,7 +137,7 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    
     @GetMapping("/electricista")
     public String ordenarElectricista(ModelMap model, HttpSession session) {
         try {
@@ -152,7 +152,7 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+  
     @GetMapping("/gas")
     public String ordenarGas(ModelMap model, HttpSession session) {
         try {
@@ -167,7 +167,7 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+
     @GetMapping("/jardinero")
     public String ordenarJardineros(ModelMap model, HttpSession session) {
         try {
@@ -182,7 +182,7 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+   
     @GetMapping("/mecanico")
     public String ordenarMecanicos(ModelMap model, HttpSession session) {
         try {
@@ -197,7 +197,7 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+   
     @GetMapping("/plomero")
     public String ordenarPlomero(ModelMap model, HttpSession session) {
         try {
@@ -212,7 +212,7 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+   
     @GetMapping("/tecnico")
     public String ordenarTecnicos(ModelMap model, HttpSession session) {
         try {
@@ -230,7 +230,7 @@ public class ProveedorControlador {
     @GetMapping("/proveedorinfo/{id}")
     public String proveedorinfo(@PathVariable String id, ModelMap modelo){
           Proveedor proveedor = serPro.getOne(id);
-        modelo.put("user", proveedor);
+        modelo.put("proveedor", proveedor);
 
         return "proveedorclasificacion.html";
 

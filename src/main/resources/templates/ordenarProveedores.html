@@ -81,7 +81,7 @@
                             <div class="card ">
                                 <br>
                                 <!--cada img se debe traer de donde quede la imagen subida por el prestador-->
-                                <img  class="card-img-top" alt="prove" style="width: 150px ;border-radius: 75px;" >
+                                <img  class="card-img-top" alt="prove" style="width: 150px ;border-radius: 75px "th:src="@{/imagen/perfil/__${usuario.id}__}" >
 
                                 <div class="card-body">
                                     <h4 class="card-title" scope="row" th:text="${usuario.nombre}" style="font-weight: bold" ></h4>

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @author lukaku
+ * @author lukaku,kidver y EL GOAT
  */
 @Controller
 @RequestMapping("/orden")
@@ -33,7 +33,7 @@ public class OrdenControlador {
     }
 
     // Cliente contrata a prestador
-    // @PreAuthorize("hasAnyRol('ROLE_CLIENTE')")
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR', 'ROLE_CLIENTE', 'ROLE_ADMIN')")
     @GetMapping("/contratar/{id}")
     public String contratarServicio(ModelMap modelo, HttpSession session, @PathVariable String id) {
 
@@ -49,17 +49,17 @@ public class OrdenControlador {
 
     }
     // El boton del servicio finalizado con exito
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE')")
+    @PostMapping("/comentario/{id}")
+    public String comentarServicio(@PathVariable String id,HttpSession session,Integer calificacion,String comentario) {
+Usuario user = (Usuario) session.getAttribute("usuariosession");
+        ordenservicio.comentarioYCalificacion(id, calificacion, comentario);
 
-    @PostMapping("/pagalo")
-    public String finalizarServicio(@RequestParam String id, @RequestParam int cal, String comentario) {
-
-        ordenservicio.finalizarOrden(id, cal, comentario);
-
-        return "pagado";// reemplazar
+        return "redirect:/mi_perfil/" + user.getId();// reemplazar
     }
 
     // El cliente cancela la orden
-    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR', 'ROLE_CLIENTE')")
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR', 'ROLE_CLIENTE','ROLE_ADMIN')")
     @GetMapping("/cancelar/{id}")
     public String cancelarServicio(@PathVariable String id, HttpSession session) {
         Usuario user = (Usuario) session.getAttribute("usuariosession");
@@ -79,7 +79,7 @@ public class OrdenControlador {
     }
 
     // El Proveedor debe aceptar o rechazar la orden
-    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @GetMapping("/aceptada/{id}")
     public String aceptaSolicitud(@PathVariable String id, HttpSession session) {
         ordenservicio.aceptarORechazar(id, EstadoSolicitud.ACEPTADA);
@@ -87,7 +87,7 @@ public class OrdenControlador {
         return "redirect:/proveedor/mi_perfil/" + user.getId();// modificar retornar al perfil del proveedor
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @GetMapping("/rechazada/{id}")
     public String rechazaSolicitud(@PathVariable String id, HttpSession session) {
         ordenservicio.aceptarORechazar(id, EstadoSolicitud.RECHAZADA);
@@ -100,7 +100,7 @@ public class OrdenControlador {
         return "listado.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR', 'ROLE_CLIENTE')")
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR', 'ROLE_CLIENTE','ROLE_ADMIN')")
     @GetMapping("/finalizar/{id}")
     public String finalizarServicioByProveedor(@PathVariable String id, HttpSession session) {
 
@@ -112,4 +112,6 @@ public class OrdenControlador {
         return "redirect:/proveedor/mi_perfil/" + user.getId();
 
     }
+    
+    
 }

@@ -143,7 +143,7 @@ public class PortalControlador {
             modelo.put("user", logueado);
             List<Proveedor> proveedores = serPro.listarProveedor(servicio);
             modelo.addAttribute("usuarios", proveedores);
-            return "listaProveedores.html";
+            return "ordenarProveedores.html";
         } catch(Exception e){
             return "usuario no encontrado";
         }
