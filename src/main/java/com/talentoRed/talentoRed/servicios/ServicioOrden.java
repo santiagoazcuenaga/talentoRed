@@ -88,7 +88,7 @@ public class ServicioOrden {
             OrdenDeServicio ordena = repOrden.getOne(id);
             ordena.setCalificacion(calificacion);
             ordena.setComentario(comentario);
-            ordena.setEstadoServicio(EstadoSolicitud.COMPLETADA);
+            ordena.setEstadoServicio(EstadoSolicitud.FINALIZADA);
             repOrden.save(ordena);
             //hay que ver cómo hacemos que la orden se reemplace o que se duplique.
         }

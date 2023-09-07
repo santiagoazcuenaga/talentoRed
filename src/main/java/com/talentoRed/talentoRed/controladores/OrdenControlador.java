@@ -60,26 +60,31 @@ public class OrdenControlador {
     }
     //El cliente cancela la orden
     @GetMapping("/cancelar/{id}")
-    public String cancelarServicio(@PathVariable String id) {
+    public String cancelarServicio(@PathVariable String id, HttpSession session) {
         try {
-            ordenservicio.cancelarOrden(id);
-            return "redirect:/mi_perfil/{id}";
+            ordenservicio.aceptarORechazar(id, EstadoSolicitud.CANCELADA);
+           Usuario user = (Usuario) session.getAttribute("usuariosession");        
+        return "redirect:/proveedor/mi_perfil/" + user.getId();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return "cancelado";//reemplazar
     }
     //El Proveedor debe aceptar o rechazar la orden
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
     @GetMapping("/aceptada/{id}")
-    public String aceptaSolicitud(@PathVariable String id){
+    public String aceptaSolicitud(@PathVariable String id, HttpSession session){
         ordenservicio.aceptarORechazar(id, EstadoSolicitud.ACEPTADA);
-        return "respuesta";//modificar retornar al perfil del proveedor
+        Usuario user = (Usuario) session.getAttribute("usuariosession");        
+        return "redirect:/proveedor/mi_perfil/" + user.getId();//modificar retornar al perfil del proveedor
     }
+    
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
     @GetMapping("/rechazada/{id}")
-    public String rechazaSolicitud(@PathVariable String id){
+    public String rechazaSolicitud(@PathVariable String id, HttpSession session){
         ordenservicio.aceptarORechazar(id, EstadoSolicitud.RECHAZADA);
-        return "respuesta";//modificar retornar al perfil del proveedor
+        Usuario user = (Usuario) session.getAttribute("usuariosession");        
+        return "redirect:/proveedor/mi_perfil/" + user.getId();
     }
         
     @GetMapping("/listar")

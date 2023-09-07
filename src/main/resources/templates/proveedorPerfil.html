@@ -74,15 +74,21 @@
 
                 </div>
 
-
+<!-- tarjeta rproviciional de ordenes -->
                 <div>
                     <table>
                         <tbody th:each=" orden : ${ordenes}" >
                         <td th:text="${orden.id}"> </td>
                         <td th:text="${orden.estadoServicio}"></td> <!-- Cambio a usuario.email -->
-                        <form th:action="@{/orden/aceptada/__${orden.id}__}">
-                            <button ><!-- comment -->
-                        </form>
+                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'PENDIENTE')}" 
+                         th:href="@{/orden/aceptada/__${orden.id}__}"> Aceptar </a>
+                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'PENDIENTE')}" 
+                         th:href="@{/orden/rechazada/__${orden.id}__}"> Rechazar </a>
+                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
+                         th:href="@{/orden/rechazada/__${orden.id}__}"> Finalizar </a>
+                         <a class="btn btn-outline-danger" th:if="${#strings.equalsIgnoreCase(orden.estadoServicio, 'ACEPTADA')}" 
+                         th:href="@{/orden/rechazada/__${orden.id}__}"> Cancelar </a>
+                         
                         </tbody>
                     </table>
                 </div>

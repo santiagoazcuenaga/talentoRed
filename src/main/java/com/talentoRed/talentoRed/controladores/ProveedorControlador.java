@@ -1,6 +1,4 @@
-/*
- * 
- */
+
 package com.talentoRed.talentoRed.controladores;
 
 import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
@@ -102,8 +100,8 @@ public class ProveedorControlador {
             // Envía los datos del usuario a la página una vez esté logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
             model.put("user", logueado);
-//            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
-//            model.addAttribute("usuarios", usuarios);
+            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
+            model.addAttribute("usuarios", usuarios);
             return "ordenarProveedores.html";
         } catch (Exception e) {
             System.out.println(e.getMessage());

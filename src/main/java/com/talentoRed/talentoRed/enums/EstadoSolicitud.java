@@ -10,6 +10,6 @@ package com.talentoRed.talentoRed.enums;
 
 public enum EstadoSolicitud {
     
-    ACEPTADA, PENDIENTE, RECHAZADA, COMPLETADA;
+    ACEPTADA, PENDIENTE, RECHAZADA, FINALIZADA, CANCELADA;
     
 }
