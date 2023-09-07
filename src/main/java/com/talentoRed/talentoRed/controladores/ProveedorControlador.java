@@ -60,9 +60,12 @@ public class ProveedorControlador {
     public String perfil(@PathVariable String id, ModelMap modelo) {
 
         Proveedor proveedor = serPro.getOne(id);
-        modelo.put("user", proveedor);
         List<OrdenDeServicio> ordenes = serOrden.listarOrdenProveedor(id);
         modelo.put("ordenes", ordenes);
+        Double estrellas = serOrden.calcularCalificacion(ordenes);
+        modelo.put("estrellas", estrellas);
+        
+        modelo.put("user", proveedor);
         return "proveedorPerfil.html";
     }
 

@@ -3,8 +3,10 @@
  */
 package com.talentoRed.talentoRed.controladores;
 
+import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Rol;
+import com.talentoRed.talentoRed.servicios.ServicioOrden;
 import com.talentoRed.talentoRed.servicios.ServicioUsuario;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
@@ -28,7 +30,8 @@ public class AdminControlador {
 
     @Autowired
     ServicioUsuario usuarioservicio;
-
+    @Autowired
+    ServicioOrden ordenservicio;
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/dashboard")
     public String panelAdministrativo(ModelMap modelo, HttpSession session) {
@@ -67,6 +70,8 @@ public class AdminControlador {
         try {
             Usuario usuario = usuarioservicio.getOne(id);
             modelo.addAttribute("usuario", usuario);
+            List<OrdenDeServicio> ordenes = ordenservicio.listarOrdenUsuario(id);
+            modelo.put("ordenes", ordenes);
             return "verUsuario"; // Nombre de la vista para mostrar los detalles del usuario
         } catch (EntityNotFoundException e) {
             // Manejar la excepción de entidad no encontrada
