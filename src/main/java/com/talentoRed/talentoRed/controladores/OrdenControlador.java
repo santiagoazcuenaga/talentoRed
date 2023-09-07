@@ -51,9 +51,9 @@ public class OrdenControlador {
     // El boton del servicio finalizado con exito
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE')")
     @PostMapping("/comentario/{id}")
-    public String comentarServicio(@PathVariable String id,HttpSession session,Integer calificacion,String comentario) {
-Usuario user = (Usuario) session.getAttribute("usuariosession");
-        ordenservicio.comentarioYCalificacion(id, calificacion, comentario);
+    public String comentarServicio(@PathVariable String id,HttpSession session,Integer estrellas,String comentario) {
+        Usuario user = (Usuario) session.getAttribute("usuariosession");
+        ordenservicio.comentarioYCalificacion(id, estrellas, comentario);
 
         return "redirect:/mi_perfil/" + user.getId();// reemplazar
     }

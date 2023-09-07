@@ -3,7 +3,6 @@
  */
 package com.talentoRed.talentoRed.servicios;
 
-
 import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
@@ -16,144 +15,160 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 /**
  * @author Kidver y lukaku
  */
 @Service
 public class ServicioOrden {
-    
+
     @Autowired
     private RepositorioOrden repOrden;
-    
+
     @Autowired
     private ServicioUsuario usuarioservicio;
-    
+
     @Autowired
     private ServicioProveedor proveeservicio;
-    
-    public Usuario buscarUsuario(String id){
-        return usuarioservicio.getOne(id);   
+
+    public Usuario buscarUsuario(String id) {
+        return usuarioservicio.getOne(id);
     }
-    
-    public Proveedor buscarProvee(String id){
+
+    public Proveedor buscarProvee(String id) {
         return proveeservicio.getOne(id);
     }
-    
-    
+
     //METODO EXCLUSIVO DEL CLIENTE.
     @Transactional
-    public void crearOrden(String idCliente, String idProvee){
+    public void crearOrden(String idCliente, String idProvee) {
         //instaciar al cliente y al prestador
         Usuario usuario = buscarUsuario(idCliente);
         Proveedor provee = buscarProvee(idProvee);
-        
+
         //crea la Orden
         OrdenDeServicio orden = new OrdenDeServicio();
 
         orden.setComentario(" ");
         orden.setCalificacion(0);
         orden.setEstadoServicio(EstadoSolicitud.PENDIENTE);//está en proceso
-                                    //cuando finaliza cambia a "false"
+        //cuando finaliza cambia a "false"
         orden.setProveedor(provee);
         orden.setUsuario(usuario);
         //guarda y persiste
         repOrden.save(orden);
-        
+
     }
-    
-    
-    
+
     @Transactional
-    public void cancelarOrden(String id){
+    public void cancelarOrden(String id) {
         repOrden.deleteById(id);
     }
-    
+
     @Transactional
     //ESTE METODO ES EXCLUSIVO DEL PROVEEDOR.
-    public void aceptarORechazar(String id,EstadoSolicitud estadoServicio){
-     Optional<OrdenDeServicio> respuesta = repOrden.findById(id);
-     OrdenDeServicio orden = respuesta.get();
-     if(respuesta.isPresent()){
-    orden.setEstadoServicio(estadoServicio);
-    repOrden.save(orden);
-     }
-        
+    public void aceptarORechazar(String id, EstadoSolicitud estadoServicio) {
+        Optional<OrdenDeServicio> respuesta = repOrden.findById(id);
+        OrdenDeServicio orden = respuesta.get();
+        if (respuesta.isPresent()) {
+            orden.setEstadoServicio(estadoServicio);
+            repOrden.save(orden);
+        }
+
     }
-    
-    
-    
+
     @Transactional
-    public void finalizarOrden(String id){
+    public void finalizarOrden(String id) {
         Optional<OrdenDeServicio> orden = repOrden.findById(id);
-        if(orden.isPresent()){
+        if (orden.isPresent()) {
             OrdenDeServicio ordena = repOrden.getOne(id);
             ordena.setEstadoServicio(EstadoSolicitud.FINALIZADA);
             repOrden.save(ordena);
             //hay que ver cómo hacemos que la orden se reemplace o que se duplique.
         }
     }
-    
+
     @Transactional
-    public void comentarioYCalificacion(String id,Integer calificacion,String comentario){
-      Optional <OrdenDeServicio> orden = repOrden.findById(id);
-      if (orden.isPresent()){
-          OrdenDeServicio ordena = repOrden.getOne(id);
-          ordena.setCalificacion(calificacion);
+    public void comentarioYCalificacion(String id, Integer calificacion, String comentario) {
+        Optional<OrdenDeServicio> orden = repOrden.findById(id);
+        if (orden.isPresent()) {
+            OrdenDeServicio ordena = repOrden.getOne(id);
+            ordena.setCalificacion(calificacion);
             ordena.setComentario(comentario);
             repOrden.save(ordena);
-      }
+        }
     }
-    
-    
+
     //listar las ordenes
-    public List<OrdenDeServicio> listarOrdenes(){
+    public List<OrdenDeServicio> listarOrdenes() {
         List<OrdenDeServicio> ordenes = repOrden.findAll();
-        return ordenes;   
+        return ordenes;
     }
-    
-     //Metodo para captar las ordenes de un proveedor
-     public List<OrdenDeServicio> listarOrdenProveedor(String id){
+
+    //Metodo para captar las ordenes de un proveedor
+    public List<OrdenDeServicio> listarOrdenProveedor(String id) {
         List<OrdenDeServicio> ordenes = repOrden.findAll();
-        
+
         List<OrdenDeServicio> aux = new ArrayList();
-         for (OrdenDeServicio orden : ordenes) {
-             if(orden.getProveedor().getId().equals(id)){
-                 aux.add(orden);
-             }
-             
-         }
-         return aux;   
-    }
- 
-     //Listar las ordenes solicitadas por cliente
-      public List<OrdenDeServicio> listarOrdenCliente(String id){
-        List<OrdenDeServicio> ordenes = repOrden.findAll();
-        
-        List<OrdenDeServicio> aux = new ArrayList();
-         for (OrdenDeServicio orden : ordenes) {
-             if(orden.getUsuario().getId().equals(id)){
-                 aux.add(orden);
-             }
-             
-         }
-         return aux;   
-    }
-      
-      //listar las ordenes en las que aparece el usuario
-       public List<OrdenDeServicio> listarOrdenUsuario(String id){
-        List<OrdenDeServicio> ordenes = repOrden.findAll();
-        
-        List<OrdenDeServicio> aux = new ArrayList();
-         for (OrdenDeServicio orden : ordenes) {
-             if(orden.getUsuario().getId().equals(id)){
-                 aux.add(orden);
-             } 
-             if(orden.getProveedor().getId().equals(id)){
+        for (OrdenDeServicio orden : ordenes) {
+            if (orden.getProveedor().getId().equals(id)) {
                 aux.add(orden);
-             }
-             
-         }
-         return aux; 
-       }
+            }
+
+        }
+        return aux;
+    }
+
+    //Listar las ordenes solicitadas por cliente
+    public List<OrdenDeServicio> listarOrdenCliente(String id) {
+        List<OrdenDeServicio> ordenes = repOrden.findAll();
+
+        List<OrdenDeServicio> aux = new ArrayList();
+        for (OrdenDeServicio orden : ordenes) {
+            if (orden.getUsuario().getId().equals(id)) {
+                aux.add(orden);
+            }
+
+        }
+        return aux;
+    }
+
+    //listar las ordenes en las que aparece el usuario
+    public List<OrdenDeServicio> listarOrdenUsuario(String id) {
+        List<OrdenDeServicio> ordenes = repOrden.findAll();
+
+        List<OrdenDeServicio> aux = new ArrayList();
+        for (OrdenDeServicio orden : ordenes) {
+            if (orden.getUsuario().getId().equals(id)) {
+                aux.add(orden);
+            }
+            if (orden.getProveedor().getId().equals(id)) {
+                aux.add(orden);
+            }
+
+        }
+        return aux;
+    }
+
+    //calculo promedio de calificaciones
+    public Double calcularCalificacion(List<OrdenDeServicio> ordenes) {
+
+        int aux = 0;
+        int suma = 0;
+
+        for (OrdenDeServicio orden : ordenes) {
+            if (orden.getCalificacion() != 0) {
+                suma += orden.getCalificacion();
+                aux++;
+            }
+        }
+
+        // Manejo de división por cero
+        if (aux == 0) {
+            return 0.0;
+        }
+
+        // Calcular el promedio como un número decimal
+        return (double) suma / aux;
+
+    }
 }
