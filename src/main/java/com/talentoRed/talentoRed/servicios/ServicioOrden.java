@@ -9,6 +9,7 @@ import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.EstadoSolicitud;
 import com.talentoRed.talentoRed.repositorios.RepositorioOrden;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,5 +99,31 @@ public class ServicioOrden {
         return ordenes;   
     }
     
+     //Metodo para captar las ordenes de un proveedor
+     public List<OrdenDeServicio> listarOrdenProveedor(String id){
+        List<OrdenDeServicio> ordenes = repOrden.findAll();
+        
+        List<OrdenDeServicio> aux = new ArrayList();
+         for (OrdenDeServicio orden : ordenes) {
+             if(orden.getProveedor().getId().equals(id)){
+                 aux.add(orden);
+             }
+             
+         }
+         return aux;   
+    }
+     //Listar las ordenes solicitadas por cliente
+      public List<OrdenDeServicio> listarOrdenCliente(String id){
+        List<OrdenDeServicio> ordenes = repOrden.findAll();
+        
+        List<OrdenDeServicio> aux = new ArrayList();
+         for (OrdenDeServicio orden : ordenes) {
+             if(orden.getUsuario().getId().equals(id)){
+                 aux.add(orden);
+             }
+             
+         }
+         return aux;   
+    }
     
 }

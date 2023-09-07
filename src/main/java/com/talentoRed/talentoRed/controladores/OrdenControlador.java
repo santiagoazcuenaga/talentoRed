@@ -59,7 +59,7 @@ public class OrdenControlador {
         return "pagado";//reemplazar
     }
     //El cliente cancela la orden
-    @PostMapping("/cancelar/{id}")
+    @GetMapping("/cancelar/{id}")
     public String cancelarServicio(@PathVariable String id) {
         try {
             ordenservicio.cancelarOrden(id);
@@ -70,16 +70,16 @@ public class OrdenControlador {
     }
     //El Proveedor debe aceptar o rechazar la orden
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
-    @PostMapping("/aceptada/{id}")
+    @GetMapping("/aceptada/{id}")
     public String aceptaSolicitud(@PathVariable String id){
         ordenservicio.aceptarORechazar(id, EstadoSolicitud.ACEPTADA);
-        return "respuesta";
+        return "respuesta";//modificar retornar al perfil del proveedor
     }
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
-    @PostMapping("/rechazada/{id}")
+    @GetMapping("/rechazada/{id}")
     public String rechazaSolicitud(@PathVariable String id){
         ordenservicio.aceptarORechazar(id, EstadoSolicitud.RECHAZADA);
-        return "respuesta";
+        return "respuesta";//modificar retornar al perfil del proveedor
     }
         
     @GetMapping("/listar")

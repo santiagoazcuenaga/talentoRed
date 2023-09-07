@@ -3,11 +3,13 @@
  */
 package com.talentoRed.talentoRed.controladores;
 
+import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
 import com.talentoRed.talentoRed.enums.Disponibilidad;
 import com.talentoRed.talentoRed.enums.MetodoPago;
 import com.talentoRed.talentoRed.enums.TipoServicio;
+import com.talentoRed.talentoRed.servicios.ServicioOrden;
 import com.talentoRed.talentoRed.servicios.ServicioProveedor;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -32,6 +34,9 @@ public class ProveedorControlador {
     @Autowired
     private ServicioProveedor serPro;
 
+    @Autowired
+    private ServicioOrden serOrden;
+    
     @GetMapping("/registrar")
     public String registrarProveedor() {
         return "registroPro.html";
@@ -59,7 +64,8 @@ public class ProveedorControlador {
 
         Proveedor proveedor = serPro.getOne(id);
         modelo.put("user", proveedor);
-
+        List<OrdenDeServicio> ordenes = serOrden.listarOrdenProveedor(id);
+        modelo.put("ordenes", ordenes);
         return "proveedorPerfil.html";
     }
 
@@ -96,8 +102,8 @@ public class ProveedorControlador {
             // Envía los datos del usuario a la página una vez esté logueado
             Usuario logueado = (Usuario) session.getAttribute("usuariosession");
             model.put("user", logueado);
-            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
-            model.addAttribute("usuarios", usuarios);
+//            List<Proveedor> usuarios = serPro.obtenerProveedoresOrdenados();
+//            model.addAttribute("usuarios", usuarios);
             return "ordenarProveedores.html";
         } catch (Exception e) {
             System.out.println(e.getMessage());
