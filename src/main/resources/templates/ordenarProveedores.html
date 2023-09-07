@@ -11,8 +11,8 @@
             z-index: 2; /* Un valor mayor que el z-index del sidebar */
         }
         input[type="radio"] {
-  display: none;
-} 
+            display: none;
+        }
         .sidebar {
 
             z-index: 1; /* Un valor menor que el z-index del footer */
@@ -34,7 +34,7 @@
 
 
     <body>
-      
+
 
 
         <header th:replace= "/fragments/header :: header"> </header>
@@ -46,21 +46,21 @@
             <h2> Categorías </h2>
             <hr>
             <ul>
-                <li><a href="#Albañil">Albañil</a></li>
-                <li><a href="#Carpintero">Carpintero</a></li>
-                <li><a href="#Electricista">Electricista</a></li>
-                <li><a href="#Jardinero">Jardinero</a></li>
-                <li><a href="#Gasista">Gasista</a></li>
-                <li><a href="#Mecanico">Mecanico</a></li>
-                <li><a href="#Plomero">Plomero</a></li>
-                <li><a href="#Tecnico">Tecnico</a></li>
+                <li><a href="/proveedor/albañil">Albañil</a></li>
+                <li><a href="/proveedor/carpintero">Carpintero</a></li>
+                <li><a href="/proveedor/electricista">Electricista</a></li>
+                <li><a href="/proveedor/jardinero">Jardinero</a></li>
+                <li><a href="/proveedor/gas">Gasista</a></li>
+                <li><a href="/proveedor/mecanico">Mecanico</a></li>
+                <li><a href="/proveedor/plomero">Plomero</a></li>
+                <li><a href="/proveedor/tecnico">Tecnico</a></li>
 
 
 
-                <br><br><br><br>
-                <hr>
-
-                <li><a href="#electricidad">Arriba</a></li> <!--esta linea debe apuntar al navbar del fragment-->
+                <!--  <br><br><br><br>
+                  <hr>
+  
+                  <li><a href="#electricidad">Arriba</a></li> esta linea debe apuntar al navbar del fragment-->
 
             </ul>
         </div>
@@ -68,58 +68,56 @@
 
         </div>
 
-
-
         <main >
 
-            <h1 style="text-align: center" >Nuestros proveedores</h1>
-            <br>
+            <!--            <h1 style="text-align: center" >Nuestros proveedores</h1>
+                        <br>-->
 
             <div class="contenedor-gral" style="margin-top: auto" >
+                <div class="usuarios-container">
+                    <div class="row ">
+                        <div class="col-md-3" th:each="usuario : ${usuarios}" >
 
-                <div class="row ">
-                    <div class="col-md-3" th:each="usuario : ${usuarios}" >
-
-                        <div class="card ">
-                            <br>
-                            <!--cada img se debe traer de donde quede la imagen subida por el prestador-->
-                            <img  class="card-img-top" alt="prove" style="width: 150px ;border-radius: 75px;" >
-
-                            <div class="card-body">
-                                <h4 class="card-title" scope="row" th:text="${usuario.nombre}" style="font-weight: bold" ></h4>
-                                <h6 class="card-text" th:text="${usuario.servicio}" style="font-weight: bold" ></h6>
-                                <p  th:text="${usuario.descripcion}"> </p>
+                            <div class="card ">
                                 <br>
-                                <a th:href="@{/proveedor/proveedorinfo/__${usuario.id}__}" class="btn btn-outline-secondary"> Ver Perfil</a> 
+                                <!--cada img se debe traer de donde quede la imagen subida por el prestador-->
+                                <img  class="card-img-top" alt="prove" style="width: 150px ;border-radius: 75px;" >
 
-                                <a th:href="@{/orden/contratar/__${usuario.id}__}" class="btn btn-outline-warning" > Solicitar Servicio</a>
+                                <div class="card-body">
+                                    <h4 class="card-title" scope="row" th:text="${usuario.nombre}" style="font-weight: bold" ></h4>
+                                    <h6 class="card-text" th:text="${usuario.servicio}" style="font-weight: bold" ></h6>
+                                    <p  th:text="${usuario.descripcion}"> </p>
+                                    <br>
+                                    <a th:href="@{/proveedor/proveedorinfo/__${usuario.id}__}" class="btn btn-outline-secondary"> Ver Perfil</a> 
+
+                                    <a th:href="@{/orden/contratar/__${usuario.id}__}" class="btn btn-outline-warning" > Solicitar Servicio</a>
+
+                                </div>
+                                <div class="card-footer">
+
+
+                                    <form>
+                                        <p class="clasificacion" >
+                                            <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                                            --><label for="radio1">★</label><!--
+                                            --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                                            --><label for="radio2">★</label><!--
+                                            --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                                            --><label for="radio3">★</label><!--
+                                            --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                                            --><label for="radio4">★</label><!--
+                                            --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                                            --><label for="radio5">★</label>
+                                        </p>
+                                    </form>
+                                </div>
 
                             </div>
-                            <div class="card-footer">
-
-
-                                <form>
-                                    <p class="clasificacion" >
-                                        <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                        --><label for="radio1">★</label><!--
-                                        --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                        --><label for="radio2">★</label><!--
-                                        --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                        --><label for="radio3">★</label><!--
-                                        --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                        --><label for="radio4">★</label><!--
-                                        --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                                        --><label for="radio5">★</label>
-                                    </p>
-                                </form>
-                            </div>
-
+                            <br>
                         </div>
-                        <br>
+
                     </div>
-
                 </div>
-
             </div>
 
         </div>

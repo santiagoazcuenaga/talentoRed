@@ -12,34 +12,34 @@ PANEL ADMINISTRADOR
             <header th:replace= "/fragments/header :: header"> </header>
         </div>
 
-            <!--Barra lateral-->
+        <!--Barra lateral-->
 
 
-            <div class="sidebar">
-                <h2> Panel de funciones </h2>
+        <div class="sidebar">
+            <h2> Panel de funciones </h2>
+            <hr>
+            <ul>
+                <li><a href="/admin/ordenar">Listar Usuarios Ordenados</a></li>
+                <li><a href="/admin/mostrar">Mostrar Clientes Ordenados</a></li>
+                <li><a href="/admin/mostrarPro">Mostrar Proveedores Ordenados</a></li>
+
+
+
+                <br>
                 <hr>
-                <ul>
-                    <li><a href="/admin/ordenar">Listar Usuarios Ordenados</a></li>
-                    <li><a href="/admin/mostrar">Mostrar Clientes Ordenados</a></li>
-                    <li><a href="/admin/mostrarPro">Mostrar Proveedores Ordenados</a></li>
+
+                <li><a href="/">VOLVER AL INICIO</a></li> 
+            </ul>
+        </div>
+        <div id="rubros" class="content">
 
 
-
-                    <br><br><br><br>
-                    <hr>
-
-                    <li><a href="/">VOLVER AL INICIO</a></li> 
-                </ul>
-            </div>
-            <div id="rubros" class="content">
-
-
-            </div>
+        </div>
 
 
 
 
-            <main class="px-10" style="margin-left: 20%" >
+        <main class="px-10" style="margin-left: 20%" >
 
 
 
@@ -47,45 +47,50 @@ PANEL ADMINISTRADOR
 
 
 
-                <h1 style="text-align: center">Panel del Administrador </h1>
-                <p style="text-align: center">Bienvenido!</p>
+            <h1 style="text-align: center">Panel del Administrador </h1>
+            <p style="text-align: center">Bienvenido!</p>
 
-                <br> <br>
-                <!--   <p style="text-align: center"> Panel de funciones<br>
-                       <a href="/admin/ordenar">Listar Usuarios Ordenados</a> 
-                       <a href="/admin/mostrar">Mostrar Clientes Ordenados</a>
-                       <a href="/admin/mostrarPro">Mostrar Proveedores Ordenados</a> <br>
-                       <a href="/">VOLVER AL INICIO</a>
-                   </p> -->
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Email</th>
-                            <th>Rol</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody th:each="usuario : ${usuarios}">
-                        <tr>
-                            <th scope="row" th:text="${usuario.id}"></th>
-                            <td th:text="${usuario.email}"></td> <!-- Cambio a usuario.email -->
-                            <td th:text="${usuario.rol}"></td>
-                            <td>
-                                <form th:action="@{/admin/cambiarEstado/__${usuario.id}__}" method="POST">
+            <br> 
+            <!--   <p style="text-align: center"> Panel de funciones<br>
+                   <a href="/admin/ordenar">Listar Usuarios Ordenados</a> 
+                   <a href="/admin/mostrar">Mostrar Clientes Ordenados</a>
+                   <a href="/admin/mostrarPro">Mostrar Proveedores Ordenados</a> <br>
+                   <a href="/">VOLVER AL INICIO</a>
+               </p> -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                        <th>Perfil</th>
+                    </tr>
+                </thead>
+                <tbody th:each="usuario : ${usuarios}">
+                    <tr>
+                        <th scope="row" th:text="${usuario.nombre}"></th>
+                        <td th:text="${usuario.email}"></td> <!-- Cambio a usuario.email -->
+                        <td th:text="${usuario.rol}"></td>
+                        <td>
+                            <form th:action="@{/admin/cambiarEstado/__${usuario.id}__}" method="POST">
 
-                                    <button type="submit">Cambiar Estado</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form th:action="@{/admin/eliminarUsuario/__${usuario.id}__}" method="POST">
-                                    <button type="submit">Eliminar Usuario</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <button type="submit">Cambiar Estado</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form th:action="@{/admin/eliminarUsuario/__${usuario.id}__}" method="POST">
+                                <button type="submit">Eliminar Usuario</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a th:href="@{/admin/verUsuario/{id}(id=${usuario.id})}"><button> Ver perfil</button></a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
     <hr>

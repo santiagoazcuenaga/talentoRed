@@ -260,6 +260,7 @@ border-color: #d37203;
   top: 130px; /* Ajusta esto segÃºn tus preferencias */
   left: 20 px;
   bottom: 0;
+  margin-bottom: 17%;
 }
 
 .sidebar h2 {
@@ -326,4 +327,53 @@ input[type="radio"]:checked ~ label {
 
 .carru{
   background-image: url(/image/345397.jpg);
+}
+
+/*====================estilo para las tablas=================================*/
+/* Estilos para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff; /* Color de fondo blanco */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilos para las celdas de encabezado */
+table th {
+  background-color: rgb(235, 113, 31); /* Color de fondo naranja */
+  color:#333 ; /* Color del texto negro */
+  padding: 10px;
+  text-align: left;
+}
+
+/* Estilos para las celdas de datos */
+table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee; /* Línea divisoria gris */
+}
+
+/* Estilos para las filas impares (opcional) */
+table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2; /* Color de fondo gris claro para filas impares */
+}
+
+/* Estilos para los botones */
+table button {
+  background-color: rgb(85, 81, 81); /* Color de fondo gris */
+  color: #fff; /* Color del texto blanco */
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+table button:hover {
+  background-color: #d37203; /* Cambio de color al pasar el cursor sobre el botón */
+}
+
+/* Estilos para los enlaces en la última columna (Ver perfil) */
+table a {
+  text-decoration: none;
+  color: #d37203; /* Color de enlace naranja */
 }

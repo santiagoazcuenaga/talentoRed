@@ -184,4 +184,93 @@ public class ServicioProveedor implements UserDetailsService {
 
         return proveedores;
     }
+    
+    //albañil
+     public List<Proveedor> obtenerAlbañiles(){
+         List<Proveedor> proveedores = repoPro.findAll();
+         List<Proveedor> aux = new ArrayList();
+         for (Proveedor proveedor : proveedores) {
+             if(proveedor.getServicio().equals(TipoServicio.ALBAÑIL)){
+                 aux.add(proveedor);
+             }
+         }
+         return aux;
+     }
+         //carpintero
+     public List<Proveedor> obtenerCarpinteros(){
+         List<Proveedor> proveedores = repoPro.findAll();
+         List<Proveedor> aux = new ArrayList();
+         for (Proveedor proveedor : proveedores) {
+             if(proveedor.getServicio().equals(TipoServicio.CARPINTERO)){
+                 aux.add(proveedor);
+             }
+         }
+         return aux;
+     }
+         //electricista
+     public List<Proveedor> obtenerElectricistas(){
+         List<Proveedor> proveedores = repoPro.findAll();
+         List<Proveedor> aux = new ArrayList();
+         for (Proveedor proveedor : proveedores) {
+             if(proveedor.getServicio().equals(TipoServicio.ELECTRICISTA)){
+                 aux.add(proveedor);
+             }
+         }
+         return aux;
+     }
+         //jardinero
+     public List<Proveedor> obtenerJardineros(){
+         List<Proveedor> proveedores = repoPro.findAll();
+         List<Proveedor> aux = new ArrayList();
+         for (Proveedor proveedor : proveedores) {
+             if(proveedor.getServicio().equals(TipoServicio.JARDINERO)){
+                 aux.add(proveedor);
+             }
+         }
+         return aux;
+     }
+         //mecanico
+     public List<Proveedor> obtenerMecanicos(){
+         List<Proveedor> proveedores = repoPro.findAll();
+         List<Proveedor> aux = new ArrayList();
+         for (Proveedor proveedor : proveedores) {
+             if(proveedor.getServicio().equals(TipoServicio.MECANICO)){
+                 aux.add(proveedor);
+             }
+         }
+         return aux;
+     }
+         //gasista
+     public List<Proveedor> obtenerGas(){
+         List<Proveedor> proveedores = repoPro.findAll();
+         List<Proveedor> aux = new ArrayList();
+         for (Proveedor proveedor : proveedores) {
+             if(proveedor.getServicio().equals(TipoServicio.GASISTA)){
+                 aux.add(proveedor);
+             }
+         }
+         return aux;
+     }
+         //tecnico
+     public List<Proveedor> obtenerTecnicos(){
+         List<Proveedor> proveedores = repoPro.findAll();
+         List<Proveedor> aux = new ArrayList();
+         for (Proveedor proveedor : proveedores) {
+             if(proveedor.getServicio().equals(TipoServicio.TECNICO)){
+                 aux.add(proveedor);
+             }
+         }
+         return aux;
+     }
+         //plomero
+     public List<Proveedor> obtenerPlomeros(){
+         List<Proveedor> proveedores = repoPro.findAll();
+         List<Proveedor> aux = new ArrayList();
+         for (Proveedor proveedor : proveedores) {
+             if(proveedor.getServicio().equals(TipoServicio.PLOMERO)){
+                 aux.add(proveedor);
+             }
+         }
+         return aux;
+     }
 }

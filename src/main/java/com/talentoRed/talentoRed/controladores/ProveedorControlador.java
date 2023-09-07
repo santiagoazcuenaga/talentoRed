@@ -107,7 +107,126 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
-    
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/albañil")
+    public String ordenarAlbañil(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerAlbañiles();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/carpintero")
+    public String ordenarCarpintero(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerCarpinteros();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/electricista")
+    public String ordenarElectricista(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerElectricistas();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/gas")
+    public String ordenarGas(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerGas();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/jardinero")
+    public String ordenarJardineros(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerJardineros();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/mecanico")
+    public String ordenarMecanicos(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerMecanicos();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/plomero")
+    public String ordenarPlomero(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerPlomeros();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
+    @GetMapping("/tecnico")
+    public String ordenarTecnicos(ModelMap model, HttpSession session) {
+        try {
+            // Envía los datos del usuario a la página una vez esté logueado
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            model.put("user", logueado);
+            List<Proveedor> usuarios = serPro.obtenerTecnicos();
+            model.addAttribute("usuarios", usuarios);
+            return "ordenarProveedores.html";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "index.html";
+        }
+    }
     @GetMapping("/proveedorinfo/{id}")
     public String proveedorinfo(@PathVariable String id, ModelMap modelo){
           Proveedor proveedor = serPro.getOne(id);
