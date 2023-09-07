@@ -7,6 +7,7 @@ package com.talentoRed.talentoRed.servicios;
 import com.talentoRed.talentoRed.entidades.OrdenDeServicio;
 import com.talentoRed.talentoRed.entidades.Proveedor;
 import com.talentoRed.talentoRed.entidades.Usuario;
+import com.talentoRed.talentoRed.enums.EstadoSolicitud;
 import com.talentoRed.talentoRed.repositorios.RepositorioOrden;
 import java.util.List;
 import java.util.Optional;
@@ -46,9 +47,11 @@ public class ServicioOrden {
         
         //crea la Orden
         OrdenDeServicio orden = new OrdenDeServicio();
+
         orden.setComentario(comentario);
         orden.setCalificacion(calificacion);
-        orden.setEstadoServicio(estadoServicio);//está en proceso
+        orden.setEstadoServicio(EstadoSolicitud.PENDIENTE);//está en proceso
+
                                     //cuando finaliza cambia a "false"
         orden.setProveedor(provee);
         orden.setUsuario(usuario);
@@ -69,7 +72,7 @@ public class ServicioOrden {
             OrdenDeServicio ordena = repOrden.getOne(id);
             ordena.setCalificacion(calificacion);
             ordena.setComentario(comentario);
-            ordena.setEstadoServicio(false);
+            ordena.setEstadoServicio(EstadoSolicitud.COMPLETADA);
             repOrden.save(ordena);
             //hay que ver cómo hacemos que la orden se reemplace o que se duplique.
         }

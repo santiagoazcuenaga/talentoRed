@@ -5,7 +5,10 @@
 package com.talentoRed.talentoRed.entidades;
 
 import com.talentoRed.talentoRed.entidades.Usuario;
+import com.talentoRed.talentoRed.enums.EstadoSolicitud;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -13,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 /**
- * @author Kidver
+ * @authors Kidver y lukaku
  */
 
 @Entity
@@ -24,10 +27,11 @@ public class OrdenDeServicio {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     @OneToOne
-    private Usuario usuario;
+    private Usuario usuario;//el Cliente que realiza la solicitud
     @OneToOne
-    private Proveedor proveedor;
-    private Boolean estadoServicio; // EN proceso - Finalizado
+    private Proveedor proveedor;//El proveedor que acepta o rechaza la solicitud
+    @Enumerated(EnumType.STRING)
+    private EstadoSolicitud estadoServicio; // EN proceso - Finalizado
     private int calificacion;
     private String comentario;
 
@@ -57,11 +61,11 @@ public class OrdenDeServicio {
         this.proveedor = proveedor;
     }
 
-    public Boolean getEstadoServicio() {
+    public EstadoSolicitud getEstadoServicio() {
         return estadoServicio;
     }
 
-    public void setEstadoServicio(Boolean estadoServicio) {
+    public void setEstadoServicio(EstadoSolicitud estadoServicio) {
         this.estadoServicio = estadoServicio;
     }
 
@@ -80,8 +84,5 @@ public class OrdenDeServicio {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-
-    
-    
     
 }//The end

@@ -70,17 +70,26 @@ public class ProveedorControlador {
         modelo.put("user", proveedor);
 
         return "actualizarProveedor.html";
+
     }
 
-    //controlador para vista de proveedores x Guille
-//    @GetMapping("/")
-//    public String Proveedores(ModelMap modelo,TipoServicio servicio) {
-//        List<Proveedor> proveedores = serPro.listarProveedor(servicio);
-//        modelo.addAttribute("usuarios", proveedores);
-//        return "listaProveedores.html";
-//    }
-//    
-//    
+    @PostMapping("/editar_perfil/{id}")
+    public String editar_perfil(ModelMap modelo, MultipartFile archivo, @PathVariable String id, TipoServicio tipoServicio, @RequestParam String nombre, @RequestParam String email,
+            @RequestParam String password, @RequestParam String password2,
+            String telefono, boolean tieneMatricula, String matricula, String descripcion, Disponibilidad disponibilidad,
+            MetodoPago metodoPago, MultipartFile portada) {
+
+        try {
+            Proveedor proveedor = serPro.getOne(id);
+            modelo.put("user", proveedor);
+            serPro.modificarProveedor(archivo, id, tipoServicio, nombre, email, telefono, tieneMatricula, matricula, descripcion, disponibilidad, metodoPago, portada);
+            return "redirect:/inicio";
+        } catch (Exception e) {
+
+            return "actualizarProveedor.html"; // a la espera del nuevo html
+        }
+    }
+
     //controlador para vista de proveedores x Servicio
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_PROVEEDOR', 'ROLE_ADMIN')")
     @GetMapping("/ordenados")
@@ -93,6 +102,7 @@ public class ProveedorControlador {
             model.addAttribute("usuarios", usuarios);
             return "ordenarProveedores.html";
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return "index.html";
         }
     }

@@ -27,13 +27,13 @@ public class Proveedor extends Usuario {
 
     private Boolean tieneMatricula;
     private String matricula;
-    private int calificacion;
+    private Integer calificacion;
     @Enumerated(EnumType.STRING)
     private Disponibilidad disponibilidad;
     private String Descripcion;
     @Enumerated(EnumType.STRING)
     private MetodoPago metodoPago;
-    private int cantServ;
+    private Integer cantServ;
     @OneToOne
     private Imagen portada;
 
