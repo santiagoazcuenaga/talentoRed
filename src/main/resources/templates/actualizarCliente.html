@@ -6,35 +6,21 @@
   <head th:replace="/fragments/head :: head"> </head>
   
 
-  <body class="h-100 text-center text-bg-ligth">
+  <body class="h-100 text-center text-bg-ligth" style=" background: url(/image/345397.jpg); background-repeat: no-repeat;
+  background-size: cover; " >
+
     <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
       <header th:replace="/fragments/header :: header"></header>
-      <div>
-        <style>
-          body::after {
-            content: "";
-            background: url(/image/image2.jpg);
-            opacity: 0.4;
-            top: 22%;
-            left: 1%;
-            bottom: 1%;
-            right: 1%;
-            position: absolute;
-            z-index: -1;
-            background-repeat: no-repeat;
-            background-size: cover;
-          }
-        </style>
-      </div>
+
 
       <!--Formulario de registro de usuario -->
       <title>Actualiza tus datos</title>
 
       <main class="px-10">
-        <h2 style="color: rgb(41, 41, 41)">Actualiza tus datos</h2>
+        <h2 style="color: rgb(255, 255, 255)">Actualiza tus datos</h2>
         <br />
         <img
-          src="/image/usersimple.jpg"
+          src="/image/user.png"
           alt="logousuario"
           width="80"
           height="80"

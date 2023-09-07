@@ -35,7 +35,16 @@
     <div class="form-container">
         <form class="kid-form" th:action="@{/proveedor/editar_perfil/__${user.id}__}" method="POST"
             enctype="multipart/form-data">
-            <h2 style="color:black; text-align: center;">Actualiza tus datos</h2>
+            <h2 style="color:rgb(255, 255, 255); text-align: center;">Actualiza tus datos</h2>
+
+            <img
+            src="/image/user.png"
+            alt="logousuario"
+            width="80"
+            height="80"
+            align="center"
+            style="margin-bottom: 10px"
+          />
 
             <label for="">Tipo de Servicio</label>
             <select class="form-select" aria-label="Default select example" name="tipoServicio"

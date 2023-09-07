@@ -39,6 +39,11 @@
                                 <h6 class="card-text" th:text="${usuario.servicio}"></h6>
                                 <p> </p>
                                 <a href=""> Solicitar presupuesto</a>
+
+                                
+
+
+
                             </div>
                             <div class="card-footer">
                                 <!-- formulario para puntuacion, posiblemente deba ir en la ficha del prestador de servicio y
@@ -59,6 +64,13 @@
                                     </p>
                                 </form>
                             </div>
+
+                            <div th:if="${exito}!=null" class="card text-white bg-danger mb-3 mensajeExito">
+                    <div class="card-body">
+                        <h5 class="card-title">Solicitud enviada!! ð</h5>
+                        <p class="card-text" th:text="${exito}"></p>
+                    </div>
+                </div>
                         </div>
                     </div>
                 </div>
