@@ -28,13 +28,14 @@ public class OrdenControlador {
 
     @Autowired
     private ServicioOrden ordenservicio;
+
     //NO SE USA
     @GetMapping("/contrata")
     public String contrateServicio() {
         return "contratalo";
     }
     //Cliente contrata a prestador
-   // @PreAuthorize("hasAnyRol('ROLE_CLIENTE')")
+    // @PreAuthorize("hasAnyRol('ROLE_CLIENTE')")
     @GetMapping("/contratar/{id}")
     public String contratarServicio(ModelMap modelo, HttpSession session, @PathVariable String id) {
 
@@ -50,43 +51,56 @@ public class OrdenControlador {
 
     }
     //El boton del servicio finalizado con exito
-    
+
     @PostMapping("/pagalo")
     public String finalizarServicio(@RequestParam String id, @RequestParam int cal, String comentario) {
 
         ordenservicio.finalizarOrden(id, cal, comentario);
-        
+
         return "pagado";//reemplazar
     }
+
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
+    @GetMapping("/finalizar/{id}")
+    public String finalizarServicioByProveedor(@PathVariable String id, HttpSession session) {
+
+        ordenservicio.aceptarORechazar(id, EstadoSolicitud.FINALIZADA);
+        Usuario user = (Usuario) session.getAttribute("usuariosession"); // para obtener el id de usuario logueado
+        return "redirect:/proveedor/mi_perfil/" + user.getId();
+
+    }
+
     //El cliente cancela la orden
     @GetMapping("/cancelar/{id}")
     public String cancelarServicio(@PathVariable String id, HttpSession session) {
         try {
             ordenservicio.aceptarORechazar(id, EstadoSolicitud.CANCELADA);
-           Usuario user = (Usuario) session.getAttribute("usuariosession");        
-        return "redirect:/proveedor/mi_perfil/" + user.getId();
+            Usuario user = (Usuario) session.getAttribute("usuariosession"); // para obtener el id de usuario logueado
+            return "redirect:/proveedor/mi_perfil/" + user.getId();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return "";
         }
-        return "cancelado";//reemplazar
+
     }
+
     //El Proveedor debe aceptar o rechazar la orden
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
     @GetMapping("/aceptada/{id}")
-    public String aceptaSolicitud(@PathVariable String id, HttpSession session){
+    public String aceptaSolicitud(@PathVariable String id, HttpSession session) {
         ordenservicio.aceptarORechazar(id, EstadoSolicitud.ACEPTADA);
-        Usuario user = (Usuario) session.getAttribute("usuariosession");        
-        return "redirect:/proveedor/mi_perfil/" + user.getId();//modificar retornar al perfil del proveedor
-    }
-    
-    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
-    @GetMapping("/rechazada/{id}")
-    public String rechazaSolicitud(@PathVariable String id, HttpSession session){
-        ordenservicio.aceptarORechazar(id, EstadoSolicitud.RECHAZADA);
-        Usuario user = (Usuario) session.getAttribute("usuariosession");        
+        Usuario user = (Usuario) session.getAttribute("usuariosession"); // para obtener el id de usuario logueado
         return "redirect:/proveedor/mi_perfil/" + user.getId();
     }
-        
+
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR')")
+    @GetMapping("/rechazada/{id}")
+    public String rechazaSolicitud(@PathVariable String id, HttpSession session) {
+        ordenservicio.aceptarORechazar(id, EstadoSolicitud.RECHAZADA);
+        Usuario user = (Usuario) session.getAttribute("usuariosession"); // para obtener el id de usuario logueado
+        return "redirect:/proveedor/mi_perfil/" + user.getId();
+    }
+
     @GetMapping("/listar")
     public String listarOrdenes() {
         return "listado.html";

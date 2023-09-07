@@ -108,5 +108,14 @@ public class ProveedorControlador {
             return "index.html";
         }
     }
+    
+    @GetMapping("/proveedorinfo/{id}")
+    public String proveedorinfo(@PathVariable String id, ModelMap modelo){
+          Proveedor proveedor = serPro.getOne(id);
+        modelo.put("user", proveedor);
+
+        return "proveedorclasificacion.html";
+
+    }
 
 }//The end
