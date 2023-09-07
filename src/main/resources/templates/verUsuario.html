@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <head th:replace= "/fragments/head :: head"> </head>
     <body>
         <header th:replace= "/fragments/header :: header"> </header>
-        <br><br><br><br>
+        <br><br><br><br><br><br>
         <h1>Detalles del Usuario</h1>
         <table>
             <tr>
@@ -27,6 +27,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <img th:src="${usuario.imagen}" alt="Imagen de Usuario" width="100px" height="100px" />
                             </td>-->
             </tr>
+        </table>
+        <br>
+        <h1>Detalles de sus ordenes</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Proveedor</th>
+                
+            </tr>
+            </thead>
+            <tbody th:each="orden : ${ordenes}">
+            <tr>
+                <td th:text="${orden.estadoServicio}"></td>
+                <td th:text="${orden.usuario}"></td>
+                <td th:text="${orden.proveedor}"></td>
+                <!-- Otros atributos aquí -->
+                <!--            <td th:text="${usuario.direccion}"></td>-->
+                <!--            <td>
+                                <img th:src="${usuario.imagen}" alt="Imagen de Usuario" width="100px" height="100px" />
+                            </td>-->
+            </tr>
+            </tbody>
         </table>
         <a href="/admin/dashboard">Volver al Panel de Administración</a>
     </body>

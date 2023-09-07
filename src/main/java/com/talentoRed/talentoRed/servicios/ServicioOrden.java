@@ -126,5 +126,21 @@ public class ServicioOrden {
          }
          return aux;   
     }
-    
+      
+      //listar las ordenes en las que aparece el usuario
+       public List<OrdenDeServicio> listarOrdenUsuario(String id){
+        List<OrdenDeServicio> ordenes = repOrden.findAll();
+        
+        List<OrdenDeServicio> aux = new ArrayList();
+         for (OrdenDeServicio orden : ordenes) {
+             if(orden.getUsuario().getId().equals(id)){
+                 aux.add(orden);
+             } 
+             if(orden.getProveedor().getId().equals(id)){
+                aux.add(orden);
+             }
+             
+         }
+         return aux; 
+       }
 }

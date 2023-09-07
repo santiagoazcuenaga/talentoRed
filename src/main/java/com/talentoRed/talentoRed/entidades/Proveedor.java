@@ -112,4 +112,9 @@ public class Proveedor extends Usuario {
         this.portada = portada;
     }
 
+    @Override
+    public String toString() {
+        return super.getNombre()+ " " + servicio ;
+    }
+
 }

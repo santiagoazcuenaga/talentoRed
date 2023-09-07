@@ -50,6 +50,11 @@ public class Cliente extends Usuario{
         this.casa = casa;
     }
 
+    @Override
+    public String toString() {
+        return super.getNombre();
+    }
+
    
     
     
